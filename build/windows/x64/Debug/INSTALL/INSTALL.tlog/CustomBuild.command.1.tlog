@@ -1,0 +1,10 @@
+^C:\USERS\LVBHK\DESKTOP\RE-FRIDGE\BUILD\WINDOWS\CMAKEFILES\2305834E07319A0E35744ABA8D2410C5\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

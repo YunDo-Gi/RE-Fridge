@@ -1,0 +1,10 @@
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/CMakeFiles/INSTALL.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/CMakeFiles/ALL_BUILD.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/CMakeFiles/ZERO_CHECK.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/flutter/CMakeFiles/flutter_assemble.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/flutter/CMakeFiles/INSTALL.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/runner/CMakeFiles/flutter_application_2.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/runner/CMakeFiles/INSTALL.dir
+C:/Users/lvbhk/Desktop/RE-Fridge/build/windows/runner/CMakeFiles/ALL_BUILD.dir
