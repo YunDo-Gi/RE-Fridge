@@ -64,11 +64,11 @@ class PantryController extends GetxController {
     if(difference == 0) {
       return Text('D-Day');
     } else if(difference < 0) {
-      return Text('D+' + difference.abs().toString(), style: TextStyle(color:const Color(0xEC615F)));
+      return Text('D+' + difference.abs().toString(), style: TextStyle(color:Color.fromRGBO(236, 97, 95, 1), fontWeight: FontWeight.w700));
     } else if(difference < 5) {
-      return Text('D-' + difference.toString(), style: TextStyle(color: const Color(0xD9AF52)));
+      return Text('D-' + difference.toString(), style: TextStyle(color:Color.fromRGBO(217, 175, 82, 1), fontWeight: FontWeight.w700));
     } else {
-      return Text('D-' + difference.toString(), style: TextStyle(color: const Color(0x8EB44E)));
+      return Text('D-' + difference.toString(), style: TextStyle(color:Color.fromRGBO(142,180,78, 1), fontWeight: FontWeight.w700));
     }
   }
 }

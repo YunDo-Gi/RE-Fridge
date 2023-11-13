@@ -14,7 +14,6 @@ class MainApp extends StatelessWidget {
       title: "RE:Fridge",
       theme: ThemeData(
         fontFamily: 'Tisa',
-        primarySwatch: Colors.blue,
       ),
       home: Pantry(),
     );
