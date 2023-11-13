@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -52,5 +52,21 @@ class PantryController extends GetxController {
     }
 
     foundIngredients.assignAll(filteredIngredients);
+  }
+
+  int daysBetween(DateTime from, DateTime to) {
+    var difference = to.difference(from).inDays;
+    return difference;
+  }
+
+  Text toDDay(DateTime expiryDate) {
+    var difference = daysBetween(DateTime.now(), expiryDate);
+    if(difference == 0) {
+      return Text('D-Day');
+    } else if(difference < 0) {
+      return Text('D+' + difference.abs().toString());
+    } else {
+      return Text('D-' + difference.toString());
+    }
   }
 }

@@ -14,7 +14,7 @@ const List<String> categorys = <String>[
 class Pantry extends StatelessWidget {
   Pantry({Key? key}) : super(key: key);
   final pantryController = Get.put(PantryController());
-  final editingController = TextEditingController();
+  final nowDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +53,18 @@ class Pantry extends StatelessWidget {
           body: Container(
             child: Column(children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 0),
               child: TextField(
                 onChanged: (value) {
                   pantryController.filterIngredient(value);
                 },
-                controller: editingController,
                 decoration: InputDecoration(
-                    labelText: "Search",
                     hintText: "Search",
                     prefixIcon: Icon(Icons.search),
+                    filled: true,
+                    fillColor: Color.fromRGBO(54,40,34, 0.3),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)))),
               ),
             ),Expanded(child: Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
@@ -104,9 +104,8 @@ class Pantry extends StatelessWidget {
                             leading: Icon(Icons.food_bank),
                             title: Text(
                                 controller.foundIngredients[index].ingredientName),
-                            subtitle: Text(controller
-                                .foundIngredients[index].expiryDate
-                                .toString()),
+                            subtitle: controller.toDDay(controller
+                                .foundIngredients[index].expiryDate),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
                                 .foundIngredients[index].quantity
