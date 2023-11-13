@@ -56,7 +56,7 @@ class Pantry extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 onChanged: (value) {
-                  
+                  pantryController.filterIngredient(value);
                 },
                 controller: editingController,
                 decoration: InputDecoration(
@@ -74,20 +74,20 @@ class Pantry extends StatelessWidget {
                   children: <Widget>[
                     // All
                     ListView.builder(
-                      itemCount: controller.ingredients.length,
+                      itemCount: controller.foundIngredients.length,
                       itemBuilder: (context, index) {
                         return Card(
                           margin: EdgeInsets.all(8.0),
                           child: ListTile(
                             leading: Icon(Icons.food_bank),
                             title: Text(
-                                controller.ingredients[index].ingredientName),
+                                controller.foundIngredients[index].ingredientName),
                             subtitle: Text(controller
-                                .ingredients[index].expiryDate
+                                .foundIngredients[index].expiryDate
                                 .toString()),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
-                                .ingredients[index].quantity
+                                .foundIngredients[index].quantity
                                 .toString()),
                             contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           ),
@@ -96,20 +96,20 @@ class Pantry extends StatelessWidget {
                     ),
                     // Vegetable
                     ListView.builder(
-                      itemCount: controller.ingredients.length,
+                      itemCount: controller.foundIngredients.length,
                       itemBuilder: (context, index) {
                         return Card(
                           margin: EdgeInsets.all(8.0),
                           child: ListTile(
                             leading: Icon(Icons.food_bank),
                             title: Text(
-                                controller.ingredients[index].ingredientName),
+                                controller.foundIngredients[index].ingredientName),
                             subtitle: Text(controller
-                                .ingredients[index].expiryDate
+                                .foundIngredients[index].expiryDate
                                 .toString()),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
-                                .ingredients[index].quantity
+                                .foundIngredients[index].quantity
                                 .toString()),
                             contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           ),
@@ -118,20 +118,20 @@ class Pantry extends StatelessWidget {
                     ),
                     // Meat
                     ListView.builder(
-                      itemCount: controller.ingredients.length,
+                      itemCount: controller.foundIngredients.length,
                       itemBuilder: (context, index) {
                         return Card(
                           margin: EdgeInsets.all(8.0),
                           child: ListTile(
                             leading: Icon(Icons.food_bank),
                             title: Text(
-                                controller.ingredients[index].ingredientName),
+                                controller.foundIngredients[index].ingredientName),
                             subtitle: Text(controller
-                                .ingredients[index].expiryDate
+                                .foundIngredients[index].expiryDate
                                 .toString()),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
-                                .ingredients[index].quantity
+                                .foundIngredients[index].quantity
                                 .toString()),
                             contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           ),
@@ -140,20 +140,20 @@ class Pantry extends StatelessWidget {
                     ),
                     // Fish / Seafood
                     ListView.builder(
-                      itemCount: controller.ingredients.length,
+                      itemCount: controller.foundIngredients.length,
                       itemBuilder: (context, index) {
                         return Card(
                           margin: EdgeInsets.all(8.0),
                           child: ListTile(
                             leading: Icon(Icons.food_bank),
                             title: Text(
-                                controller.ingredients[index].ingredientName),
+                                controller.foundIngredients[index].ingredientName),
                             subtitle: Text(controller
-                                .ingredients[index].expiryDate
+                                .foundIngredients[index].expiryDate
                                 .toString()),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
-                                .ingredients[index].quantity
+                                .foundIngredients[index].quantity
                                 .toString() + ' g'),
                             contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           ),
@@ -162,20 +162,20 @@ class Pantry extends StatelessWidget {
                     ),
                     // Dairy / Egg
                     ListView.builder(
-                      itemCount: controller.ingredients.length,
+                      itemCount: controller.foundIngredients.length,
                       itemBuilder: (context, index) {
                         return Card(
                           margin: EdgeInsets.all(8.0),
                           child: ListTile(
                             leading: Icon(Icons.food_bank),
                             title: Text(
-                                controller.ingredients[index].ingredientName),
+                                controller.foundIngredients[index].ingredientName),
                             subtitle: Text(controller
-                                .ingredients[index].expiryDate
+                                .foundIngredients[index].expiryDate
                                 .toString()),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
-                                .ingredients[index].quantity
+                                .foundIngredients[index].quantity
                                 .toString()),
                             contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           ),

@@ -8,6 +8,7 @@ import '../models/ingredient.dart';
 
 class PantryController extends GetxController {
   final ingredients = <Ingredient>[].obs;
+  final foundIngredients = <Ingredient>[].obs;
 
 
   @override
@@ -33,47 +34,23 @@ class PantryController extends GetxController {
         ingredientsList.add(ingredient);
       }
       ingredients.assignAll(ingredientsList);
+      foundIngredients.assignAll(ingredients);
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
-    
-
-    // var httpClient = HttpClient();
-    // var httpResponseContent;
-
-    // HttpClientRequest httpRequest = await httpClient.get(serverIp, serverPort, serverPath);
-    // HttpClientResponse httpResponse = await httpRequest.close();
-
-    // httpResponseContent = await utf8.decoder.bind(httpResponse).join();
-    // printHttpContentInfo(httpResponse, httpResponseContent);
   }
 
-    
-    // await Future.delayed(const Duration(seconds: 1));
-    // var dummyData = [
-    //   Ingredient(
-    //     id: 1,
-    //     ingredientName: 'Milk',
-    //     expiryDate: DateTime.now().add(const Duration(days: 7)),
-    //     quantity: 1,
-    //     category: 'Dairy'
-    //   ),
-    //   Ingredient(
-    //     id: 2,
-    //     ingredientName: 'Eggs',
-    //     expiryDate: DateTime.now().add(const Duration(days: 14)),
-    //     quantity: 14,
-    //     category: 'Dairy'
-    //   ),
-    //   Ingredient(
-    //     id: 3,
-    //     ingredientName: 'Bread',
-    //     expiryDate: DateTime.now().add(const Duration(days: 3)),
-    //     quantity: 1,
-    //     category: 'Bakery'
-    //   ),
-    // ];
+  void filterIngredient(String searchText) {
+    var filteredIngredients = <Ingredient>[];
 
-    // ingredients.assignAll(dummyData);}
+    if (searchText.isEmpty) {
+      filteredIngredients = ingredients;
+    } else {
+      filteredIngredients = ingredients.where((ingredient) {
+        return ingredient.ingredientName.toLowerCase().contains(searchText.toLowerCase());
+      }).toList();
+    }
 
+    foundIngredients.assignAll(filteredIngredients);
+  }
 }
