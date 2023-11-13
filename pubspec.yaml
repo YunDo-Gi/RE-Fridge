@@ -20,3 +20,20 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+  - family: Tisa
+    fonts:
+      - asset: assets/fonts/Tisa-Sans-Pro-ExtraLight.ttf
+        weight: 200
+      - asset: assets/fonts/Tisa-Sans-Pro-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Tisa-Sans-Pro-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/Tisa-Sans-Pro-Medium.ttf
+        weight: 500
+      - asset: assets/fonts/Tisa-Sans-Pro-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/Tisa-Sans-Pro-ExtraBold.ttf
+        weight: 800
+      - asset: assets/fonts/Tisa-Sans-Pro-Black.ttf
+        weight: 900

@@ -64,9 +64,11 @@ class PantryController extends GetxController {
     if(difference == 0) {
       return Text('D-Day');
     } else if(difference < 0) {
-      return Text('D+' + difference.abs().toString());
+      return Text('D+' + difference.abs().toString(), style: TextStyle(color:const Color(0xEC615F)));
+    } else if(difference < 5) {
+      return Text('D-' + difference.toString(), style: TextStyle(color: const Color(0xD9AF52)));
     } else {
-      return Text('D-' + difference.toString());
+      return Text('D-' + difference.toString(), style: TextStyle(color: const Color(0x8EB44E)));
     }
   }
 }

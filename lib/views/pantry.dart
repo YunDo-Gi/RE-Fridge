@@ -82,9 +82,8 @@ class Pantry extends StatelessWidget {
                             leading: Icon(Icons.food_bank),
                             title: Text(
                                 controller.foundIngredients[index].ingredientName),
-                            subtitle: Text(controller
-                                .foundIngredients[index].expiryDate
-                                .toString()),
+                            subtitle: controller.toDDay(controller
+                                .foundIngredients[index].expiryDate),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
                                 .foundIngredients[index].quantity
@@ -125,9 +124,8 @@ class Pantry extends StatelessWidget {
                             leading: Icon(Icons.food_bank),
                             title: Text(
                                 controller.foundIngredients[index].ingredientName),
-                            subtitle: Text(controller
-                                .foundIngredients[index].expiryDate
-                                .toString()),
+                            subtitle: controller.toDDay(controller
+                                .foundIngredients[index].expiryDate),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
                                 .foundIngredients[index].quantity
@@ -147,9 +145,8 @@ class Pantry extends StatelessWidget {
                             leading: Icon(Icons.food_bank),
                             title: Text(
                                 controller.foundIngredients[index].ingredientName),
-                            subtitle: Text(controller
-                                .foundIngredients[index].expiryDate
-                                .toString()),
+                            subtitle: controller.toDDay(controller
+                                .foundIngredients[index].expiryDate),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
                                 .foundIngredients[index].quantity
@@ -169,9 +166,8 @@ class Pantry extends StatelessWidget {
                             leading: Icon(Icons.food_bank),
                             title: Text(
                                 controller.foundIngredients[index].ingredientName),
-                            subtitle: Text(controller
-                                .foundIngredients[index].expiryDate
-                                .toString()),
+                            subtitle: controller.toDDay(controller
+                                .foundIngredients[index].expiryDate),
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
                                 .foundIngredients[index].quantity
