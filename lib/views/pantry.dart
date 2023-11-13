@@ -14,6 +14,7 @@ const List<String> categorys = <String>[
 class Pantry extends StatelessWidget {
   Pantry({Key? key}) : super(key: key);
   final pantryController = Get.put(PantryController());
+  final editingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,23 @@ class Pantry extends StatelessWidget {
               ],
             ),
           ),
-          body: Padding(
+          body: Container(
+            child: Column(children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: (value) {
+                  
+                },
+                controller: editingController,
+                decoration: InputDecoration(
+                    labelText: "Search",
+                    hintText: "Search",
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+              ),
+            ),Expanded(child: Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
             child: GetX<PantryController>(
               builder: (controller) {
@@ -137,7 +154,7 @@ class Pantry extends StatelessWidget {
                             subtitleTextStyle: TextStyle(color: Colors.red),
                             trailing: Text(controller
                                 .ingredients[index].quantity
-                                .toString()),
+                                .toString() + ' g'),
                             contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           ),
                         );
@@ -170,6 +187,8 @@ class Pantry extends StatelessWidget {
               },
             ),
           ),
+          )],),)
+          
         ));
   }
 }

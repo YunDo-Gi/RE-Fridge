@@ -19,7 +19,7 @@ class PantryController extends GetxController {
   Future fetchData() async {
     var serverPort = "8080";
     var serverPath = "/pantry";
-    var url = Uri.http('localhost:' + serverPort, serverPath)
+    var url = Uri.http('localhost:' + serverPort, serverPath);
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
