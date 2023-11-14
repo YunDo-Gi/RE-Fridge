@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
+import 'package:re_fridge/widgets/pantry_item.dart';
 
 const List<String> categorys = <String>[
   'All',
@@ -96,139 +98,35 @@ class Pantry extends StatelessWidget {
                               ListView.builder(
                                 itemCount: controller.foundIngredients.length,
                                 itemBuilder: (context, index) {
-                                  return Card(
-                                    margin:
-                                        EdgeInsets.fromLTRB(8.0, 12.0, 8.0, 0),
-                                    elevation: 2,
-                                    child: ListTile(
-                                      leading: Icon(
-                                        Icons.food_bank,
-                                        size: 36,
-                                      ),
-                                      title: Text(
-                                          controller.foundIngredients[index]
-                                              .ingredientName,
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color.fromRGBO(
-                                                  54, 40, 34, 1))),
-                                      subtitle: controller.toDDay(controller
-                                          .foundIngredients[index].expiryDate),
-                                      subtitleTextStyle: TextStyle(
-                                          color: Colors.red, height: 1.5),
-                                      trailing: Text(
-                                          controller.foundIngredients[index]
-                                                  .quantity
-                                                  .toString() +
-                                              ' g',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color.fromRGBO(
-                                                  54, 40, 34, 1))),
-                                      contentPadding:
-                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                    ),
-                                  );
+                                  return PantryItem(index: index);
                                 },
                               ),
                               // Vegetable
                               ListView.builder(
                                 itemCount: controller.foundIngredients.length,
                                 itemBuilder: (context, index) {
-                                  return Card(
-                                    margin: EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                      leading: Icon(Icons.food_bank),
-                                      title: Text(controller
-                                          .foundIngredients[index]
-                                          .ingredientName),
-                                      subtitle: controller.toDDay(controller
-                                          .foundIngredients[index].expiryDate),
-                                      subtitleTextStyle:
-                                          TextStyle(color: Colors.red),
-                                      trailing: Text(controller
-                                              .foundIngredients[index].quantity
-                                              .toString() +
-                                          'g'),
-                                      contentPadding:
-                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                    ),
-                                  );
+                                  return PantryItem(index: index);
                                 },
                               ),
                               // Meat
                               ListView.builder(
                                 itemCount: controller.foundIngredients.length,
                                 itemBuilder: (context, index) {
-                                  return Card(
-                                    margin: EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                      leading: Icon(Icons.food_bank),
-                                      title: Text(controller
-                                          .foundIngredients[index]
-                                          .ingredientName),
-                                      subtitle: controller.toDDay(controller
-                                          .foundIngredients[index].expiryDate),
-                                      subtitleTextStyle:
-                                          TextStyle(color: Colors.red),
-                                      trailing: Text(controller
-                                          .foundIngredients[index].quantity
-                                          .toString()),
-                                      contentPadding:
-                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                    ),
-                                  );
+                                  return PantryItem(index: index);
                                 },
                               ),
                               // Fish / Seafood
                               ListView.builder(
                                 itemCount: controller.foundIngredients.length,
                                 itemBuilder: (context, index) {
-                                  return Card(
-                                    margin: EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                      leading: Icon(Icons.food_bank),
-                                      title: Text(controller
-                                          .foundIngredients[index]
-                                          .ingredientName),
-                                      subtitle: controller.toDDay(controller
-                                          .foundIngredients[index].expiryDate),
-                                      subtitleTextStyle:
-                                          TextStyle(color: Colors.red),
-                                      trailing: Text(controller
-                                              .foundIngredients[index].quantity
-                                              .toString() +
-                                          ' g'),
-                                      contentPadding:
-                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                    ),
-                                  );
+                                  return PantryItem(index: index);
                                 },
                               ),
                               // Dairy / Egg
                               ListView.builder(
                                 itemCount: controller.foundIngredients.length,
                                 itemBuilder: (context, index) {
-                                  return Card(
-                                    margin: EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                      leading: Icon(Icons.food_bank),
-                                      title: Text(controller
-                                          .foundIngredients[index]
-                                          .ingredientName),
-                                      subtitle: controller.toDDay(controller
-                                          .foundIngredients[index].expiryDate),
-                                      subtitleTextStyle:
-                                          TextStyle(color: Colors.red),
-                                      trailing: Text(controller
-                                          .foundIngredients[index].quantity
-                                          .toString()),
-                                      contentPadding:
-                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                    ),
-                                  );
+                                  return PantryItem(index: index);
                                 },
                               )
                             ],
@@ -236,9 +134,11 @@ class Pantry extends StatelessWidget {
                         },
                       ),
                     ),
-                  )
+                  ),
+                  
                 ],
               ),
             )));
   }
 }
+

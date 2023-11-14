@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		IXpyV92asW8XqrUL8B/BArb1fgg=
+		dTjD2B3oIFRWPoDlMcvENp6aJlw=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,23 +54,51 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		1e3vBOyyJJoYue8DyO6G6OuxTtE=
+		e+RZnqpeEvQOH0MIneVff9ccXBY=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		21tVqbIV90TbglF4ZJhNBz8uj4w=
+		RNv1FRs7dVPErabfK7xYhXYnnr4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		vyGp6PvFo4RvsFtPoIWeCReyIC8=
+		vx//PbYixGD9jLL+Oc5qGYZjc0g=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
-		+D1xbIOooc3ypce1+jh+mmLy1J0=
+		uamnbPayoS4Gkj7WrE/4oEk0Y1Y=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		BD6l6w04xNIKAupT2WQikJVfxZ0=
+		KN28VfECdqTnT9jtLN0kAk9LnZc=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
+		<data>
+		TCMq/ukERLEg0zRSUuzA87m1Zl4=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Bold.ttf</key>
+		<data>
+		Q0Vu66l0K8PtJczOeQZB9eBPTNI=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraBold.ttf</key>
+		<data>
+		WBSKvs3l8Fbnu7THx/6z0yQjak4=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraLight.ttf</key>
+		<data>
+		8X/MoIy0a5D8rr6fwB51oF2P31Q=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Light.ttf</key>
+		<data>
+		ILjVKV36OrWLN4u443yymk9moP0=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Medium.ttf</key>
+		<data>
+		lonMxRMmKU+9DdPaoINQnQaK134=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Regular.ttf</key>
+		<data>
+		HlW9X6dfCcJpme77ebKfUQyWZco=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -82,7 +110,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		i8LTED3by9bgNnC9ix6dj30Qm+A=
+		a/8PS23CG3SeeR+4jK0Bd2Mq4Mc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -261,7 +289,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ARAolH7L1FaD2ILCvabrmwXyh/RV5uzJEVpfzybpeiQ=
+			HiSRx4lEADaFHw/Tj1Jllwpw7kbStPfiyWF1N+kYngc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -275,35 +303,84 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pxVLSlIbwdT/pU+BCCFjSLX7ZMihZR1KMUC6vMr23aI=
+			8ZPss3kUdZZoz36JRTmPPL4CbgLjB0l6ZFR4V+M3Uv8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9WbMb8zGVzZcAZeszzp9b4D4Ugn/Zm/3dPTcvFJKqEI=
+			8YQFacia7jEuQR+rrdQe9rsVsQoM1LaPYp8MhYbN/Mo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RBNvo1WzZ4oRRq0W9+hknpT7T8If536DEMBg9hyq/4o=
+			p+2UiUqgl4hhdluSHOkXZNW4NhahuDtrWf6JAvM0xzk=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KLHrKz0uGtYLjIsPkQCxzL9JL3+pf1vrtR6pfnOSbn0=
+			Hx0H1s5XVpfk88YY9R4NxFWvdgrFHdXjJSr7zkA4rxw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OOSisMYwFzQ+vkVJdx1QX97097kk80yHab8Bl+Md9ic=
+			aMbXS+OANoQ+tpcPzRVcnmNAW1DJNRhMRUcfcLSSvg8=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LAiS8SwTDI05gkR8s351YapqNdOHMFebf0B2ZVKhCaA=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gM0YYPoryysXNE0kuEk5vbswlMS5YueWYuKyHqgkqnc=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sxKX6nVVb82k23614MsVdHKYLNjSy5DemoxnMT2Xq34=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraLight.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eJcM3i3N2v123jzsH7h5+6a7Uz/z9H2jdVfMo/DFz6M=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Light.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8MIwx+aDNEyc5dQIoqJgo3IfVMh6yJK6yMc6qV9o9FI=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Medium.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			93ECjZJPgRZjwm1N7Uf4YnHONVkEpPVdHvvnspicHl8=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qfyta08H9JQOg739GXDuXByoMwk37+s9TOekNBeEgts=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -324,7 +401,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EeHKyJuwi+a9tDxbvrWHVK+JuoXR4Osjlv8kisIJ4VI=
+			fsDWLnCnUQZKcavXagBstMAuh+5vw6B/QQTyUAAeEj4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/shaders/ink_sparkle.frag</key>
