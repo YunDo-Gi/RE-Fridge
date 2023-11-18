@@ -4,6 +4,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
+import 'package:re_fridge/widgets/navigation_bar_bottom.dart';
 
 const List<String> categorys = <String>[
   'All',
@@ -138,7 +139,9 @@ class Pantry extends StatelessWidget {
                   
                 ],
               ),
-            )));
+            ),
+            bottomNavigationBar: NavigationBarBottom()
+            ));
   }
 }
 

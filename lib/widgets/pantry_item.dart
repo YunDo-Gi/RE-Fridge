@@ -35,14 +35,16 @@ class _PantryItemState extends State<PantryItem> {
             motion: const ScrollMotion(),
 
             // A pane can dismiss the Slidable.
-            dismissible: DismissiblePane(onDismissed: () {}),
+            dismissible: DismissiblePane(onDismissed: () {
+              
+            }),
 
             // All actions are defined in the children parameter.
             children: [
               // A SlidableAction can have an icon and/or a label.
               SlidableAction(
                 autoClose: true,
-                onPressed: deleteIngredient(),
+                onPressed: doNothing(),
                 backgroundColor: PRIMARY_COLOR,
                 foregroundColor: Colors.white,
                 icon: Icons.shopping_cart,
@@ -81,7 +83,7 @@ class _PantryItemState extends State<PantryItem> {
             children: [
               SlidableAction(
                 autoClose: true,
-                onPressed: deleteIngredient(),
+                onPressed: doNothing(),
                 backgroundColor: Color(0xFFFE4A49),
                 foregroundColor: Colors.white,
                 icon: Icons.delete,
@@ -95,5 +97,9 @@ class _PantryItemState extends State<PantryItem> {
         ));
   }
 
-  deleteIngredient() {}
+  doNothing() {}
+
+  deleteIngredient(ingredientId) {
+    controller.deleteIngredient(ingredientId);
+  }
 }

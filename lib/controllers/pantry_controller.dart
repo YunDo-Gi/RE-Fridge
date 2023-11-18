@@ -39,8 +39,7 @@ class PantryController extends GetxController {
         print('Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
-      print(e);
-    } finally {
+      print('Request failed - dummy data will be used.');
       var dummyData = await fetchDummyData();
       var ingredientsList = <Ingredient>[];
 
@@ -50,7 +49,7 @@ class PantryController extends GetxController {
       }
       ingredients.assignAll(ingredientsList);
       foundIngredients.assignAll(ingredients);
-    }
+    } 
   }
 
   void filterIngredient(String searchText) {
@@ -95,6 +94,22 @@ class PantryController extends GetxController {
               fontWeight: FontWeight.w700));
     }
   }
+
+  Future deleteIngredient(int ingredientId) async {
+    // var serverPort = "8080";
+    // var serverPath = "/pantry/" + ingredientId.toString();
+    // var url = await Uri.http('localhost:' + serverPort, serverPath);
+
+    try {
+      // http.delete(url);
+
+      // dummy data
+      ingredients.removeWhere((ingredient) => ingredient.ingredientId == ingredientId);
+      print('delete ingredientId: ' + ingredientId.toString());
+    } catch (e) {
+      print(e);
+    }
+  }
 }
 
 Future fetchDummyData() async {
@@ -103,7 +118,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 1,
       "ingredientName": "Onion",
-      "expiryDate": "2021-10-10",
+      "expiryDate": "2023-12-10",
       "quantity": 100,
       "category": "Vegetable"
     },
