@@ -49,7 +49,7 @@ class PantryController extends GetxController {
       }
       ingredients.assignAll(ingredientsList);
       foundIngredients.assignAll(ingredients);
-    } 
+    }
   }
 
   void filterIngredient(String searchText) {
@@ -95,17 +95,34 @@ class PantryController extends GetxController {
     }
   }
 
-  Future deleteIngredient(int ingredientId) async {
+  Future deleteIngredient(int index) async {
     // var serverPort = "8080";
     // var serverPath = "/pantry/" + ingredientId.toString();
     // var url = await Uri.http('localhost:' + serverPort, serverPath);
+    var ingredientId = ingredients[index].ingredientId;
 
     try {
       // http.delete(url);
 
-      // dummy data
-      ingredients.removeWhere((ingredient) => ingredient.ingredientId == ingredientId);
-      print('delete ingredientId: ' + ingredientId.toString());
+      ingredients.removeAt(ingredients
+          .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
+      foundIngredients.removeAt(foundIngredients
+          .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future addToCart(index) async {
+    // var serverPort = "8080";
+    // var serverPath = "/cart";
+    // var url = await Uri.http('localhost:' + serverPort, serverPath);
+    var ingredientId = ingredients[index].ingredientId;
+
+    try {
+      // http.post(url, body: {'ingredientId': ingredientId.toString()});
+
+      
     } catch (e) {
       print(e);
     }

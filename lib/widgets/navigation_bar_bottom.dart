@@ -11,6 +11,7 @@ class NavigationBarBottom extends StatefulWidget {
 
 class _NavigationBarBottomState extends State<NavigationBarBottom> {
   int _currentIndex = 0;
+  int get currentIndex => _currentIndex;
 
   void _onItemTapped(int index) {
     setState(() {

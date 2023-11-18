@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'views/pantry.dart';
+import 'views/app.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,7 +16,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Tisa',
       ),
-      home: Pantry(),
+      home: App(),
     );
   }
 }

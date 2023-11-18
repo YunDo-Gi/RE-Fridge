@@ -27,17 +27,12 @@ class _PantryItemState extends State<PantryItem> {
         ),
         elevation: 2,
         child: Slidable(
-          key: const ValueKey(0),
+          key: UniqueKey(),
           startActionPane: ActionPane(
             // width of action pane
             extentRatio: 0.25,
             // A motion is a widget used to control how the pane animates.
             motion: const ScrollMotion(),
-
-            // A pane can dismiss the Slidable.
-            dismissible: DismissiblePane(onDismissed: () {
-              
-            }),
 
             // All actions are defined in the children parameter.
             children: [
@@ -79,7 +74,10 @@ class _PantryItemState extends State<PantryItem> {
           endActionPane: ActionPane(
             extentRatio: 0.25,
             motion: const ScrollMotion(),
-            dismissible: DismissiblePane(onDismissed: () {}),
+            // A pane can dismiss the Slidable.
+            dismissible: DismissiblePane(onDismissed: () {
+              controller.deleteIngredient(index);
+            }),
             children: [
               SlidableAction(
                 autoClose: true,
@@ -98,8 +96,4 @@ class _PantryItemState extends State<PantryItem> {
   }
 
   doNothing() {}
-
-  deleteIngredient(ingredientId) {
-    controller.deleteIngredient(ingredientId);
-  }
 }
