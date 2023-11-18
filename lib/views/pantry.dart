@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
-import 'package:re_fridge/widgets/navigation_bar_bottom.dart';
 
 const List<String> categorys = <String>[
   'All',
-  'Vegetables',
+  'Vegetable',
   'Meat',
   'Fish / Seafood',
   'Dairy / Egg',
@@ -44,6 +42,10 @@ class Pantry extends StatelessWidget {
               labelColor: Color.fromRGBO(54, 40, 34, 1),
               isScrollable: true,
               indicatorSize: TabBarIndicatorSize.label,
+              onTap: (index) {
+                // pantryController.categoryIndex.value = index;
+                pantryController.categorizeIngredient(index);
+              },
               tabs: <Widget>[
                 Tab(
                   text: categorys[0],
@@ -91,53 +93,66 @@ class Pantry extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
-                    child: GetX<PantryController>(
-                      builder: (controller) {
-                        return TabBarView(
-                          children: <Widget>[
-                            // All
-                            ListView.builder(
-                              itemCount: controller.foundIngredients.length,
-                              itemBuilder: (context, index) {
-                                return PantryItem(index: index);
-                              },
-                            ),
-                            // Vegetable
-                            ListView.builder(
-                              itemCount: controller.foundIngredients.length,
-                              itemBuilder: (context, index) {
-                                return PantryItem(index: index);
-                              },
-                            ),
-                            // Meat
-                            ListView.builder(
-                              itemCount: controller.foundIngredients.length,
-                              itemBuilder: (context, index) {
-                                return PantryItem(index: index);
-                              },
-                            ),
-                            // Fish / Seafood
-                            ListView.builder(
-                              itemCount: controller.foundIngredients.length,
-                              itemBuilder: (context, index) {
-                                return PantryItem(index: index);
-                              },
-                            ),
-                            // Dairy / Egg
-                            ListView.builder(
-                              itemCount: controller.foundIngredients.length,
-                              itemBuilder: (context, index) {
-                                return PantryItem(index: index);
-                              },
-                            )
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                ),
+                    child: FutureBuilder(
+                        future: pantryController.fetchData(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                              child: GetX<PantryController>(
+                                builder: (controller) {
+                                  return TabBarView(
+                                    children: <Widget>[
+                                      // All
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.foundIngredients.length,
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Vegetable
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[0],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Meat
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[1],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Fish / Seafood
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[2],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Dairy / Egg
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[3],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      )
+                                    ],
+                                  );
+                                },
+                              ),
+                            );
+                          } else {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                        })),
               ],
             ),
           ),

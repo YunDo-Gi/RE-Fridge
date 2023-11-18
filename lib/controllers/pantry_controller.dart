@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -9,10 +12,16 @@ class PantryController extends GetxController {
   final ingredients = <Ingredient>[].obs;
   final foundIngredients = <Ingredient>[].obs;
 
+  final categoryIndex = 0.obs;
+
+  List numberByCategory = [];
+
+  bool searchMode = false;
+
   @override
   void onInit() {
     super.onInit();
-    fetchData();
+    // fetchData();
   }
 
   Future fetchData() async {
@@ -49,7 +58,43 @@ class PantryController extends GetxController {
       }
       ingredients.assignAll(ingredientsList);
       foundIngredients.assignAll(ingredients);
+    } finally {
+      getNumberByCategory();
     }
+
+    return 0;
+  }
+
+  void categorizeIngredient(int category) {
+    var filteredIngredients = <Ingredient>[];
+
+    switch (category) {
+      case 0:
+        filteredIngredients = ingredients;
+        break;
+      case 1:
+        filteredIngredients = ingredients
+            .where((ingredient) => ingredient.category.toLowerCase() == 'vegetable')
+            .toList();
+        break;
+      case 2:
+        filteredIngredients =
+            ingredients.where((ingredient) => ingredient.category.toLowerCase() == 'meat').toList();
+        break;
+      case 3:
+        filteredIngredients = ingredients
+            .where((ingredient) => ingredient.category.toLowerCase() == 'seafood' || ingredient.category.toLowerCase() == 'fish')
+            .toList();
+        break;
+      case 4:
+        filteredIngredients =
+            ingredients.where((ingredient) => ingredient.category.toLowerCase() == 'dairy' || ingredient.category.toLowerCase() == 'egg').toList();
+        break;
+      default:
+        filteredIngredients = ingredients;
+    }
+
+    foundIngredients.assignAll(filteredIngredients);
   }
 
   void filterIngredient(String searchText) {
@@ -57,7 +102,9 @@ class PantryController extends GetxController {
 
     if (searchText.isEmpty) {
       filteredIngredients = ingredients;
+      searchMode = false;
     } else {
+      searchMode = true;
       filteredIngredients = ingredients.where((ingredient) {
         return ingredient.ingredientName
             .toLowerCase()
@@ -66,6 +113,48 @@ class PantryController extends GetxController {
     }
 
     foundIngredients.assignAll(filteredIngredients);
+  }
+
+  // List<Ingredient> getIngredientsByCategory(String category) {
+  //   var filteredIngredients = <Ingredient>[];
+
+  //   filteredIngredients = ingredients.where((ingredient) {
+  //     return ingredient.category.toLowerCase() == category.toLowerCase();
+  //   }).toList();
+
+  //   return filteredIngredients;
+  // }
+
+  void getNumberByCategory() {
+    final categories = ['Vegetable', 'Meat', 'Fish', 'Dairy'];
+    var numberByCategory = <int>[];
+    var number = 0;
+
+    for (var category in categories) {
+      if(category == 'Fish') {
+        number = ingredients.where((ingredient) {
+          return ingredient.category.toLowerCase() == 'fish' || ingredient.category.toLowerCase() == 'seafood';
+        }).length;
+
+        numberByCategory.add(number);
+        continue;
+      } else if(category == 'Dairy') {
+        number = ingredients.where((ingredient) {
+          return ingredient.category.toLowerCase() == 'dairy' || ingredient.category.toLowerCase() == 'egg';
+        }).length;
+
+        numberByCategory.add(number);
+        continue;
+      } else {
+        number = ingredients.where((ingredient) {
+          return ingredient.category.toLowerCase() == category.toLowerCase();
+        }).length;
+
+        numberByCategory.add(number);
+      }
+    }
+
+    this.numberByCategory = numberByCategory;
   }
 
   int daysBetween(DateTime from, DateTime to) {
@@ -99,11 +188,16 @@ class PantryController extends GetxController {
     // var serverPort = "8080";
     // var serverPath = "/pantry/" + ingredientId.toString();
     // var url = await Uri.http('localhost:' + serverPort, serverPath);
-    var ingredientId = ingredients[index].ingredientId;
+
+    var ingredientId;
+    if (searchMode) {
+      ingredientId = foundIngredients[index].ingredientId;
+    } else {
+      ingredientId = ingredients[index].ingredientId;
+    }
 
     try {
       // http.delete(url);
-
       ingredients.removeAt(ingredients
           .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
       foundIngredients.removeAt(foundIngredients
@@ -121,8 +215,6 @@ class PantryController extends GetxController {
 
     try {
       // http.post(url, body: {'ingredientId': ingredientId.toString()});
-
-      
     } catch (e) {
       print(e);
     }
@@ -148,10 +240,10 @@ Future fetchDummyData() async {
     },
     {
       "ingredientId": 3,
-      "ingredientName": "Red Pepper Powder",
+      "ingredientName": "salmon",
       "expiryDate": "2021-10-10",
       "quantity": 100,
-      "category": "Seasoning"
+      "category": "Fish"
     },
     {
       "ingredientId": 4,
@@ -169,10 +261,10 @@ Future fetchDummyData() async {
     },
     {
       "ingredientId": 6,
-      "ingredientName": "Red Pepper Powder",
+      "ingredientName": "Egg",
       "expiryDate": "2021-10-10",
       "quantity": 100,
-      "category": "Seasoning"
+      "category": "Egg"
     },
     {
       "ingredientId": 7,
@@ -183,17 +275,17 @@ Future fetchDummyData() async {
     },
     {
       "ingredientId": 8,
-      "ingredientName": "Gochujang",
+      "ingredientName": "squid",
       "expiryDate": "2021-10-10",
       "quantity": 100,
-      "category": "Seasoning"
+      "category": "Seafood"
     },
     {
       "ingredientId": 9,
-      "ingredientName": "Red Pepper Powder",
+      "ingredientName": "Milk",
       "expiryDate": "2021-10-10",
       "quantity": 100,
-      "category": "Seasoning"
+      "category": "Dairy"
     },
   ];
 }
