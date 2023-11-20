@@ -68,6 +68,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/yun-dogi/Documents/Development/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/yun-dogi/.pub-cache/hosted/pub.dev/fluttertoast-8.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "get",
       "rootUri": "file:///Users/yun-dogi/.pub-cache/hosted/pub.dev/get-4.6.6",
       "packageUri": "lib/",
@@ -188,7 +200,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-11-14T13:03:43.366164Z",
+  "generated": "2023-11-20T11:57:43.614603Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }

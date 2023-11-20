@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		RNv1FRs7dVPErabfK7xYhXYnnr4=
+		rfMHRIk4cd7dXNZENLkBXNZd7FA=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		vx//PbYixGD9jLL+Oc5qGYZjc0g=
+		YIJzIyh3dvZBntXijH4HNjwBIUM=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		ga3/s5X10H0tIHEMbTlVLi4PJPo=
+		fs5IZgiFiv7akDHCdzbGmi2IQjE=
 		</data>
 		<key>flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
 		<data>
@@ -62,7 +62,15 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		dhu4s98UWhXbgZdswhaJC+Ng8JI=
+		uDKaxgjXi0ZUqL61W8ZiSEZi6wM=
+		</data>
+		<key>flutter_assets/packages/fluttertoast/assets/toastify.css</key>
+		<data>
+		w0yScZgyE5s0j7sPuGOLXy3ISfM=
+		</data>
+		<key>flutter_assets/packages/fluttertoast/assets/toastify.js</key>
+		<data>
+		gPIgba2QIn/qWmLFfVogsD4MxPU=
 		</data>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -79,14 +87,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8YQFacia7jEuQR+rrdQe9rsVsQoM1LaPYp8MhYbN/Mo=
+			Aa1tdoYr4kkdmZs1rm59RKSk6ldkNiw3/9IhWLLei6w=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p+2UiUqgl4hhdluSHOkXZNW4NhahuDtrWf6JAvM0xzk=
+			jWtSiKNu9vQAwQFWk5zfF68yIp3nVbOBKWeDQSe50Oc=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -100,7 +108,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LcJPLjlHx7I5Nu12oGZ4Yg/15SBVWukKTxOapKW/m5A=
+			X0UASuj0b0BdfmJxu1NJUp58tH/qJwbuHNk4U4/VWYU=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
@@ -170,7 +178,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uF1a5MI3bAAYZIS5W3bY87y0iZg3Q977xtM4TgUkDoI=
+			gJYTdv+qy1FgFeYl+OMNESAiNNep6mInm+zT/ZCDKs4=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/fluttertoast/assets/toastify.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OA6cPd56JZLHb6TFMDSJcQW1dQpoPp1gk3TDCrW7kJY=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/fluttertoast/assets/toastify.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zYIrdfUdie9n3mKKElLvN1sxiImupJ++RP/PCwgqbb0=
 			</data>
 		</dict>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/colors.dart';
@@ -14,8 +15,16 @@ class PantryItem extends StatefulWidget {
 }
 
 class _PantryItemState extends State<PantryItem> {
+  late FToast fToast;
   final controller = Get.put(PantryController());
   int get index => widget.index;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +86,7 @@ class _PantryItemState extends State<PantryItem> {
             // A pane can dismiss the Slidable.
             dismissible: DismissiblePane(onDismissed: () {
               controller.deleteIngredient(index);
+              showToast('Deleted');
             }),
             children: [
               SlidableAction(
@@ -95,5 +105,39 @@ class _PantryItemState extends State<PantryItem> {
         ));
   }
 
-  doNothing() {}
+  doNothing() {
+    controller.deleteIngredient(index);
+  }
+
+  Widget toast = Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.0),
+        color: Color.fromARGB(220, 254, 73, 73),
+        ),
+        child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+            Icon(Icons.delete, color: Colors.white),
+            SizedBox(
+            width: 12.0,
+            ),
+            Text("Deleted", style: TextStyle(color: Colors.white)),
+        ],
+        ),
+    );
+
+  void showToast(String message) {
+    fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(
+            child: child,
+            bottom: 102.0,
+            left: 0,
+            right: 0
+          );
+        });
+  }
 }

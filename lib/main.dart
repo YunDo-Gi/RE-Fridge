@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 import 'views/pantry.dart';
 import 'views/app.dart';
 
@@ -12,6 +14,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: FToastBuilder(),
       title: "RE:Fridge",
       theme: ThemeData(
         fontFamily: 'Tisa',

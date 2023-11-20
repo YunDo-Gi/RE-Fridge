@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:re_fridge/colors.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
@@ -150,7 +151,10 @@ class Pantry extends StatelessWidget {
                               ),
                             );
                           } else {
-                            return Center(child: CircularProgressIndicator());
+                            return Center(child: CircularProgressIndicator(
+                              color: PRIMARY_COLOR,
+                              
+                            ));
                           }
                         })),
               ],

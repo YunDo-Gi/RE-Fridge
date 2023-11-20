@@ -153,7 +153,7 @@ class PantryController extends GetxController {
         numberByCategory.add(number);
       }
     }
-
+    print(numberByCategory);
     this.numberByCategory = numberByCategory;
   }
 
@@ -202,6 +202,7 @@ class PantryController extends GetxController {
           .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
       foundIngredients.removeAt(foundIngredients
           .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
+      getNumberByCategory();
     } catch (e) {
       print(e);
     }
