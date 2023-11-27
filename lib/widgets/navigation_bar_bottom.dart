@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:re_fridge/colors.dart';
+import 'package:re_fridge/controllers/navigation_bar_controller.dart';
 
-class NavigationBarBottom extends StatefulWidget {
-  const NavigationBarBottom({Key? key}) : super(key: key);
-
-  @override
-  _NavigationBarBottomState createState() => _NavigationBarBottomState();
-}
-
-class _NavigationBarBottomState extends State<NavigationBarBottom> {
-  int _currentIndex = 0;
-  int get currentIndex => _currentIndex;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
+class NavigationBarBottom extends StatelessWidget {
+  NavigationBarBottom({Key? key}) : super(key: key);
+  final NavigationBarController navigationBarController =
+      Get.put(NavigationBarController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +24,15 @@ class _NavigationBarBottomState extends State<NavigationBarBottom> {
         BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_outlined), label: 'Cart'),
       ],
-      currentIndex: _currentIndex,
+      currentIndex: Get.find<NavigationBarController>().currentIndex,
       selectedItemColor: PRIMARY_COLOR,
       unselectedItemColor: Colors.grey,
       showUnselectedLabels: true,
-      onTap: _onItemTapped,
+      onTap: (index) {
+        Get.find<NavigationBarController>().changeIndex(index);
+      },
     );
   }
 }
+
+

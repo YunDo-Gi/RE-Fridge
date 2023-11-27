@@ -6,29 +6,16 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/colors.dart';
 
-class PantryItem extends StatefulWidget {
+class PantryItem extends GetView<PantryController> {
   final int index;
-  const PantryItem({Key? key, required this.index}) : super(key: key);
-
-  @override
-  _PantryItemState createState() => _PantryItemState();
-}
-
-class _PantryItemState extends State<PantryItem> {
   late FToast fToast;
-  final controller = Get.put(PantryController());
-  int get index => widget.index;
-
-  @override
-  void initState() {
-    super.initState();
-    fToast = FToast();
-    fToast.init(context);
-  }
+  PantryItem({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     const cardRadius = 12.0;
+    fToast = FToast();
+    fToast.init(context);
 
     return Card(
         shape: RoundedRectangleBorder(
@@ -106,7 +93,7 @@ class _PantryItemState extends State<PantryItem> {
   }
 
   doNothing() {
-    controller.deleteIngredient(index);
+    // controller.deleteIngredient(index);
   }
 
   Widget toast = Container(

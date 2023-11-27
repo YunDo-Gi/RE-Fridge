@@ -14,14 +14,14 @@ class PantryController extends GetxController {
 
   final categoryIndex = 0.obs;
 
-  List numberByCategory = [];
+  List numberByCategory = [].obs;
 
   bool searchMode = false;
 
   @override
   void onInit() {
     super.onInit();
-    // fetchData();
+    fetchData();
   }
 
   Future fetchData() async {
@@ -203,6 +203,7 @@ class PantryController extends GetxController {
       foundIngredients.removeAt(foundIngredients
           .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
       getNumberByCategory();
+      ingredients.refresh();
     } catch (e) {
       print(e);
     }
@@ -234,10 +235,10 @@ Future fetchDummyData() async {
     },
     {
       "ingredientId": 2,
-      "ingredientName": "Gochujang",
+      "ingredientName": "Beef",
       "expiryDate": "2021-10-10",
       "quantity": 100,
-      "category": "Seasoning"
+      "category": "Meat"
     },
     {
       "ingredientId": 3,
@@ -255,10 +256,10 @@ Future fetchDummyData() async {
     },
     {
       "ingredientId": 5,
-      "ingredientName": "Gochujang",
+      "ingredientName": "Pork",
       "expiryDate": "2021-10-10",
       "quantity": 100,
-      "category": "Seasoning"
+      "category": "Meat"
     },
     {
       "ingredientId": 6,
