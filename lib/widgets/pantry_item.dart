@@ -35,7 +35,7 @@ class PantryItem extends GetView<PantryController> {
               // A SlidableAction can have an icon and/or a label.
               SlidableAction(
                 autoClose: true,
-                onPressed: doNothing(),
+                onPressed: toCart(),
                 backgroundColor: PRIMARY_COLOR,
                 foregroundColor: Colors.white,
                 icon: Icons.shopping_cart,
@@ -73,12 +73,12 @@ class PantryItem extends GetView<PantryController> {
             // A pane can dismiss the Slidable.
             dismissible: DismissiblePane(onDismissed: () {
               controller.deleteIngredient(index);
-              showToast('Deleted');
+              showToast("Deleted", deleteToast);
             }),
             children: [
               SlidableAction(
                 autoClose: true,
-                onPressed: doNothing(),
+                onPressed: toCart(),
                 backgroundColor: Color(0xFFFE4A49),
                 foregroundColor: Colors.white,
                 icon: Icons.delete,
@@ -92,11 +92,16 @@ class PantryItem extends GetView<PantryController> {
         ));
   }
 
-  doNothing() {
-    // controller.deleteIngredient(index);
+  deleteIngredient() {
+    
   }
 
-  Widget toast = Container(
+  toCart() {
+    // to cart function
+    
+  }
+
+  Widget deleteToast = Container(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.0),
@@ -114,7 +119,25 @@ class PantryItem extends GetView<PantryController> {
         ),
     );
 
-  void showToast(String message) {
+  Widget toCartToast = Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.0),
+        color: Color.fromARGB(220, 143, 180, 78),
+        ),
+        child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+            Icon(Icons.shopping_cart_outlined, color: Colors.white),
+            SizedBox(
+            width: 12.0,
+            ),
+            Text("Added to Cart", style: TextStyle(color: Colors.white)),
+        ],
+        ),
+    );
+
+  void showToast(String message, Widget toast) {
     fToast.showToast(
         child: toast,
         toastDuration: Duration(seconds: 2),

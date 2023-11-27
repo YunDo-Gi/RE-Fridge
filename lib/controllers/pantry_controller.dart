@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -61,8 +58,6 @@ class PantryController extends GetxController {
     } finally {
       getNumberByCategory();
     }
-
-    return 0;
   }
 
   void categorizeIngredient(int category) {
@@ -157,32 +152,7 @@ class PantryController extends GetxController {
     this.numberByCategory = numberByCategory;
   }
 
-  int daysBetween(DateTime from, DateTime to) {
-    var difference = to.difference(from).inDays;
-    return difference;
-  }
-
-  Text toDDay(DateTime expiryDate) {
-    var difference = daysBetween(DateTime.now(), expiryDate);
-    if (difference == 0) {
-      return Text('D-Day');
-    } else if (difference < 0) {
-      return Text('D+' + difference.abs().toString(),
-          style: TextStyle(
-              color: Color.fromRGBO(236, 97, 95, 1),
-              fontWeight: FontWeight.w700));
-    } else if (difference < 5) {
-      return Text('D-' + difference.toString(),
-          style: TextStyle(
-              color: Color.fromRGBO(217, 175, 82, 1),
-              fontWeight: FontWeight.w700));
-    } else {
-      return Text('D-' + difference.toString(),
-          style: TextStyle(
-              color: Color.fromRGBO(142, 180, 78, 1),
-              fontWeight: FontWeight.w700));
-    }
-  }
+  
 
   Future deleteIngredient(int index) async {
     // var serverPort = "8080";
@@ -219,6 +189,34 @@ class PantryController extends GetxController {
       // http.post(url, body: {'ingredientId': ingredientId.toString()});
     } catch (e) {
       print(e);
+    }
+  }
+
+  // Experation Date Calculation
+  int daysBetween(DateTime from, DateTime to) {
+    var difference = to.difference(from).inDays;
+    return difference;
+  }
+
+  Text toDDay(DateTime expiryDate) {
+    var difference = daysBetween(DateTime.now(), expiryDate);
+    if (difference == 0) {
+      return Text('D-Day');
+    } else if (difference < 0) {
+      return Text('D+' + difference.abs().toString(),
+          style: TextStyle(
+              color: Color.fromRGBO(236, 97, 95, 1),
+              fontWeight: FontWeight.w700));
+    } else if (difference < 5) {
+      return Text('D-' + difference.toString(),
+          style: TextStyle(
+              color: Color.fromRGBO(217, 175, 82, 1),
+              fontWeight: FontWeight.w700));
+    } else {
+      return Text('D-' + difference.toString(),
+          style: TextStyle(
+              color: Color.fromRGBO(142, 180, 78, 1),
+              fontWeight: FontWeight.w700));
     }
   }
 }

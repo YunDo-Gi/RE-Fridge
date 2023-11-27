@@ -1,26 +1,30 @@
 class Recipe {
   final int recipeId;
   final String recipeName;
-  final List<String> requiredIngredients;
+  final List<String> ingredients;
+  final int fullfillCount;
 
   Recipe({
     required this.recipeId,
     required this.recipeName,
-    required this.requiredIngredients,
+    required this.ingredients,
+    required this.fullfillCount,
   });
 
   // Convert from JSON
   factory Recipe.fromJson(Map<String, dynamic> json) {
     final recipeId = json['recipeId'];
     final recipeName = json['recipeName'];
-    final requiredIngredients = json['requiredIngredients'];
+    final ingredients = json['ingredients'];
+    final fullfillCount = json['fullfillCount'];
 
     // Check if all data is valid (runtime error prevention)
-    if (recipeId is int && recipeName is String && requiredIngredients is List<String>) {
+    if (recipeId is int && recipeName is String && ingredients is List<String>) {
       return Recipe(
         recipeId: recipeId,
         recipeName: recipeName,
-        requiredIngredients: requiredIngredients,
+        ingredients: ingredients,
+        fullfillCount: fullfillCount,
       );
     } else {
       throw FormatException('Invalid JSON: $json');
@@ -31,6 +35,7 @@ class Recipe {
   Map<String, dynamic> toJson() => {
         'recipeId': recipeId,
         'recipeName': recipeName,
-        'requiredIngredients': requiredIngredients,
+        'ingredients': ingredients,
+        'fullfillCount': fullfillCount,
       };
 }
