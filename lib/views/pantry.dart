@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:re_fridge/colors.dart';
+import 'package:flutter/services.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
+import 'package:re_fridge/views/addItem.dart';
 
 const List<String> categorys = <String>[
   'All',
@@ -38,6 +39,18 @@ class Pantry extends StatelessWidget {
                     color: Color.fromRGBO(54, 40, 34, 1),
                     fontWeight: FontWeight.w700,
                     fontSize: 30)),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.add_circle_outline_rounded),
+                color: Color.fromRGBO(54, 40, 34, 1),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddItem()),
+                  );
+                },
+              )
+            ],
             bottom: TabBar(
               indicatorColor: Color.fromRGBO(142, 180, 78, 1),
               labelColor: Color.fromRGBO(54, 40, 34, 1),
