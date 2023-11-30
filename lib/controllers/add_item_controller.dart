@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 class AddItemController extends GetxController {
@@ -5,21 +7,22 @@ class AddItemController extends GetxController {
     Ingredient(
         name: 'Carrot',
         category: 'Vegetable',
-        icon: 'assets/icons/carrot.png'),
+        icon: 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png'),
     Ingredient(
-        name: 'Chicken', category: 'Meat', icon: 'assets/icons/meat.png'),
+        name: 'Chicken', category: 'Meat', icon: 'https://cdn-icons-png.flaticon.com/128/1041/1041676.png'),
     Ingredient(
         name: 'Salmon',
         category: 'Fish / Seafood',
-        icon: 'assets/icons/fish.png'),
+        icon: 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png'),
     Ingredient(
-        name: 'Milk', category: 'Dairy / Egg', icon: 'assets/icons/dairy.png'),
+        name: 'Milk', category: 'Dairy / Egg', icon: 'https://cdn-icons-png.flaticon.com/128/9708/9708499.png'),
     Ingredient(
-        name: 'Egg', category: 'Dairy / Egg', icon: 'assets/icons/egg.png'),
+        name: 'Egg', category: 'Dairy / Egg', icon: 'https://cdn-icons-png.flaticon.com/128/837/837560.png'),
   ];
 
   var foundIngredients = <Ingredient>[].obs;
   var addedIngredients = <Ingredient>[].obs;
+ 
   bool searchMode = false;
 
   void onInit() {
@@ -45,8 +48,12 @@ class AddItemController extends GetxController {
     foundIngredients.assignAll(filteredIngredients);
   }
 
-  void addIngredient(Ingredient ingredient) {
-    addedIngredients.add(ingredient);
+  void addIngredient(int index) {
+    addedIngredients.add(foundIngredients[index]);
+  }
+
+  void removeIngredient(int index) {
+    addedIngredients.remove(addedIngredients[index]);
   }
 }
 

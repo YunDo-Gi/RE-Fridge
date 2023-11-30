@@ -6,6 +6,7 @@ import 'package:re_fridge/colors.dart';
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/controllers/add_item_controller.dart';
 import 'package:re_fridge/widgets/ingredient_card.dart';
+import 'package:re_fridge/widgets/added_ingredient_card.dart';
 
 const List<String> categorys = <String>[
   'All',
@@ -102,7 +103,60 @@ class AddItem extends StatelessWidget {
                           // All
                           GridView.builder(
                             shrinkWrap: true,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 4,
+                              childAspectRatio: 1.0,
+                            ),
+                            itemCount: controller.foundIngredients.length,
+                            itemBuilder: (context, index) {
+                              return IngredientCard(index: index);
+                            },
+                          ),
+                          // Vegetable
+                          GridView.builder(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 4,
+                              childAspectRatio: 1.0,
+                            ),
+                            itemCount: controller.foundIngredients.length,
+                            itemBuilder: (context, index) {
+                              return IngredientCard(index: index);
+                            },
+                          ),
+                          // Meat
+                          GridView.builder(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 4,
+                              childAspectRatio: 1.0,
+                            ),
+                            itemCount: controller.foundIngredients.length,
+                            itemBuilder: (context, index) {
+                              return IngredientCard(index: index);
+                            },
+                          ),
+                          // Fish / Seafood
+                          GridView.builder(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 4,
+                              childAspectRatio: 1.0,
+                            ),
+                            itemCount: controller.foundIngredients.length,
+                            itemBuilder: (context, index) {
+                              return IngredientCard(index: index);
+                            },
+                          ),
+                          // Dairy / Egg
+                          GridView.builder(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 4,
                               childAspectRatio: 1.0,
                             ),
@@ -116,6 +170,43 @@ class AddItem extends StatelessWidget {
                     },
                   ),
                 )),
+                // Added Ingredients
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 8.0, 0, 24.0),
+                  padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 8.0),
+                  color: Color.fromRGBO(54, 40, 34, 0.2),
+                  height: 85,
+                  width: double.infinity,
+                  child:GetX<AddItemController>(
+                    builder: (controller) { return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: addItemController.addedIngredients.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: AddedIngredientCard(index: index),
+                      );
+                    },
+                  );})
+                ),
+                // Confirm Button
+                Container(
+                  margin: EdgeInsets.fromLTRB(32.0, 0, 32.0, 32.0),
+                  height: 60,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Confirm',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: PRIMARY_COLOR,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import 'package:re_fridge/controllers/add_item_controller.dart';
 
@@ -15,8 +14,7 @@ class IngredientCard extends GetView<AddItemController> {
         Card(
             child: InkWell(
           onTap: () {
-            controller.addedIngredients.add(controller.foundIngredients[index]);
-            print(controller.addedIngredients.length);
+            controller.addIngredient(index);
           },
           child: SizedBox(
               width: 50,
@@ -24,13 +22,13 @@ class IngredientCard extends GetView<AddItemController> {
               child: Center(
                 child: Ink.image(
                     fit: BoxFit.cover,
-                    image: const NetworkImage(
-                        'https://cdn-icons-png.flaticon.com/128/2224/2224115.png'),
+                    image: NetworkImage(
+                        controller.foundIngredients[index].icon),
                     width: 30,
                     height: 30),
               )),
         )),
-        Text('test')
+        Text(controller.foundIngredients[index].name, style: TextStyle(fontWeight: FontWeight.w500))
       ]),
     );
   }

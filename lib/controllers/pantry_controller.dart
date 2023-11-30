@@ -18,10 +18,13 @@ class PantryController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchData();
+    // fetchData();
   }
 
   Future fetchData() async {
+    if(ingredients.length > 0) {
+      return 0;
+    }
     var serverPort = "8080";
     var serverPath = "/pantry";
     var url = Uri.http('localhost:' + serverPort, serverPath);
