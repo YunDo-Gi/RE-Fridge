@@ -9,7 +9,7 @@ class PantryController extends GetxController {
   final ingredients = <Ingredient>[].obs;
   final foundIngredients = <Ingredient>[].obs;
 
-  final categoryIndex = 0.obs;
+  int categoryIndex = 0;
 
   List numberByCategory = [].obs;
 
@@ -58,10 +58,13 @@ class PantryController extends GetxController {
     } finally {
       getNumberByCategory();
     }
+
+    return 0;
   }
 
   void categorizeIngredient(int category) {
     var filteredIngredients = <Ingredient>[];
+    categoryIndex = category;
 
     switch (category) {
       case 0:
@@ -159,11 +162,17 @@ class PantryController extends GetxController {
     // var serverPath = "/pantry/" + ingredientId.toString();
     // var url = await Uri.http('localhost:' + serverPort, serverPath);
 
+
     var ingredientId;
     if (searchMode) {
       ingredientId = foundIngredients[index].ingredientId;
-    } else {
-      ingredientId = ingredients[index].ingredientId;
+    } 
+    else {
+      if(categoryIndex == 0) {
+        ingredientId = ingredients[index].ingredientId;
+      } else {
+        ingredientId = foundIngredients[index].ingredientId;
+      }
     }
 
     try {

@@ -36,7 +36,7 @@ class AddItem extends StatelessWidget {
               return notification.depth == 1;
             },
             scrolledUnderElevation: 0.0,
-            title: Text('Pantry',
+            title: Text('Add Item',
                 style: TextStyle(
                     color: Color.fromRGBO(54, 40, 34, 1),
                     fontWeight: FontWeight.w700,

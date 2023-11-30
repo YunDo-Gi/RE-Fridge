@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
 import 'package:re_fridge/views/addItem.dart';
+import 'package:re_fridge/colors.dart';
 
 const List<String> categorys = <String>[
   'All',
@@ -87,6 +88,7 @@ class Pantry extends StatelessWidget {
                   child: TextField(
                     onChanged: (value) {
                       pantryController.filterIngredient(value);
+                      
                     },
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -106,101 +108,44 @@ class Pantry extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                    child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
-                  child: GetX<PantryController>(
-                    builder: (controller) {
-                      return TabBarView(
-                        children: <Widget>[
-                          // All
-                          ListView.builder(
-                            itemCount: controller.foundIngredients.length,
-                            itemBuilder: (context, index) {
-                              return PantryItem(index: index);
-                            },
-                          ),
-                          // Vegetable
-                          ListView.builder(
-                            itemCount: controller.numberByCategory[0],
-                            itemBuilder: (context, index) {
-                              return PantryItem(index: index);
-                            },
-                          ),
-                          // Meat
-                          ListView.builder(
-                            itemCount: controller.numberByCategory[1],
-                            itemBuilder: (context, index) {
-                              return PantryItem(index: index);
-                            },
-                          ),
-                          // Fish / Seafood
-                          ListView.builder(
-                            itemCount: controller.numberByCategory[2],
-                            itemBuilder: (context, index) {
-                              return PantryItem(index: index);
-                            },
-                          ),
-                          // Dairy / Egg
-                          ListView.builder(
-                            itemCount: controller.numberByCategory[3],
-                            itemBuilder: (context, index) {
-                              return PantryItem(index: index);
-                            },
-                          )
-                        ],
-                      );
-                    },
-                  ),
-                )),
                 // Expanded(
-                //     child: FutureBuilder(
-                //         future: pantryController.fetchData(),
-                //         builder: (context, snapshot) {
-                //           if (snapshot.hasData) {
-                // return Padding(
-                //   padding:
-                //       const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                //     child: Padding(
+                //   padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
                 //   child: GetX<PantryController>(
                 //     builder: (controller) {
                 //       return TabBarView(
                 //         children: <Widget>[
                 //           // All
                 //           ListView.builder(
-                //             itemCount:
-                //                 controller.foundIngredients.length,
+                //             itemCount: controller.foundIngredients.length,
                 //             itemBuilder: (context, index) {
                 //               return PantryItem(index: index);
                 //             },
                 //           ),
                 //           // Vegetable
                 //           ListView.builder(
-                //             itemCount:
-                //                 controller.numberByCategory[0],
+                //             itemCount: controller.numberByCategory[0] > 0 ? controller.numberByCategory[0] : 0,
                 //             itemBuilder: (context, index) {
                 //               return PantryItem(index: index);
                 //             },
                 //           ),
                 //           // Meat
                 //           ListView.builder(
-                //             itemCount:
-                //                 controller.numberByCategory[1],
+                //             itemCount: controller.numberByCategory[1] > 0 ? controller.numberByCategory[1] : 0,
                 //             itemBuilder: (context, index) {
                 //               return PantryItem(index: index);
                 //             },
                 //           ),
                 //           // Fish / Seafood
                 //           ListView.builder(
-                //             itemCount:
-                //                 controller.numberByCategory[2],
+                //             itemCount: controller.numberByCategory[2] > 0 ? controller.numberByCategory[2] : 0,
                 //             itemBuilder: (context, index) {
                 //               return PantryItem(index: index);
                 //             },
                 //           ),
                 //           // Dairy / Egg
                 //           ListView.builder(
-                //             itemCount:
-                //                 controller.numberByCategory[3],
+                //             itemCount: controller.numberByCategory[3] > 0 ? controller.numberByCategory[3] : 0,
                 //             itemBuilder: (context, index) {
                 //               return PantryItem(index: index);
                 //             },
@@ -209,14 +154,71 @@ class Pantry extends StatelessWidget {
                 //       );
                 //     },
                 //   ),
-                // );
-                //           } else {
-                //             return Center(child: CircularProgressIndicator(
-                //               color: PRIMARY_COLOR,
-
-                //             ));
-                //           }
-                //         })),
+                // )),
+                Expanded(
+                    child: FutureBuilder(
+                        future: pantryController.fetchData(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                              child: GetX<PantryController>(
+                                builder: (controller) {
+                                  return TabBarView(
+                                    children: <Widget>[
+                                      // All
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.foundIngredients.length,
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Vegetable
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[0],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Meat
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[1],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Fish / Seafood
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[2],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      ),
+                                      // Dairy / Egg
+                                      ListView.builder(
+                                        itemCount:
+                                            controller.numberByCategory[3],
+                                        itemBuilder: (context, index) {
+                                          return PantryItem(index: index);
+                                        },
+                                      )
+                                    ],
+                                  );
+                                },
+                              ),
+                            );
+                          } else {
+                            return Center(
+                                child: CircularProgressIndicator(
+                              color: PRIMARY_COLOR,
+                            ));
+                          }
+                        })),
               ],
             ),
           ),

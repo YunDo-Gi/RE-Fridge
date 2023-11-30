@@ -19,6 +19,7 @@ class AddItemController extends GetxController {
   ];
 
   var foundIngredients = <Ingredient>[].obs;
+  var addedIngredients = <Ingredient>[].obs;
   bool searchMode = false;
 
   void onInit() {
@@ -42,6 +43,10 @@ class AddItemController extends GetxController {
     }
 
     foundIngredients.assignAll(filteredIngredients);
+  }
+
+  void addIngredient(Ingredient ingredient) {
+    addedIngredients.add(ingredient);
   }
 }
 
