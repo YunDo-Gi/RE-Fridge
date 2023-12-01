@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddItemController extends GetxController {
+  var selectedDate = DateTime.now().obs;
+
   List<Ingredient> ingredients = [
     Ingredient(
         name: 'Carrot',
@@ -50,6 +52,7 @@ class AddItemController extends GetxController {
 
   void addIngredient(int index) {
     addedIngredients.add(foundIngredients[index]);
+
   }
 
   void removeIngredient(int index) {

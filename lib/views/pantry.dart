@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
-import 'package:re_fridge/views/addItem.dart';
+import 'package:re_fridge/views/add_Item.dart';
 import 'package:re_fridge/colors.dart';
 
 const List<String> categorys = <String>[
@@ -88,7 +88,6 @@ class Pantry extends StatelessWidget {
                   child: TextField(
                     onChanged: (value) {
                       pantryController.filterIngredient(value);
-                      
                     },
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
