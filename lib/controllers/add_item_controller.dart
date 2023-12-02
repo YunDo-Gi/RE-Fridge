@@ -1,46 +1,53 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
+import 'package:re_fridge/controllers/pantry_controller.dart';
+import 'package:re_fridge/models/ingredient.dart';
+
 class AddItemController extends GetxController {
-  var selectedDate = DateTime.now().obs;
+  final pantryController = Get.put(PantryController());
 
   List<Ingredient> ingredients = [
     Ingredient(
-      name: 'Carrot',
-      category: 'Vegetable',
-      icon: 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      quantity: 1,
-      expiryDate: DateTime.now()),
+        ingredientId: 1,
+        ingredientName: 'Carrot',
+        category: 'Vegetable',
+        icon: 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
+        quantity: 1,
+        expiryDate: DateTime.now()),
     Ingredient(
-      name: 'Chicken',
-      category: 'Meat',
-      icon: 'https://cdn-icons-png.flaticon.com/128/1041/1041676.png',
-      quantity: 1,
-      expiryDate: DateTime.now()),
+        ingredientId: 2,
+        ingredientName: 'Chicken',
+        category: 'Meat',
+        icon: 'https://cdn-icons-png.flaticon.com/128/1041/1041676.png',
+        quantity: 1,
+        expiryDate: DateTime.now()),
     Ingredient(
-      name: 'Salmon',
-      category: 'Fish / Seafood',
-      icon: 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png',
-      quantity: 1,
-      expiryDate: DateTime.now()),
+        ingredientId: 3,
+        ingredientName: 'Salmon',
+        category: 'Fish / Seafood',
+        icon: 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png',
+        quantity: 1,
+        expiryDate: DateTime.now()),
     Ingredient(
-      name: 'Milk',
-      category: 'Dairy / Egg',
-      icon: 'https://cdn-icons-png.flaticon.com/128/9708/9708499.png',
-      quantity: 1,
-      expiryDate: DateTime.now()),
+        ingredientId: 4,
+        ingredientName: 'Milk',
+        category: 'Dairy / Egg',
+        icon: 'https://cdn-icons-png.flaticon.com/128/9708/9708499.png',
+        quantity: 1,
+        expiryDate: DateTime.now()),
     Ingredient(
-      name: 'Egg',
-      category: 'Dairy / Egg',
-      icon: 'https://cdn-icons-png.flaticon.com/128/837/837560.png',
-      quantity: 1,
-      expiryDate: DateTime.now()),
+        ingredientId: 5,
+        ingredientName: 'Egg',
+        category: 'Dairy / Egg',
+        icon: 'https://cdn-icons-png.flaticon.com/128/837/837560.png',
+        quantity: 1,
+        expiryDate: DateTime.now()),
   ];
 
   var foundIngredients = <Ingredient>[].obs;
   var addedIngredients = <Ingredient>[].obs;
- 
+
   bool searchMode = false;
 
   void onInit() {
@@ -56,7 +63,7 @@ class AddItemController extends GetxController {
       searchMode = false;
     } else {
       filteredIngredients = ingredients.where((ingredient) {
-        return ingredient.name
+        return ingredient.ingredientName
             .toLowerCase()
             .contains(searchText.toLowerCase());
       }).toList();
@@ -94,26 +101,18 @@ class AddItemController extends GetxController {
     addedIngredients[index].expiryDate = updatedDate;
     addedIngredients[index] = addedIngredients[index];
   }
-}
 
+  void addToPantry(List<Ingredient> addedIngredients) {
+    for (var ingredient in addedIngredients) {
+      ingredient.ingredientId =
+          pantryController.ingredients.last.ingredientId + 1;
+      pantryController.addIngredient(ingredient);
+    }
+  }
 
-
-class Ingredient {
-  final String name;
-  final String category;
-  final String icon;
-  int quantity;
-  DateTime expiryDate;
-
-  Ingredient({required this.name, required this.category, required this.icon, required this.quantity, required this.expiryDate});
-  
-  Ingredient copywith({required int quantity}) {
-    return Ingredient(
-      name: this.name,
-      category: this.category,
-      icon: this.icon,
-      quantity: quantity,
-      expiryDate: this.expiryDate
-    );
+  popBack(context) {
+    int count = 0;
+    Navigator.of(context).popUntil((_) => count++ >= 2);
+    return 0;
   }
 }

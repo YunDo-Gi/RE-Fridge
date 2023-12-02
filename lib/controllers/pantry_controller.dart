@@ -191,6 +191,12 @@ class PantryController extends GetxController {
     }
   }
 
+  addIngredient(Ingredient ingredient) {
+    ingredients.add(ingredient);
+    foundIngredients.add(ingredient);
+    getNumberByCategory();
+  }
+
   Future addToCart(index) async {
     // var serverPort = "8080";
     // var serverPath = "/cart";
@@ -213,7 +219,10 @@ class PantryController extends GetxController {
   Text toDDay(DateTime expiryDate) {
     var difference = daysBetween(DateTime.now(), expiryDate);
     if (difference == 0) {
-      return Text('D-Day');
+      return Text('D-Day',
+      style: TextStyle(
+              color: Color.fromRGBO(217, 175, 82, 1),
+              fontWeight: FontWeight.w700));
     } else if (difference < 0) {
       return Text('D+' + difference.abs().toString(),
           style: TextStyle(
@@ -239,6 +248,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 1,
       "ingredientName": "Onion",
+      "icon" : "https://cdn-icons-png.flaticon.com/128/7230/7230868.png",
       "expiryDate": "2023-12-10",
       "quantity": 100,
       "category": "Vegetable"
@@ -246,6 +256,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 2,
       "ingredientName": "Beef",
+      "icon" : "https://cdn-icons-png.flaticon.com/128/6978/6978160.png",
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Meat"
@@ -253,6 +264,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 3,
       "ingredientName": "salmon",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Fish"
@@ -260,6 +272,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 4,
       "ingredientName": "carrot",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Vegetable"
@@ -267,6 +280,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 5,
       "ingredientName": "Pork",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Meat"
@@ -274,6 +288,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 6,
       "ingredientName": "Egg",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Egg"
@@ -281,6 +296,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 7,
       "ingredientName": "Pepper",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Vegetable"
@@ -288,6 +304,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 8,
       "ingredientName": "squid",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Seafood"
@@ -295,6 +312,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 9,
       "ingredientName": "Milk",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Dairy"

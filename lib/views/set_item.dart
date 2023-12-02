@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:re_fridge/colors.dart';
+import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/controllers/add_item_controller.dart';
 import 'package:flutter/cupertino.dart';
 
 class SetItem extends StatelessWidget {
   final addItemController = Get.put(AddItemController());
+  late FToast fToast;
 
   @override
   Widget build(BuildContext context) {
+    fToast = FToast();
+    fToast.init(context);
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 236, 220, 1),
       appBar: AppBar(
@@ -67,7 +73,7 @@ class SetItem extends StatelessWidget {
                                   ),
                                   child: Text(
                                     addItemController
-                                        .addedIngredients[index].name,
+                                        .addedIngredients[index].ingredientName,
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w700,
@@ -77,8 +83,8 @@ class SetItem extends StatelessWidget {
                               ],
                             ),
                             Container(
-                                margin: EdgeInsets.only(top: 12),
-                                padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                margin: EdgeInsets.only(top: 18),
+                                padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
                                 height: 50,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
@@ -98,14 +104,15 @@ class SetItem extends StatelessWidget {
                                           '${controller.addedIngredients[index].expiryDate.toString().substring(0, 10)}',
                                           style: TextStyle(
                                             fontSize: 20,
-                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Baloo2',
+                                            fontWeight: FontWeight.w600,
                                           ));
                                     }),
                                     TextButton(
                                       style: TextButton.styleFrom(
                                         foregroundColor: PRIMARY_COLOR,
                                         textStyle: const TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 20,
                                             fontFamily: 'Tisa',
                                             fontWeight: FontWeight.w700),
                                       ),
@@ -117,8 +124,7 @@ class SetItem extends StatelessWidget {
                                                   builder: (controller) {
                                                 return _buildBottomPicker(
                                                     timePicker(
-                                                        index, controller
-                                                    ));
+                                                        index, controller));
                                               });
                                             });
                                       },
@@ -132,28 +138,44 @@ class SetItem extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    margin: EdgeInsets.only(top: 12),
-                                    padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-                                    height: 50,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                        color: BACKGROUND_COLOR,
-                                        width: 2,
+                                      alignment: Alignment.centerLeft,
+                                      margin: EdgeInsets.only(top: 12),
+                                      padding:
+                                          EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                      height: 50,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                          color: BACKGROUND_COLOR,
+                                          width: 2,
+                                        ),
                                       ),
-                                    ),
-                                    child: GetX<AddItemController>(
-                                        builder: (controller) {
-                                      return Text(
-                                          '${controller.addedIngredients[index].quantity}',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
-                                          ));
-                                    }),
-                                  ),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 23,
+                                            child: GetX<AddItemController>(
+                                                builder: (controller) {
+                                              return Text(
+                                                  '${controller.addedIngredients[index].quantity}',
+                                                  style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontFamily: 'Baloo2',
+                                                    fontWeight: FontWeight.w600,
+                                                  ));
+                                            }),
+                                          ),
+                                          Text(
+                                            ' EA',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'Baloo2',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ],
+                                      )),
                                 ),
                                 ButtonBar(
                                   alignment: MainAxisAlignment.center,
@@ -168,7 +190,7 @@ class SetItem extends StatelessWidget {
                                       ),
                                       child: IconButton(
                                         color: Colors.white,
-                                        icon: Icon(Icons.add),
+                                        icon: Icon(Icons.add, size: 28),
                                         onPressed: () {
                                           addItemController.addQuantity(index);
                                         },
@@ -185,7 +207,7 @@ class SetItem extends StatelessWidget {
                                         ),
                                         child: IconButton(
                                           color: Colors.white,
-                                          icon: Icon(Icons.remove),
+                                          icon: Icon(Icons.remove, size: 28),
                                           onPressed: () {
                                             addItemController
                                                 .minusQuantity(index);
@@ -209,10 +231,18 @@ class SetItem extends StatelessWidget {
               height: 60,
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   // 1. add to pantry
-                  // 2. remove from addedIngredients
-                  // 3. go back to pantry
+                  addItemController
+                      .addToPantry(addItemController.addedIngredients);
+                  showToast(successToast);
+                  // go back to pantry
+                  int count = 0;
+                  Navigator.of(context).popUntil((_) => count++ >= 2);
+                  await Future.delayed(Duration(seconds: 1), () {
+                    // remove from addedIngredients
+                    addItemController.addedIngredients.clear();
+                  });
                 },
                 child: Text('Confirm',
                     style: TextStyle(
@@ -230,6 +260,15 @@ class SetItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void showToast(Widget toast) {
+    fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(child: child, bottom: 102.0, left: 0, right: 0);
+        });
   }
 }
 
@@ -264,3 +303,21 @@ Widget timePicker(index, controller) {
     },
   );
 }
+
+Widget successToast = Container(
+  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(12.0),
+    color: Color.fromARGB(220, 143, 180, 78),
+  ),
+  child: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Icon(Icons.check_circle_outline, color: Colors.white),
+      SizedBox(
+        width: 12.0,
+      ),
+      Text("Successfully Added", style: TextStyle(color: Colors.white)),
+    ],
+  ),
+);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:re_fridge/colors.dart';
 
-import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/controllers/add_item_controller.dart';
 import 'package:re_fridge/widgets/ingredient_card.dart';
 import 'package:re_fridge/widgets/added_ingredient_card.dart';
@@ -19,9 +19,12 @@ const List<String> categorys = <String>[
 
 class AddItem extends StatelessWidget {
   final addItemController = Get.put(AddItemController());
+  late FToast fToast;
 
   @override
   Widget build(BuildContext context) {
+    fToast = FToast();
+    fToast.init(context);
     int tabsCount = categorys.length;
 
     return DefaultTabController(
@@ -173,22 +176,22 @@ class AddItem extends StatelessWidget {
                 )),
                 // Added Ingredients
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 8.0, 0, 24.0),
-                  padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 8.0),
-                  color: Color.fromRGBO(54, 40, 34, 0.2),
-                  height: 85,
-                  width: double.infinity,
-                  child:GetX<AddItemController>(
-                    builder: (controller) { return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: addItemController.addedIngredients.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        child: AddedIngredientCard(index: index),
+                    margin: EdgeInsets.fromLTRB(0, 8.0, 0, 24.0),
+                    padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 8.0),
+                    color: Color.fromRGBO(54, 40, 34, 0.2),
+                    height: 85,
+                    width: double.infinity,
+                    child: GetX<AddItemController>(builder: (controller) {
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: addItemController.addedIngredients.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            child: AddedIngredientCard(index: index),
+                          );
+                        },
                       );
-                    },
-                  );})
-                ),
+                    })),
                 // Confirm Button
                 Container(
                   margin: EdgeInsets.fromLTRB(32.0, 0, 32.0, 32.0),
@@ -196,10 +199,14 @@ class AddItem extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SetItem()),
-                  );
+                      if (addItemController.addedIngredients.length > 0) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SetItem()),
+                        );
+                      } else {
+                        showToast("Add ingredients to progress", warningToast);
+                      }
                     },
                     child: Text('Confirm',
                         style: TextStyle(
@@ -218,4 +225,36 @@ class AddItem extends StatelessWidget {
           ),
         ));
   }
+
+  void showToast(String message, Widget toast) {
+    fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(
+            child: child,
+            bottom: 220.0,
+            left: 0,
+            right: 0
+          );
+        });
+  }
 }
+
+Widget warningToast = Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.0),
+        color: Color.fromARGB(220, 254, 73, 73),
+        ),
+        child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+            Icon(Icons.warning_amber_rounded, color: Colors.white),
+            SizedBox(
+            width: 12.0,
+            ),
+            Text("Add ingredients to progress", style: TextStyle(color: Colors.white)),
+        ],
+        ),
+    );

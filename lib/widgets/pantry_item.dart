@@ -47,9 +47,10 @@ class PantryItem extends GetView<PantryController> {
             ],
           ),
           child: ListTile(
-            leading: Icon(
-              Icons.food_bank,
-              size: 36,
+            leading: Image.network(
+              controller.foundIngredients[index].icon,
+              width: 50,
+              height: 50,
             ),
             title: Text(controller.foundIngredients[index].ingredientName,
                 style: TextStyle(
@@ -60,7 +61,7 @@ class PantryItem extends GetView<PantryController> {
                 .toDDay(controller.foundIngredients[index].expiryDate),
             subtitleTextStyle: TextStyle(color: Colors.red, height: 1.8),
             trailing: Text(
-                controller.foundIngredients[index].quantity.toString() + ' g',
+                controller.foundIngredients[index].quantity.toString() + ' EA',
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,

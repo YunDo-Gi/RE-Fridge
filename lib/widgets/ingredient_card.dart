@@ -28,7 +28,7 @@ class IngredientCard extends GetView<AddItemController> {
                     height: 30),
               )),
         )),
-        Text(controller.foundIngredients[index].name, style: TextStyle(fontWeight: FontWeight.w500))
+        Text(controller.foundIngredients[index].ingredientName, style: TextStyle(fontWeight: FontWeight.w500))
       ]),
     );
   }
