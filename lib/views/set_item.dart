@@ -95,7 +95,7 @@ class SetItem extends StatelessWidget {
                                     GetX<AddItemController>(
                                         builder: (controller) {
                                       return Text(
-                                          '${controller.selectedDate.value.toString().substring(0, 10)}',
+                                          '${controller.addedIngredients[index].expiryDate.toString().substring(0, 10)}',
                                           style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.w500,
@@ -116,8 +116,9 @@ class SetItem extends StatelessWidget {
                                               return GetX<AddItemController>(
                                                   builder: (controller) {
                                                 return _buildBottomPicker(
-                                                    timePicker(addItemController
-                                                        .selectedDate.value));
+                                                    timePicker(
+                                                        index, controller
+                                                    ));
                                               });
                                             });
                                       },
@@ -125,6 +126,75 @@ class SetItem extends StatelessWidget {
                                     )
                                   ],
                                 )),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    margin: EdgeInsets.only(top: 12),
+                                    padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                    height: 50,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: BACKGROUND_COLOR,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: GetX<AddItemController>(
+                                        builder: (controller) {
+                                      return Text(
+                                          '${controller.addedIngredients[index].quantity}',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                          ));
+                                    }),
+                                  ),
+                                ),
+                                ButtonBar(
+                                  alignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(top: 12),
+                                      height: 50,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: PRIMARY_COLOR,
+                                      ),
+                                      child: IconButton(
+                                        color: Colors.white,
+                                        icon: Icon(Icons.add),
+                                        onPressed: () {
+                                          addItemController.addQuantity(index);
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                        margin: EdgeInsets.only(top: 12),
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: PRIMARY_COLOR,
+                                        ),
+                                        child: IconButton(
+                                          color: Colors.white,
+                                          icon: Icon(Icons.remove),
+                                          onPressed: () {
+                                            addItemController
+                                                .minusQuantity(index);
+                                          },
+                                        ))
+                                  ],
+                                )
+                              ],
+                            )
                           ],
                         ),
                       ),
@@ -185,12 +255,12 @@ Widget _buildBottomPicker(Widget picker) {
   );
 }
 
-Widget timePicker(date) {
+Widget timePicker(index, controller) {
   return CupertinoDatePicker(
     mode: CupertinoDatePickerMode.date,
-    initialDateTime: date,
+    initialDateTime: controller.addedIngredients[index].expiryDate,
     onDateTimeChanged: (DateTime newDateTime) {
-      date = newDateTime;
+      controller.updateExpiryDate(index, newDateTime);
     },
   );
 }
