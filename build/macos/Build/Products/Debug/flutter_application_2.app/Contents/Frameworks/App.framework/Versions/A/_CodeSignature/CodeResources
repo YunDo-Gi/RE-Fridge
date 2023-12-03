@@ -10,19 +10,67 @@
 		</data>
 		<key>Resources/flutter_assets/AssetManifest.bin</key>
 		<data>
-		21tVqbIV90TbglF4ZJhNBz8uj4w=
+		1vA2kLmvTHjOXjk3MYXCnS9eYS0=
 		</data>
 		<key>Resources/flutter_assets/AssetManifest.json</key>
 		<data>
-		vyGp6PvFo4RvsFtPoIWeCReyIC8=
+		NomERnGwEQj9A7kcwhjcb2aeLd4=
 		</data>
 		<key>Resources/flutter_assets/FontManifest.json</key>
 		<data>
-		+D1xbIOooc3ypce1+jh+mmLy1J0=
+		cMc4jGMK9mO1VrxkSy+bNzELYOU=
 		</data>
 		<key>Resources/flutter_assets/NOTICES.Z</key>
 		<data>
-		3sgT1qjw9voUgQ3JXdYYklxXRuQ=
+		fs5IZgiFiv7akDHCdzbGmi2IQjE=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-Bold.ttf</key>
+		<data>
+		dtnZAV7DpwbVrc32RSsjV4xzL4w=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-ExtraBold.ttf</key>
+		<data>
+		5fuVNAACeiKhdQs7DCwgGXGNpbA=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-Medium.ttf</key>
+		<data>
+		otBIc2ocn44rAbHsqj3h23Wpl9s=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-Regular.ttf</key>
+		<data>
+		sYOv6NDF+cR4Zbf+JR43g8gOUAU=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-SemiBold.ttf</key>
+		<data>
+		qbsyoINPNrEYUgHyX74VZxXbgE8=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
+		<data>
+		TCMq/ukERLEg0zRSUuzA87m1Zl4=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Bold.ttf</key>
+		<data>
+		Q0Vu66l0K8PtJczOeQZB9eBPTNI=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraBold.ttf</key>
+		<data>
+		WBSKvs3l8Fbnu7THx/6z0yQjak4=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraLight.ttf</key>
+		<data>
+		8X/MoIy0a5D8rr6fwB51oF2P31Q=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Light.ttf</key>
+		<data>
+		ILjVKV36OrWLN4u443yymk9moP0=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Medium.ttf</key>
+		<data>
+		lonMxRMmKU+9DdPaoINQnQaK134=
+		</data>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Regular.ttf</key>
+		<data>
+		HlW9X6dfCcJpme77ebKfUQyWZco=
 		</data>
 		<key>Resources/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -34,7 +82,15 @@
 		</data>
 		<key>Resources/flutter_assets/kernel_blob.bin</key>
 		<data>
-		ufYcqg83+IfAQiNTxwFj6OGDNF4=
+		hlzRBDLJsVfLv/sRJRXVqchB2J0=
+		</data>
+		<key>Resources/flutter_assets/packages/fluttertoast/assets/toastify.css</key>
+		<data>
+		w0yScZgyE5s0j7sPuGOLXy3ISfM=
+		</data>
+		<key>Resources/flutter_assets/packages/fluttertoast/assets/toastify.js</key>
+		<data>
+		gPIgba2QIn/qWmLFfVogsD4MxPU=
 		</data>
 		<key>Resources/flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -58,28 +114,112 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9WbMb8zGVzZcAZeszzp9b4D4Ugn/Zm/3dPTcvFJKqEI=
+			ef+576GxxCQKSRrPfeeJOXFm3FcH1h9IgPJtJADpVqA=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RBNvo1WzZ4oRRq0W9+hknpT7T8If536DEMBg9hyq/4o=
+			SYAXTEAaHWMccBWfOxKoY2vbdsMofFZDWzFAwFhPWPs=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KLHrKz0uGtYLjIsPkQCxzL9JL3+pf1vrtR6pfnOSbn0=
+			BOop4ZDZcvB9JEn8U74tInyWMc2A//M7uRbj/DlWzKc=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/NOTICES.Z</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7+oq9VOd2AqSolCOZH5YuLLEKSSE8SLTVDaCyjCMMxg=
+			X0UASuj0b0BdfmJxu1NJUp58tH/qJwbuHNk4U4/VWYU=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LufEAloqPSm9hYIR1nrgNrSUbrLsf+0f4FdXu8zIqPs=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-ExtraBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Qa2X7p1pgQBnqJkDT0H6jA8bMQixyGpn7Q2QVchUSuI=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-Medium.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			H+P+KkYTVMpKplFkmxJ+E4Jw3BNhdLyPIy2HqCa+L4U=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			q6icvXV6UrJWqDTVWSlcd/xh7ybC6Abqz/vhFhHITqs=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Baloo2-SemiBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oBT5G32jZja9DRU2KNh2icn8mWxpjqOQFdLxiGe6UPc=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LAiS8SwTDI05gkR8s351YapqNdOHMFebf0B2ZVKhCaA=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gM0YYPoryysXNE0kuEk5vbswlMS5YueWYuKyHqgkqnc=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sxKX6nVVb82k23614MsVdHKYLNjSy5DemoxnMT2Xq34=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-ExtraLight.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eJcM3i3N2v123jzsH7h5+6a7Uz/z9H2jdVfMo/DFz6M=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Light.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8MIwx+aDNEyc5dQIoqJgo3IfVMh6yJK6yMc6qV9o9FI=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Medium.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			93ECjZJPgRZjwm1N7Uf4YnHONVkEpPVdHvvnspicHl8=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/fonts/Tisa-Sans-Pro-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qfyta08H9JQOg739GXDuXByoMwk37+s9TOekNBeEgts=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -100,7 +240,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gEWb9E9tkvAjwXseZ4snzVRD7u3V2m9DUvefyBzi+A8=
+			IXngG22EpPY5rjnhabcAeeOYYzCB+EZ3NRZA/T7SxZA=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/packages/fluttertoast/assets/toastify.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OA6cPd56JZLHb6TFMDSJcQW1dQpoPp1gk3TDCrW7kJY=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/packages/fluttertoast/assets/toastify.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zYIrdfUdie9n3mKKElLvN1sxiImupJ++RP/PCwgqbb0=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/shaders/ink_sparkle.frag</key>

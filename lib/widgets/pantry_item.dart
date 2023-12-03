@@ -63,8 +63,9 @@ class PantryItem extends GetView<PantryController> {
             trailing: Text(
                 controller.foundIngredients[index].quantity.toString() + ' EA',
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    fontFamily: 'Baloo2',
+                    fontWeight: FontWeight.w600,
                     color: Color.fromRGBO(54, 40, 34, 1))),
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
           ),

@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
+import 'package:re_fridge/controllers/cart_controller.dart';
 import 'package:re_fridge/models/ingredient.dart';
+import 'package:re_fridge/models/cart_item.dart';
 
 class AddItemController extends GetxController {
   final pantryController = Get.put(PantryController());
+  final cartController = Get.put(CartController());
 
   List<Ingredient> ingredients = [
     Ingredient(
@@ -48,11 +51,15 @@ class AddItemController extends GetxController {
   var foundIngredients = <Ingredient>[].obs;
   var addedIngredients = <Ingredient>[].obs;
 
+  var cartFoundIngredients = <Ingredient>[].obs;
+  var cartAddedIngredients = <Ingredient>[].obs;
+
   bool searchMode = false;
 
   void onInit() {
     super.onInit();
     foundIngredients.assignAll(ingredients);
+    cartFoundIngredients.assignAll(ingredients);
   }
 
   void filterIngredient(String searchText) {
@@ -71,6 +78,24 @@ class AddItemController extends GetxController {
     }
 
     foundIngredients.assignAll(filteredIngredients);
+  }
+
+  void filterCartIngredient(String searchText) {
+    var filteredIngredients = <Ingredient>[];
+
+    if (searchText.isEmpty) {
+      filteredIngredients = ingredients;
+      searchMode = false;
+    } else {
+      filteredIngredients = ingredients.where((ingredient) {
+        return ingredient.ingredientName
+            .toLowerCase()
+            .contains(searchText.toLowerCase());
+      }).toList();
+      searchMode = true;
+    }
+
+    cartFoundIngredients.assignAll(filteredIngredients);
   }
 
   void addIngredient(int index) {
@@ -107,6 +132,16 @@ class AddItemController extends GetxController {
       ingredient.ingredientId =
           pantryController.ingredients.last.ingredientId + 1;
       pantryController.addIngredient(ingredient);
+    }
+  }
+
+  void addToCart(List<Ingredient> addedIngredients) {
+    for (var ingredient in addedIngredients) {
+      CartItem cartItem = CartItem(
+          cartId: cartController.ingredients.last.cartId + 1,
+          ingredientName: ingredient.ingredientName,
+          icon: ingredient.icon);
+      cartController.addIngredient(cartItem);
     }
   }
 

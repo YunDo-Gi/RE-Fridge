@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		zV8VSU8TM+o/rpG0jf+eofHkDDY=
+		NxoCQt+QaB77fg1eV34HUcx7K2k=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,23 +54,43 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		b+EbBMLTZH7Q0dk8qDKPQT6p1l4=
+		wiFFaCQzgLFKnCXm7C5n69CjVbY=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		rfMHRIk4cd7dXNZENLkBXNZd7FA=
+		1vA2kLmvTHjOXjk3MYXCnS9eYS0=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		YIJzIyh3dvZBntXijH4HNjwBIUM=
+		NomERnGwEQj9A7kcwhjcb2aeLd4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
-		uamnbPayoS4Gkj7WrE/4oEk0Y1Y=
+		cMc4jGMK9mO1VrxkSy+bNzELYOU=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
 		fs5IZgiFiv7akDHCdzbGmi2IQjE=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-Bold.ttf</key>
+		<data>
+		dtnZAV7DpwbVrc32RSsjV4xzL4w=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-ExtraBold.ttf</key>
+		<data>
+		5fuVNAACeiKhdQs7DCwgGXGNpbA=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-Medium.ttf</key>
+		<data>
+		otBIc2ocn44rAbHsqj3h23Wpl9s=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-Regular.ttf</key>
+		<data>
+		sYOv6NDF+cR4Zbf+JR43g8gOUAU=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-SemiBold.ttf</key>
+		<data>
+		qbsyoINPNrEYUgHyX74VZxXbgE8=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
 		<data>
@@ -110,7 +130,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		IsdsUrnlZ0PX+Uq5J84jij/FXGw=
+		A87UEivuN73ALusp+YiZGxItEoI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/fluttertoast/assets/toastify.css</key>
 		<data>
@@ -321,7 +341,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7+83HJjpmCIVcrw6UrpyMm0dPXotMXHkI68PVvgi49E=
+			H12XbcMyCSItn23io5EC3831TX/VjeON49uSTfsngZE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -335,28 +355,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0n2/CG6NbvO7qVtRO2eStqHosqzMqQH5a0mtOvY8XxE=
+			aqmwBEW3VZKToTWXCK8l9nSUJcCQtThRz6uO2G12gGo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Aa1tdoYr4kkdmZs1rm59RKSk6ldkNiw3/9IhWLLei6w=
+			ef+576GxxCQKSRrPfeeJOXFm3FcH1h9IgPJtJADpVqA=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jWtSiKNu9vQAwQFWk5zfF68yIp3nVbOBKWeDQSe50Oc=
+			SYAXTEAaHWMccBWfOxKoY2vbdsMofFZDWzFAwFhPWPs=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hx0H1s5XVpfk88YY9R4NxFWvdgrFHdXjJSr7zkA4rxw=
+			BOop4ZDZcvB9JEn8U74tInyWMc2A//M7uRbj/DlWzKc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
@@ -364,6 +384,41 @@
 			<key>hash2</key>
 			<data>
 			X0UASuj0b0BdfmJxu1NJUp58tH/qJwbuHNk4U4/VWYU=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LufEAloqPSm9hYIR1nrgNrSUbrLsf+0f4FdXu8zIqPs=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-ExtraBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Qa2X7p1pgQBnqJkDT0H6jA8bMQixyGpn7Q2QVchUSuI=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-Medium.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			H+P+KkYTVMpKplFkmxJ+E4Jw3BNhdLyPIy2HqCa+L4U=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			q6icvXV6UrJWqDTVWSlcd/xh7ybC6Abqz/vhFhHITqs=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Baloo2-SemiBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oBT5G32jZja9DRU2KNh2icn8mWxpjqOQFdLxiGe6UPc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Tisa-Sans-Pro-Black.ttf</key>
@@ -433,7 +488,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FkOs5b60McD6ldpvfecnSeDWveqx2dyJ8YO1STLudEg=
+			BatWcblM0/JEwwOYZn+B/9npSP8owCZ0irucs7+W+Zk=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/fluttertoast/assets/toastify.css</key>

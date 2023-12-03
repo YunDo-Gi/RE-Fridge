@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:re_fridge/colors.dart';
-import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/controllers/add_item_controller.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,7 +16,7 @@ class SetItem extends StatelessWidget {
     fToast.init(context);
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(245, 236, 220, 1),
+      backgroundColor: BACKGROUND_COLOR,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: TEXT_COLOR, //change your color here
@@ -232,7 +231,7 @@ class SetItem extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () async {
-                  // 1. add to pantry
+                  // add to pantry
                   addItemController
                       .addToPantry(addItemController.addedIngredients);
                   showToast(successToast);

@@ -2,13 +2,13 @@ class Recipe {
   final int recipeId;
   final String recipeName;
   final List<String> ingredients;
-  final int fullfillCount;
+  final int? fullfillCount;
 
   Recipe({
     required this.recipeId,
     required this.recipeName,
     required this.ingredients,
-    required this.fullfillCount,
+    this.fullfillCount,
   });
 
   // Convert from JSON

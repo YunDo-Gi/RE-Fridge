@@ -1,7 +1,7 @@
 ---
 path:            '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/14.0/Foundation.swiftmodule/arm64e-apple-macos.swiftmodule'
 dependencies:
-  - mtime:           1693507926000000000
+  - mtime:           1696205349000000000
     path:            '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/14.0/Foundation.swiftmodule/arm64e-apple-macos.swiftmodule'
     size:            3112276
   - mtime:           1693507096000000000
@@ -28,7 +28,7 @@ dependencies:
     path:            'System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64e-apple-macos.swiftinterface'
     size:            169351
     sdk_relative:    true
-  - mtime:           1691245892000000000
+  - mtime:           1691229839000000000
     path:            'usr/include/objc/ObjectiveC.apinotes'
     size:            11147
     sdk_relative:    true
@@ -52,7 +52,7 @@ dependencies:
     path:            'System/Library/Frameworks/Security.framework/Headers/Security.apinotes'
     size:            162
     sdk_relative:    true
-  - mtime:           1692410602000000000
+  - mtime:           1692416233000000000
     path:            'System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes'
     size:            81098
     sdk_relative:    true

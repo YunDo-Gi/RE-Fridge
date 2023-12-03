@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:re_fridge/views/pantry.dart';
 import 'package:re_fridge/views/recommended_recipe.dart';
-import 'package:re_fridge/views/recipe.dart';
+import 'package:re_fridge/views/my_recipe.dart';
 import 'package:re_fridge/views/cart.dart';
 
 import 'package:re_fridge/colors.dart';

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter/services.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
-import 'package:re_fridge/views/add_Item.dart';
+import 'package:re_fridge/views/add_item.dart';
 import 'package:re_fridge/colors.dart';
 
 const List<String> categorys = <String>[
