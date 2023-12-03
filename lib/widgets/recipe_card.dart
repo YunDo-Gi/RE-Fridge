@@ -43,26 +43,26 @@ class RecipeCard extends GetView<RecipeController> {
                       bottomLeft: Radius.circular(cardRadius))),
             ],
           ),
-          child: 
-          
-          ListTile(
+          child: ListTile(
             title: Text(controller.foundRecipes[index].recipeName,
                 style: TextStyle(
+                  
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     color: Color.fromRGBO(54, 40, 34, 1))),
             subtitle: Wrap(
-                              spacing: 8.0,
-                              runSpacing: 4.0,
-                              children: [
-                                for (var ingredient in controller.foundRecipes[index].ingredients)
-                                  TagChipFixed(ingredientName: ingredient)
-                              ],
-                            ),
+              spacing: 8.0,
+              runSpacing: -4.0,
+              children: [
+                for (var ingredient
+                    in controller.foundRecipes[index].ingredients)
+                  TagChipFixed(ingredientName: ingredient)
+              ],
+            ),
             subtitleTextStyle: TextStyle(color: Colors.red, height: 1.8),
-                contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              ),
-            ));
+            contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+          ),
+        ));
   }
 
   toCart() {}

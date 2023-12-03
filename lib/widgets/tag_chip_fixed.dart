@@ -42,7 +42,7 @@ class TagChipFixed extends GetView<TagController> {
     String category = addItemController.getCategoryfromIngredientName(ingredientName);
 
     return Chip(
-          label: Text(ingredientName, style: TextStyle(color: Colors.white)),
+          label: Text(ingredientName, style: TextStyle(fontFamily: 'Baloo2', fontWeight: FontWeight.w700, color: Colors.white)),
           backgroundColor: setColor(category),
           avatar: CircleAvatar(
             backgroundColor: Colors.white,

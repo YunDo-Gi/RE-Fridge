@@ -55,16 +55,16 @@ Future fetchDummyData() async {
   await Future.delayed(Duration(seconds: 1));
   return [
     {
-    "recipeId": 1,
-    "recipeName": "Fried Eggs",
-    "ingredients": ["Eggs", "Salt", "Pepper"],
-    "fullfillCount": 2
-  },
-  {
-    "recipeId": 2,
-    "recipeName": "Pasta",
-    "ingredients": ["noodle", "souce"],
-    "fullfillCount": 1
-  }
+      "recipeId": 1,
+      "recipeName": "Chickrot",
+      "ingredients": ["Carrot", "Chicken"],
+      "fullfillCount": 2,
+    },
+    {
+      "recipeId": 2,
+      "recipeName": "Salmon Soup",
+      "ingredients": ["Salmon", "Milk", "Salmon", "Milk", "Salmon", "Milk"],
+      "fullfillCount": 5,
+    }
   ];
 }

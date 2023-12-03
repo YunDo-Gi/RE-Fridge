@@ -11,7 +11,7 @@ class TagChip extends GetView<TagController> {
   @override
   Widget build(BuildContext context) {
     return Chip(
-          label: Text(controller.tagsSelected[index].ingredientName, style: TextStyle(color: Colors.white)),
+          label: Text(controller.tagsSelected[index].ingredientName, style: TextStyle(fontFamily: 'Baloo2', fontWeight: FontWeight.w700, color: Colors.white)),
           onDeleted: () {
             controller.tagsToSelect.add(controller.tagsSelected[index]);
             controller.tagsSelected.removeAt(index);

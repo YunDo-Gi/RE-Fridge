@@ -42,7 +42,7 @@ class AddItemController extends GetxController {
     Ingredient(
         ingredientId: 5,
         ingredientName: 'Egg',
-        category: 'Dairy / Egg',
+        category: 'Egg',
         icon: 'https://cdn-icons-png.flaticon.com/128/837/837560.png',
         quantity: 1,
         expiryDate: DateTime.now()),

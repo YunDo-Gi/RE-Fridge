@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:re_fridge/colors.dart';
 
 import 'package:re_fridge/controllers/add_item_controller.dart';
 
@@ -28,7 +29,7 @@ class IngredientCard extends GetView<AddItemController> {
                     height: 30),
               )),
         )),
-        Text(controller.foundIngredients[index].ingredientName, style: TextStyle(fontWeight: FontWeight.w500))
+        Text(controller.foundIngredients[index].ingredientName, style: TextStyle(fontFamily: 'Baloo2', color: TEXT_COLOR, fontWeight: FontWeight.w600))
       ]),
     );
   }

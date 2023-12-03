@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:re_fridge/controllers/recommended_recipe_controller.dart';
 import 'package:re_fridge/colors.dart';
+import 'package:re_fridge/widgets/tag_chip_fixed.dart';
 
 class RecommendedRecipeCard extends GetView<RecommendedRecipeController> {
   final int index;
@@ -42,37 +43,78 @@ class RecommendedRecipeCard extends GetView<RecommendedRecipeController> {
             ],
           ),
           child: ListTile(
-            leading: Icon(
-              Icons.food_bank,
-              size: 36,
-            ),
-            title: Text(controller.recipes[index].recipeName,
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Color.fromRGBO(54, 40, 34, 1))),
-            subtitle: Container(child: Text('Tags')),
-            subtitleTextStyle: TextStyle(color: Colors.red, height: 1.8),
-                trailing: Container(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(controller.recipes[index].recipeName,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromRGBO(54, 40, 34, 1))),
+                Container(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 1.5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
-                    color: Color.fromRGBO(143, 180, 78, 0.4),
+                    color: Color.fromRGBO(143, 180, 78, 0.2),
                   ),
                   child: Text(
                     controller.recipes[index].fullfillCount.toString() +
                         ' / ' +
                         controller.recipes[index].ingredients.length.toString(),
                     style: TextStyle(
+                      fontFamily: 'Baloo2',
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: PRIMARY_COLOR,
                     ),
                   ),
                 ),
-                contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              ),
-            ));
+              ],
+            ),
+            subtitle: Wrap(
+              spacing: 8.0,
+              runSpacing: -4.0,
+              children: [
+                for (var ingredient in controller.recipes[index].ingredients)
+                  TagChipFixed(ingredientName: ingredient)
+              ],
+            ),
+            subtitleTextStyle: TextStyle(color: Colors.red, height: 1.8),
+            contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+            trailing: Icon(Icons.arrow_forward_ios),
+          ),
+          // ListTile(
+          //   leading: Icon(
+          //     Icons.food_bank,
+          //     size: 36,
+          //   ),
+          //   title: Text(controller.recipes[index].recipeName,
+          //       style: TextStyle(
+          //           fontSize: 20,
+          //           fontWeight: FontWeight.w700,
+          //           color: Color.fromRGBO(54, 40, 34, 1))),
+          //   subtitle: Container(child: Text('Tags')),
+          //   subtitleTextStyle: TextStyle(color: Colors.red, height: 1.8),
+          //       trailing: Container(
+          //         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 1.5),
+          //         decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(20.0),
+          //           color: Color.fromRGBO(143, 180, 78, 0.4),
+          //         ),
+          //         child: Text(
+          //           controller.recipes[index].fullfillCount.toString() +
+          //               ' / ' +
+          //               controller.recipes[index].ingredients.length.toString(),
+          //           style: TextStyle(
+          //             fontSize: 18,
+          //             fontWeight: FontWeight.w500,
+          //             color: PRIMARY_COLOR,
+          //           ),
+          //         ),
+          //       ),
+          //       contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+          //     ),
+        ));
   }
 
   toCart() {}

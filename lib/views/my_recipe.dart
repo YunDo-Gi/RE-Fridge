@@ -48,7 +48,12 @@ class Recipe extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
               child: TextField(
+                style: TextStyle(
+                    color: Color.fromRGBO(54, 40, 34, 1),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
                 cursorColor: PRIMARY_COLOR,
+                cursorHeight: 22,
                 onChanged: (value) {
                   recipeController.filterRecipe(value);
                 },

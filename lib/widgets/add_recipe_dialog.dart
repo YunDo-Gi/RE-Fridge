@@ -100,7 +100,7 @@ class AddRecipeDialog extends StatelessWidget {
                         value: tag,
                         leadingIcon:
                             Image.network(tag.icon, width: 24, height: 24),
-                        style: ButtonStyle(),
+                        style: ButtonStyle(textStyle: MaterialStateProperty.all(TextStyle(fontFamily: 'Baloo2', fontWeight: FontWeight.w500, color: TEXT_COLOR, fontSize: 16))),
                       )
                   ]
                   // tagController.tagsToSelect
@@ -131,7 +131,9 @@ class AddRecipeDialog extends StatelessWidget {
                               spacing: 8.0,
                               runSpacing: 4.0,
                               children: [
-                                for (var i = 0; i < tagController.tagsSelected.length; i++) 
+                                for (var i = 0;
+                                    i < tagController.tagsSelected.length;
+                                    i++)
                                   TagChip(index: i)
                               ],
                             )
@@ -155,17 +157,21 @@ class AddRecipeDialog extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () async {
-              if (tagController.tagsSelected.length > 0) {
-                await tagController.addToRecipeList(
-                    recipeName!, tagController.tagsSelected);
-                showToast(successToast, 102);
-                Navigator.pop(context);
-                await Future.delayed(Duration(seconds: 1), () {
-                  // remove added tags
-                  tagController.tagsSelected.clear();
-                });
+              if (recipeName == null) {
+                showToast(recipeNameWarningToast, 200);
               } else {
-                showToast(warningToast, 200);
+                if (tagController.tagsSelected.length > 0) {
+                  await tagController.addToRecipeList(
+                      recipeName!, tagController.tagsSelected);
+                  showToast(successToast, 102);
+                  Navigator.pop(context);
+                  await Future.delayed(Duration(seconds: 1), () {
+                    // remove added tags
+                    tagController.tagsSelected.clear();
+                  });
+                } else {
+                  showToast(ingredientWarningToast, 200);
+                }
               }
             },
             child: Text('Confirm',
@@ -194,7 +200,26 @@ class AddRecipeDialog extends StatelessWidget {
   }
 }
 
-Widget warningToast = Container(
+Widget recipeNameWarningToast = Container(
+  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(12.0),
+    color: Color.fromARGB(220, 254, 73, 73),
+  ),
+  child: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Icon(Icons.warning_amber_rounded, color: Colors.white),
+      SizedBox(
+        width: 12.0,
+      ),
+      Text("Add recipe name to progress",
+          style: TextStyle(color: Colors.white)),
+    ],
+  ),
+);
+
+Widget ingredientWarningToast = Container(
   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
   decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(12.0),
