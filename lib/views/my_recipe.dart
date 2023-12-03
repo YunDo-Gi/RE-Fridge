@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:re_fridge/colors.dart';
 
 import 'package:re_fridge/controllers/recipe_controller.dart';
-import 'package:re_fridge/views/add_recipe.dart';
+import 'package:re_fridge/widgets/add_recipe_dialog.dart';
 import 'package:re_fridge/widgets/recipe_card.dart';
 
 class Recipe extends StatelessWidget {
@@ -29,9 +30,13 @@ class Recipe extends StatelessWidget {
             icon: Icon(Icons.add_circle_outline_rounded),
             color: Color.fromRGBO(54, 40, 34, 1),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AddRecipe()),
+              showDialog(
+                barrierColor: Color.fromRGBO(54, 40, 34, 0.7),
+                barrierDismissible: true,
+                context: context,
+                builder: (BuildContext context) {
+                  return AddRecipeDialog();
+                },
               );
             },
           )
@@ -43,6 +48,7 @@ class Recipe extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
               child: TextField(
+                cursorColor: PRIMARY_COLOR,
                 onChanged: (value) {
                   recipeController.filterRecipe(value);
                 },

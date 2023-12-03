@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:re_fridge/colors.dart';
 
 import 'views/app.dart';
 
@@ -18,6 +19,7 @@ class MainApp extends StatelessWidget {
       builder: FToastBuilder(),
       title: "RE:Fridge",
       theme: ThemeData(
+        primaryColor: PRIMARY_COLOR,
         fontFamily: 'Tisa',
       ),
       home: App(),

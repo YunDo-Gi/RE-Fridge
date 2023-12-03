@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
 import 'package:get/get.dart';
+
+// import 'package:re_fridge/controllers/tag_controller.dart';
 import '../models/ingredient.dart';
 
 class PantryController extends GetxController {
@@ -18,6 +19,8 @@ class PantryController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // TagController tagController = TagController();
+    // tagController.fetchData();
     // fetchData();
   }
 

@@ -85,6 +85,7 @@ class Pantry extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
                   child: TextField(
+                    cursorColor: PRIMARY_COLOR,
                     onChanged: (value) {
                       pantryController.filterIngredient(value);
                     },
