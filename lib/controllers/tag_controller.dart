@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:re_fridge/models/recipe.dart';
 
 import 'package:re_fridge/models/tag.dart';
+import 'recipe_controller.dart';
 
 
 class TagController extends GetxController {
   final TextEditingController searchController = TextEditingController();
+  final recipeController = Get.put(RecipeController());
   final List<Tag> tagsToSelect = [];
   final List<Tag> tagsSelected = [];
 
@@ -78,6 +81,21 @@ class TagController extends GetxController {
       print(tag.ingredientName);
     }
     update();
+  }
+
+  addToRecipeList(String recipeName, List<Tag> tagsSelected) {
+    List<String> ingredients = [];
+    for (var tag in tagsSelected) {
+      ingredients.add(tag.ingredientName);
+    }
+
+    Recipe recipe = Recipe(
+      recipeId: recipeController.recipes.length + 1,
+      recipeName: recipeName,
+      ingredients: ingredients,
+    );
+
+    recipeController.addRecipe(recipe);
   }
 
 

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
@@ -16,7 +17,7 @@ class RecipeController extends GetxController {
     super.onInit();
     fetchData();
   }
-  
+
   Future fetchData() async {
     var serverPort = "8080";
     var serverPath = "/recipe";
@@ -51,8 +52,7 @@ class RecipeController extends GetxController {
       }
       recipes.assignAll(recipeList);
       foundRecipes.assignAll(recipeList);
-    } finally {
-    }
+    } finally {}
   }
 
   void filterRecipe(String searchText) {
@@ -72,20 +72,26 @@ class RecipeController extends GetxController {
 
     foundRecipes.assignAll(filteredRecipes);
   }
+
+  void addRecipe(Recipe recipe) {
+    recipes.add(recipe);
+    foundRecipes.add(recipe);
+    print(foundRecipes.last.recipeName);
+  }
 }
 
 Future fetchDummyData() async {
   await Future.delayed(Duration(seconds: 1));
   return [
     {
-    "recipeId": 1,
-    "recipeName": "Fried Eggs",
-    "ingredients": ["Eggs", "Salt", "Pepper"],
-  },
-  {
-    "recipeId": 2,
-    "recipeName": "Pasta",
-    "ingredients": ["noodle", "souce"],
-  }
+      "recipeId": 1,
+      "recipeName": "Chickrot",
+      "ingredients": ["Carrot", "Chicken"],
+    },
+    {
+      "recipeId": 2,
+      "recipeName": "Salmon Soup",
+      "ingredients": ["Salmon", "Milk"],
+    }
   ];
 }

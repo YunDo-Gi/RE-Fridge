@@ -57,7 +57,7 @@ class RecommendedRecipeCard extends GetView<RecommendedRecipeController> {
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 1.5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
-                    color: Color.fromARGB(100, 143, 180, 78),
+                    color: Color.fromRGBO(143, 180, 78, 0.4),
                   ),
                   child: Text(
                     controller.recipes[index].fullfillCount.toString() +

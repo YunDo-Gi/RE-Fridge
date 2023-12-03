@@ -28,14 +28,14 @@ class AddItemController extends GetxController {
     Ingredient(
         ingredientId: 3,
         ingredientName: 'Salmon',
-        category: 'Fish / Seafood',
+        category: 'Fish',
         icon: 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png',
         quantity: 1,
         expiryDate: DateTime.now()),
     Ingredient(
         ingredientId: 4,
         ingredientName: 'Milk',
-        category: 'Dairy / Egg',
+        category: 'Dairy',
         icon: 'https://cdn-icons-png.flaticon.com/128/9708/9708499.png',
         quantity: 1,
         expiryDate: DateTime.now()),
@@ -96,6 +96,16 @@ class AddItemController extends GetxController {
     }
 
     cartFoundIngredients.assignAll(filteredIngredients);
+  }
+
+  getCategoryfromIngredientName(String ingredientName) {
+    for (var ingredient in ingredients) {
+      if (ingredient.ingredientName.toLowerCase() ==
+          ingredientName.toLowerCase()) {
+        return ingredient.category;
+      }
+    }
+    return 'Others';
   }
 
   void addIngredient(int index) {

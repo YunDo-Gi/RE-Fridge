@@ -4,6 +4,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:re_fridge/controllers/recipe_controller.dart';
 import 'package:re_fridge/colors.dart';
+import 'package:re_fridge/widgets/tag_chip.dart';
+import 'package:re_fridge/widgets/tag_chip_fixed.dart';
 
 class RecipeCard extends GetView<RecipeController> {
   final int index;
@@ -41,17 +43,22 @@ class RecipeCard extends GetView<RecipeController> {
                       bottomLeft: Radius.circular(cardRadius))),
             ],
           ),
-          child: ListTile(
-            leading: Icon(
-              Icons.food_bank,
-              size: 36,
-            ),
+          child: 
+          
+          ListTile(
             title: Text(controller.foundRecipes[index].recipeName,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     color: Color.fromRGBO(54, 40, 34, 1))),
-            subtitle: Container(child: Text('Tags')),
+            subtitle: Wrap(
+                              spacing: 8.0,
+                              runSpacing: 4.0,
+                              children: [
+                                for (var ingredient in controller.foundRecipes[index].ingredients)
+                                  TagChipFixed(ingredientName: ingredient)
+                              ],
+                            ),
             subtitleTextStyle: TextStyle(color: Colors.red, height: 1.8),
                 contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
               ),

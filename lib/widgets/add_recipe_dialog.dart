@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:re_fridge/controllers/tag_controller.dart';
+import 'package:re_fridge/controllers/recipe_controller.dart';
 import 'package:re_fridge/colors.dart';
 import 'package:re_fridge/models/tag.dart';
 import 'package:re_fridge/widgets/tag_chip.dart';
+import 'package:re_fridge/widgets/tag_chip_fixed.dart';
 
 class AddRecipeDialog extends StatelessWidget {
   AddRecipeDialog({Key? key}) : super(key: key);
   final tagController = Get.put(TagController());
+  final recipeController = Get.put(RecipeController());
+  late FToast fToast;
 
   @override
   Widget build(BuildContext context) {
+    fToast = FToast();
+    fToast.init(context);
+    String? recipeName;
+
     return AlertDialog(
       insetPadding: EdgeInsets.symmetric(horizontal: 10),
       shape: RoundedRectangleBorder(
@@ -48,6 +56,9 @@ class AddRecipeDialog extends StatelessWidget {
                   ),
                 ),
                 cursorColor: PRIMARY_COLOR,
+                onChanged: (value) {
+                  recipeName = value;
+                },
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 24.0, 0, 0),
@@ -120,9 +131,7 @@ class AddRecipeDialog extends StatelessWidget {
                               spacing: 8.0,
                               runSpacing: 4.0,
                               children: [
-                                for (var i = 0;
-                                    i < tagController.tagsSelected.length;
-                                    i++)
+                                for (var i = 0; i < tagController.tagsSelected.length; i++) 
                                   TagChip(index: i)
                               ],
                             )
@@ -145,15 +154,19 @@ class AddRecipeDialog extends StatelessWidget {
           height: 60,
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () {
-              // if (addItemController.addedIngredients.length > 0) {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => SetItem()),
-              //   );
-              // } else {
-              //   showToast("Add ingredients to progress", warningToast);
-              // }
+            onPressed: () async {
+              if (tagController.tagsSelected.length > 0) {
+                await tagController.addToRecipeList(
+                    recipeName!, tagController.tagsSelected);
+                showToast(successToast, 102);
+                Navigator.pop(context);
+                await Future.delayed(Duration(seconds: 1), () {
+                  // remove added tags
+                  tagController.tagsSelected.clear();
+                });
+              } else {
+                showToast(warningToast, 200);
+              }
             },
             child: Text('Confirm',
                 style: TextStyle(
@@ -171,4 +184,49 @@ class AddRecipeDialog extends StatelessWidget {
     );
   }
 
+  void showToast(Widget toast, double bottom) {
+    fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(child: child, bottom: bottom, left: 0, right: 0);
+        });
+  }
 }
+
+Widget warningToast = Container(
+  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(12.0),
+    color: Color.fromARGB(220, 254, 73, 73),
+  ),
+  child: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Icon(Icons.warning_amber_rounded, color: Colors.white),
+      SizedBox(
+        width: 12.0,
+      ),
+      Text("Add ingredients to progress",
+          style: TextStyle(color: Colors.white)),
+    ],
+  ),
+);
+
+Widget successToast = Container(
+  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(12.0),
+    color: Color.fromARGB(220, 143, 180, 78),
+  ),
+  child: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Icon(Icons.check_circle_outline, color: Colors.white),
+      SizedBox(
+        width: 12.0,
+      ),
+      Text("Successfully Added", style: TextStyle(color: Colors.white)),
+    ],
+  ),
+);
