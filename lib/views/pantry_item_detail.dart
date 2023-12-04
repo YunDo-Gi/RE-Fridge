@@ -39,6 +39,7 @@ class PantryItemDetail extends GetView<PantryController> {
             color: TEXT_COLOR,
             onPressed: () {
               // add to cart
+              // open dialog: would you add this item to cart?
             },
           ),
           IconButton(
@@ -46,6 +47,7 @@ class PantryItemDetail extends GetView<PantryController> {
             color: TEXT_COLOR,
             onPressed: () {
               // delete item
+              // open dialog: would you delete this item?
             },
           ),
         ],
@@ -94,7 +96,7 @@ class PantryItemDetail extends GetView<PantryController> {
                                               .category),
                                       fontFamily: 'Baloo2',
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 16),
+                                      fontSize: 20),
                                 ),
                               ],
                             ),
@@ -127,7 +129,7 @@ class PantryItemDetail extends GetView<PantryController> {
                                               .expiryDate),
                                       fontFamily: 'Baloo2',
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 16),
+                                      fontSize: 20),
                                 ),
                               ],
                             ),
@@ -157,7 +159,7 @@ class PantryItemDetail extends GetView<PantryController> {
                                       color: TEXT_COLOR,
                                       fontFamily: 'Baloo2',
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 16),
+                                      fontSize: 20),
                                 ),
                               ],
                             ),

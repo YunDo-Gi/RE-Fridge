@@ -7,7 +7,7 @@ const categoryAvatar = [
   },
   {
     'category': 'Meat',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/2224/2224259.png'
+    'icon': 'https://cdn-icons-png.flaticon.com/128/6978/6978160.png'
   },
   {
     'category': 'Fish',
