@@ -6,6 +6,7 @@ import 'package:re_fridge/controllers/recipe_controller.dart';
 import 'package:re_fridge/colors.dart';
 import 'package:re_fridge/widgets/tag_chip.dart';
 import 'package:re_fridge/widgets/tag_chip_fixed.dart';
+import 'package:re_fridge/views/recipe_detail.dart';
 
 class RecipeCard extends GetView<RecipeController> {
   final int index;
@@ -61,6 +62,12 @@ class RecipeCard extends GetView<RecipeController> {
             ),
             subtitleTextStyle: TextStyle(color: Colors.red, height: 1.8),
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+            onTap: () {
+               Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RecipeDetail(index: index)),
+                  );
+            },
           ),
         ));
   }

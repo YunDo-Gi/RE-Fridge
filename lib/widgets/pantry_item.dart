@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'package:re_fridge/views/recipe_detail.dart';
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/colors.dart';
 
@@ -68,6 +69,9 @@ class PantryItem extends GetView<PantryController> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromRGBO(54, 40, 34, 1))),
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+            onTap: () {
+             // Ingredient Detail
+            }
           ),
           endActionPane: ActionPane(
             extentRatio: 0.25,

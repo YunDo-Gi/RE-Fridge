@@ -33,7 +33,7 @@ class AddItem extends StatelessWidget {
           backgroundColor: Color.fromRGBO(245, 236, 220, 1),
           appBar: AppBar(
             iconTheme: IconThemeData(
-              color: TEXT_COLOR, //change your color here
+              color: TEXT_COLOR,
             ),
             backgroundColor: Colors.white,
             centerTitle: false,

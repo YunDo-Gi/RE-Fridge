@@ -112,53 +112,6 @@ class Pantry extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Expanded(
-                //     child: Padding(
-                //   padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
-                //   child: GetX<PantryController>(
-                //     builder: (controller) {
-                //       return TabBarView(
-                //         children: <Widget>[
-                //           // All
-                //           ListView.builder(
-                //             itemCount: controller.foundIngredients.length,
-                //             itemBuilder: (context, index) {
-                //               return PantryItem(index: index);
-                //             },
-                //           ),
-                //           // Vegetable
-                //           ListView.builder(
-                //             itemCount: controller.numberByCategory[0] > 0 ? controller.numberByCategory[0] : 0,
-                //             itemBuilder: (context, index) {
-                //               return PantryItem(index: index);
-                //             },
-                //           ),
-                //           // Meat
-                //           ListView.builder(
-                //             itemCount: controller.numberByCategory[1] > 0 ? controller.numberByCategory[1] : 0,
-                //             itemBuilder: (context, index) {
-                //               return PantryItem(index: index);
-                //             },
-                //           ),
-                //           // Fish / Seafood
-                //           ListView.builder(
-                //             itemCount: controller.numberByCategory[2] > 0 ? controller.numberByCategory[2] : 0,
-                //             itemBuilder: (context, index) {
-                //               return PantryItem(index: index);
-                //             },
-                //           ),
-                //           // Dairy / Egg
-                //           ListView.builder(
-                //             itemCount: controller.numberByCategory[3] > 0 ? controller.numberByCategory[3] : 0,
-                //             itemBuilder: (context, index) {
-                //               return PantryItem(index: index);
-                //             },
-                //           )
-                //         ],
-                //       );
-                //     },
-                //   ),
-                // )),
                 Expanded(
                     child: FutureBuilder(
                         future: pantryController.fetchData(),
