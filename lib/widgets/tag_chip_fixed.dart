@@ -4,33 +4,7 @@ import 'package:re_fridge/colors.dart';
 
 import 'package:re_fridge/controllers/tag_controller.dart';
 import 'package:re_fridge/controllers/add_item_controller.dart';
-
-const categoryAvatar = [
-  {
-    'category': 'Vegetable',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/2553/2553701.png'
-  },
-  {
-    'category': 'Meat',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/2224/2224259.png'
-  },
-  {
-    'category': 'Fish',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/10507/10507711.png'
-  },
-  {
-    'category': 'Seafood',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png'
-  },
-  {
-    'category': 'Dairy',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/7295/7295454.png'
-  },
-  {
-    'category': 'Egg',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/837/837560.png'
-  }
-];
+import 'package:re_fridge/models/category_data.dart';
 
 class TagChipFixed extends GetView<TagController> {
   final String ingredientName;

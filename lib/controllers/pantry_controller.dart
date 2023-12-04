@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 
 // import 'package:re_fridge/controllers/tag_controller.dart';
 import '../models/ingredient.dart';
+import 'package:re_fridge/models/category_data.dart';
+import 'package:re_fridge/models/category_data.dart';
 
 class PantryController extends GetxController {
   final ingredients = <Ingredient>[].obs;
@@ -25,7 +27,7 @@ class PantryController extends GetxController {
   }
 
   Future fetchData() async {
-    if(ingredients.length > 0) {
+    if (ingredients.length > 0) {
       return 0;
     }
     var serverPort = "8080";
@@ -78,21 +80,28 @@ class PantryController extends GetxController {
         break;
       case 1:
         filteredIngredients = ingredients
-            .where((ingredient) => ingredient.category.toLowerCase() == 'vegetable')
+            .where((ingredient) =>
+                ingredient.category.toLowerCase() == 'vegetable')
             .toList();
         break;
       case 2:
-        filteredIngredients =
-            ingredients.where((ingredient) => ingredient.category.toLowerCase() == 'meat').toList();
+        filteredIngredients = ingredients
+            .where((ingredient) => ingredient.category.toLowerCase() == 'meat')
+            .toList();
         break;
       case 3:
         filteredIngredients = ingredients
-            .where((ingredient) => ingredient.category.toLowerCase() == 'seafood' || ingredient.category.toLowerCase() == 'fish')
+            .where((ingredient) =>
+                ingredient.category.toLowerCase() == 'seafood' ||
+                ingredient.category.toLowerCase() == 'fish')
             .toList();
         break;
       case 4:
-        filteredIngredients =
-            ingredients.where((ingredient) => ingredient.category.toLowerCase() == 'dairy' || ingredient.category.toLowerCase() == 'egg').toList();
+        filteredIngredients = ingredients
+            .where((ingredient) =>
+                ingredient.category.toLowerCase() == 'dairy' ||
+                ingredient.category.toLowerCase() == 'egg')
+            .toList();
         break;
       default:
         filteredIngredients = ingredients;
@@ -135,16 +144,18 @@ class PantryController extends GetxController {
     var number = 0;
 
     for (var category in categories) {
-      if(category == 'Fish') {
+      if (category == 'Fish') {
         number = ingredients.where((ingredient) {
-          return ingredient.category.toLowerCase() == 'fish' || ingredient.category.toLowerCase() == 'seafood';
+          return ingredient.category.toLowerCase() == 'fish' ||
+              ingredient.category.toLowerCase() == 'seafood';
         }).length;
 
         numberByCategory.add(number);
         continue;
-      } else if(category == 'Dairy') {
+      } else if (category == 'Dairy') {
         number = ingredients.where((ingredient) {
-          return ingredient.category.toLowerCase() == 'dairy' || ingredient.category.toLowerCase() == 'egg';
+          return ingredient.category.toLowerCase() == 'dairy' ||
+              ingredient.category.toLowerCase() == 'egg';
         }).length;
 
         numberByCategory.add(number);
@@ -161,20 +172,32 @@ class PantryController extends GetxController {
     this.numberByCategory = numberByCategory;
   }
 
-  
+  getCategoryImage(String category) {
+    for (var i = 0; i < categoryAvatar.length; i++) {
+      if (categoryAvatar[i]['category'] == category) {
+        return categoryAvatar[i]['icon'];
+      }
+    }
+  }
+
+  getCategoryColor(String category) {
+    for (var i = 0; i < categoryColor.length; i++) {
+      if (categoryColor[i]['category'] == category) {
+        return categoryColor[i]['color'];
+      }
+    }
+  }
 
   Future deleteIngredient(int index) async {
     // var serverPort = "8080";
     // var serverPath = "/pantry/" + ingredientId.toString();
     // var url = await Uri.http('localhost:' + serverPort, serverPath);
 
-
     var ingredientId;
     if (searchMode) {
       ingredientId = foundIngredients[index].ingredientId;
-    } 
-    else {
-      if(categoryIndex == 0) {
+    } else {
+      if (categoryIndex == 0) {
         ingredientId = ingredients[index].ingredientId;
       } else {
         ingredientId = foundIngredients[index].ingredientId;
@@ -223,7 +246,7 @@ class PantryController extends GetxController {
     var difference = daysBetween(DateTime.now(), expiryDate);
     if (difference == 0) {
       return Text('D-Day',
-      style: TextStyle(
+          style: TextStyle(
               color: Color.fromRGBO(217, 175, 82, 1),
               fontWeight: FontWeight.w700));
     } else if (difference < 0) {
@@ -243,6 +266,19 @@ class PantryController extends GetxController {
               fontWeight: FontWeight.w700));
     }
   }
+
+  Color getExperationDateColor(DateTime expiryDate) {
+    var difference = daysBetween(DateTime.now(), expiryDate);
+    if (difference == 0) {
+      return Color.fromRGBO(217, 175, 82, 1);
+    } else if (difference < 0) {
+      return Color.fromRGBO(236, 97, 95, 1);
+    } else if (difference < 5) {
+      return Color.fromRGBO(217, 175, 82, 1);
+    } else {
+      return Color.fromRGBO(142, 180, 78, 1);
+    }
+  }
 }
 
 Future fetchDummyData() async {
@@ -251,7 +287,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 1,
       "ingredientName": "Onion",
-      "icon" : "https://cdn-icons-png.flaticon.com/128/7230/7230868.png",
+      "icon": "https://cdn-icons-png.flaticon.com/128/7230/7230868.png",
       "expiryDate": "2023-12-10",
       "quantity": 100,
       "category": "Vegetable"
@@ -259,7 +295,7 @@ Future fetchDummyData() async {
     {
       "ingredientId": 2,
       "ingredientName": "Beef",
-      "icon" : "https://cdn-icons-png.flaticon.com/128/6978/6978160.png",
+      "icon": "https://cdn-icons-png.flaticon.com/128/6978/6978160.png",
       "expiryDate": "2021-10-10",
       "quantity": 100,
       "category": "Meat"

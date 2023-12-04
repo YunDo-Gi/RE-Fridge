@@ -78,6 +78,19 @@ class RecipeController extends GetxController {
     foundRecipes.add(recipe);
     print(foundRecipes.last.recipeName);
   }
+
+  List<Recipe> getAvailableRecipeByIngredient(String ingredientName) {
+    var recipeList = <Recipe>[];
+
+    for (var recipe in recipes) {
+      for (var ingredient in recipe.ingredients) {
+        if (ingredient.toLowerCase() == ingredientName.toLowerCase()) {
+          recipeList.add(recipe);
+        }
+      }
+    }
+    return recipeList;
+  }
 }
 
 Future fetchDummyData() async {
