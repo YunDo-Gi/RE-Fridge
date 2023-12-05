@@ -18,7 +18,7 @@ class TagController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchData();
+    // fetchData();
   }
 
   fetchData() async {
