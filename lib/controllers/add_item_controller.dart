@@ -10,6 +10,9 @@ class AddItemController extends GetxController {
   final pantryController = Get.put(PantryController());
   final cartController = Get.put(CartController());
 
+  List lengthByCategory = [].obs;
+  int categoryIndex = 0;
+
   List<Ingredient> ingredients = [
     Ingredient(
         ingredientId: 1,
@@ -60,6 +63,7 @@ class AddItemController extends GetxController {
     super.onInit();
     foundIngredients.assignAll(ingredients);
     cartFoundIngredients.assignAll(ingredients);
+    getlengthByCategory();
   }
 
   void filterIngredient(String searchText) {
@@ -98,6 +102,80 @@ class AddItemController extends GetxController {
     cartFoundIngredients.assignAll(filteredIngredients);
   }
 
+  void categorizeIngredient(int category) {
+    var filteredIngredients = <Ingredient>[];
+    categoryIndex = category;
+
+    switch (category) {
+      case 0:
+        filteredIngredients = ingredients;
+        break;
+      case 1:
+        filteredIngredients = ingredients
+            .where((ingredient) =>
+                ingredient.category.toLowerCase() == 'vegetable')
+            .toList();
+        break;
+      case 2:
+        filteredIngredients = ingredients
+            .where((ingredient) => ingredient.category.toLowerCase() == 'meat')
+            .toList();
+        break;
+      case 3:
+        filteredIngredients = ingredients
+            .where((ingredient) =>
+                ingredient.category.toLowerCase() == 'seafood' ||
+                ingredient.category.toLowerCase() == 'fish')
+            .toList();
+        break;
+      case 4:
+        filteredIngredients = ingredients
+            .where((ingredient) =>
+                ingredient.category.toLowerCase() == 'dairy' ||
+                ingredient.category.toLowerCase() == 'egg')
+            .toList();
+        break;
+      default:
+        filteredIngredients = ingredients;
+    }
+
+    foundIngredients.assignAll(filteredIngredients);
+  }
+
+  void getlengthByCategory() {
+    final categories = ['Vegetable', 'Meat', 'Fish', 'Dairy'];
+    var lengthByCategory = <int>[];
+    var length = 0;
+
+    for (var category in categories) {
+      if (category == 'Fish') {
+        length = ingredients.where((ingredient) {
+          return ingredient.category.toLowerCase() == 'fish' ||
+              ingredient.category.toLowerCase() == 'seafood';
+        }).length;
+
+        lengthByCategory.add(length);
+        continue;
+      } else if (category == 'Dairy') {
+        length = ingredients.where((ingredient) {
+          return ingredient.category.toLowerCase() == 'dairy' ||
+              ingredient.category.toLowerCase() == 'egg';
+        }).length;
+
+        lengthByCategory.add(length);
+        continue;
+      } else {
+        length = ingredients.where((ingredient) {
+          return ingredient.category.toLowerCase() == category.toLowerCase();
+        }).length;
+
+        lengthByCategory.add(length);
+      }
+    }
+    print(lengthByCategory);
+    this.lengthByCategory = lengthByCategory;
+  }
+
   getCategoryfromIngredientName(String ingredientName) {
     for (var ingredient in ingredients) {
       if (ingredient.ingredientName.toLowerCase() ==
@@ -106,6 +184,11 @@ class AddItemController extends GetxController {
       }
     }
     return 'Others';
+  }
+
+  void initialize() {
+    foundIngredients.assignAll(ingredients);
+    addedIngredients.clear();
   }
 
   void addIngredient(int index) {

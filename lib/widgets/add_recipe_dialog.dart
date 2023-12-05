@@ -94,7 +94,7 @@ class AddRecipeDialog extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(8.0))),
                   ),
                   dropdownMenuEntries: [
-                    for (var tag in tagController.tagsToSelect)
+                    for (var tag in tagController.tagsSelectable)
                       DropdownMenuEntry(
                         label: tag.ingredientName,
                         value: tag,
@@ -116,7 +116,6 @@ class AddRecipeDialog extends StatelessWidget {
                   onSelected: (Tag? tag) {
                     if (tag != null) {
                       tagController.addTag(tag);
-                      tagController.tagsToSelect.remove(tag);
                     }
                   },
                 ),
@@ -140,8 +139,8 @@ class AddRecipeDialog extends StatelessWidget {
                           : Text(
                               'No ingredients added',
                               style: TextStyle(
-                                  color: Color.fromRGBO(54, 40, 34, 0.3),
-                                  fontSize: 18,
+                                  color: TEXT_COLOR.withOpacity(0.3),
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700),
                             );
                     },
@@ -157,7 +156,7 @@ class AddRecipeDialog extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () async {
-              if (recipeName == null) {
+              if (recipeName == null || recipeName == '') {
                 showToast(recipeNameWarningToast, 200);
               } else {
                 if (tagController.tagsSelected.length > 0) {
@@ -168,6 +167,7 @@ class AddRecipeDialog extends StatelessWidget {
                   await Future.delayed(Duration(seconds: 1), () {
                     // remove added tags
                     tagController.tagsSelected.clear();
+                    tagController.reloadTags();
                   });
                 } else {
                   showToast(ingredientWarningToast, 200);

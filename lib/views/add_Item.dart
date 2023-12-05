@@ -27,7 +27,13 @@ class AddItem extends StatelessWidget {
     fToast.init(context);
     int tabsCount = categorys.length;
 
-    return DefaultTabController(
+    return 
+    WillPopScope(
+      onWillPop: () {
+        addItemController.initialize();
+        return Future.value(true);
+      },
+    child: DefaultTabController(
         length: tabsCount,
         child: Scaffold(
           backgroundColor: Color.fromRGBO(245, 236, 220, 1),
@@ -51,6 +57,9 @@ class AddItem extends StatelessWidget {
               labelColor: Color.fromRGBO(54, 40, 34, 1),
               isScrollable: true,
               indicatorSize: TabBarIndicatorSize.label,
+              onTap: (index) {
+                addItemController.categorizeIngredient(index);
+              },
               tabs: <Widget>[
                 Tab(
                   text: categorys[0],
@@ -131,7 +140,7 @@ class AddItem extends StatelessWidget {
                               crossAxisCount: 4,
                               childAspectRatio: 1.0,
                             ),
-                            itemCount: controller.foundIngredients.length,
+                            itemCount: controller.lengthByCategory[0],
                             itemBuilder: (context, index) {
                               return IngredientCard(index: index);
                             },
@@ -144,7 +153,7 @@ class AddItem extends StatelessWidget {
                               crossAxisCount: 4,
                               childAspectRatio: 1.0,
                             ),
-                            itemCount: controller.foundIngredients.length,
+                            itemCount: controller.lengthByCategory[1],
                             itemBuilder: (context, index) {
                               return IngredientCard(index: index);
                             },
@@ -157,7 +166,7 @@ class AddItem extends StatelessWidget {
                               crossAxisCount: 4,
                               childAspectRatio: 1.0,
                             ),
-                            itemCount: controller.foundIngredients.length,
+                            itemCount: controller.lengthByCategory[2],
                             itemBuilder: (context, index) {
                               return IngredientCard(index: index);
                             },
@@ -170,7 +179,7 @@ class AddItem extends StatelessWidget {
                               crossAxisCount: 4,
                               childAspectRatio: 1.0,
                             ),
-                            itemCount: controller.foundIngredients.length,
+                            itemCount: controller.lengthByCategory[3],
                             itemBuilder: (context, index) {
                               return IngredientCard(index: index);
                             },
@@ -229,7 +238,7 @@ class AddItem extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        )));
   }
 
   void showToast(String message, Widget toast) {

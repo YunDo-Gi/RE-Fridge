@@ -13,8 +13,7 @@ class TagChip extends GetView<TagController> {
     return Chip(
           label: Text(controller.tagsSelected[index].ingredientName, style: TextStyle(fontFamily: 'Baloo2', fontWeight: FontWeight.w700, color: Colors.white)),
           onDeleted: () {
-            controller.tagsToSelect.add(controller.tagsSelected[index]);
-            controller.tagsSelected.removeAt(index);
+            controller.deleteTag(index);
           },
           deleteIcon: Icon(Icons.close, color: Colors.white, size: 20),
           backgroundColor: setColor(controller.tagsSelected[index].category),

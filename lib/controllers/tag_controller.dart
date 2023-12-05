@@ -12,6 +12,7 @@ class TagController extends GetxController {
   final TextEditingController searchController = TextEditingController();
   final recipeController = Get.put(RecipeController());
   final List<Tag> tagsToSelect = [];
+  final List<Tag> tagsSelectable = [];
   final List<Tag> tagsSelected = [];
 
   @override
@@ -42,6 +43,7 @@ class TagController extends GetxController {
           tagList.add(tag);
         }
         tagsToSelect.assignAll(tagList);
+        tagsSelectable.assignAll(tagList);
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
@@ -55,6 +57,7 @@ class TagController extends GetxController {
         tagList.add(tag);
       }
       tagsToSelect.assignAll(tagList);
+      tagsSelectable.assignAll(tagList);
     } finally {
     }
 
@@ -63,24 +66,34 @@ class TagController extends GetxController {
 
   void filterTag(String searchText) {
     if (searchText.isEmpty) {
-      tagsToSelect.assignAll(tagsSelected);
+      tagsSelectable.assignAll(tagsSelected);
       return;
     }
 
-    tagsToSelect.assignAll(tagsSelected.where((tag) {
+    tagsSelectable.assignAll(tagsSelected.where((tag) {
       return tag.ingredientName.toLowerCase().contains(searchText.toLowerCase());
     }));
   }
 
   addTag(Tag tag) {
     tagsSelected.add(tag);
-    tagsToSelect.remove(tag);
+    tagsSelectable.remove(tag);
     searchController.clear();
 
     for (var tag in tagsSelected) {
       print(tag.ingredientName);
     }
     update();
+  }
+
+  deleteTag(int index) {
+    tagsSelectable.add(tagsSelected[index]);
+    tagsSelected.removeAt(index);
+    update();
+  }
+
+  reloadTags() {
+    tagsSelectable.assignAll(tagsToSelect);
   }
 
   addToRecipeList(String recipeName, List<Tag> tagsSelected) {
