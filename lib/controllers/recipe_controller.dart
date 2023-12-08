@@ -20,7 +20,7 @@ class RecipeController extends GetxController {
 
   Future fetchData() async {
     var serverPort = "8080";
-    var serverPath = "/recipe";
+    var serverPath = "/recipe/fullfill";
     var url = Uri.http('localhost:' + serverPort, serverPath);
 
     try {
@@ -30,19 +30,24 @@ class RecipeController extends GetxController {
         var jsonResponse = json.decode(response.body);
         var data = jsonResponse['data'];
 
+        print(data);
+
         var recipeList = <Recipe>[];
 
         for (var item in data) {
           var recipe = Recipe.fromJson(item);
+          print(recipe.recipeName);
           recipeList.add(recipe);
         }
+
         recipes.assignAll(recipeList);
         foundRecipes.assignAll(recipeList);
+        print('Recipe: Request successful!');
       } else {
-        print('Request failed with status: ${response.statusCode}.');
+        print('Recipe: Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
-      print('Request failed - dummy data will be used.');
+      print('Recipe: Request failed - dummy data will be used.');
       var dummyData = await fetchDummyData();
       var recipeList = <Recipe>[];
 
@@ -100,11 +105,13 @@ Future fetchDummyData() async {
       "recipeId": 1,
       "recipeName": "Chickrot",
       "ingredients": ["Carrot", "Chicken"],
+      "fullfillCount": 2,
     },
     {
       "recipeId": 2,
       "recipeName": "Salmon Soup",
       "ingredients": ["Salmon", "Milk"],
+      "fullfillCount": 1,
     }
   ];
 }

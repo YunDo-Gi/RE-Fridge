@@ -37,11 +37,12 @@ class CartController extends GetxController {
           ingredientsList.add(ingredient);
         }
         ingredients.assignAll(ingredientsList);
+        print('Cart: Request successful!');
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
-      print('Request failed - dummy data will be used.');
+      print('Cart: Request failed - dummy data will be used.');
       var dummyData = await fetchDummyData();
       var ingredientsList = <CartItem>[];
 

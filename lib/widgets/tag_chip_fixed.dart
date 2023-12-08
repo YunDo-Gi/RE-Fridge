@@ -14,6 +14,7 @@ class TagChipFixed extends GetView<TagController> {
   @override
   Widget build(BuildContext context) {
     String category = addItemController.getCategoryfromIngredientName(ingredientName);
+    print(category);
 
     return Chip(
           label: Text(ingredientName, style: TextStyle(fontFamily: 'Baloo2', fontWeight: FontWeight.w700, color: Colors.white)),
@@ -41,10 +42,11 @@ class TagChipFixed extends GetView<TagController> {
   }
 
   getAvatar(String category) {
-    for (var i = 0; i < categoryAvatar.length; i++) {
+    for (var i = 0; i < categoryAvatar.length - 1; i++) {
       if (categoryAvatar[i]['category'] == category) {
         return categoryAvatar[i]['icon'];
       }
     }
+    return categoryAvatar[categoryAvatar.length - 1]['icon'];
   }
 }

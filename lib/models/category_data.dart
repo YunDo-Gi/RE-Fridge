@@ -24,6 +24,11 @@ const categoryAvatar = [
   {
     'category': 'Egg',
     'icon': 'https://cdn-icons-png.flaticon.com/128/837/837560.png'
+  },
+  {
+    'category': 'Others',
+    'icon': 'https://cdn-icons-png.flaticon.com/128/2770/2770013.png'
+  
   }
 ];
 

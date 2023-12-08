@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 // import 'package:re_fridge/controllers/tag_controller.dart';
 import '../models/ingredient.dart';
 import 'package:re_fridge/models/category_data.dart';
-import 'package:re_fridge/models/category_data.dart';
 
 class PantryController extends GetxController {
   final ingredients = <Ingredient>[].obs;
@@ -27,15 +26,19 @@ class PantryController extends GetxController {
   }
 
   Future fetchData() async {
+    // Data is already fetched
     if (ingredients.length > 0) {
       return 0;
     }
+    
+    // Data is not fetched yet
     var serverPort = "8080";
     var serverPath = "/pantry";
     var url = Uri.http('localhost:' + serverPort, serverPath);
 
     try {
       var response = await http.get(url);
+      print(response.statusCode);
 
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(response.body);
@@ -47,13 +50,15 @@ class PantryController extends GetxController {
           var ingredient = Ingredient.fromJson(item);
           ingredientsList.add(ingredient);
         }
+
         ingredients.assignAll(ingredientsList);
         foundIngredients.assignAll(ingredients);
+        print('Pantry: Request successful!');
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
-      print('Request failed - dummy data will be used.');
+      print('Pantry: Request failed - dummy data will be used.');
       var dummyData = await fetchDummyData();
       var ingredientsList = <Ingredient>[];
 

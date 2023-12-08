@@ -13,22 +13,31 @@ class Recipe {
 
   // Convert from JSON
   factory Recipe.fromJson(Map<String, dynamic> json) {
-    final recipeId = json['recipeId'];
+    final recipeId = int.parse(json['recipeId'].toString());
     final recipeName = json['recipeName'];
-    final ingredients = json['ingredients'];
-    final fullfillCount = json['fullfillCount'];
+    final ingredients = List<String>.from(json['ingredients']);
+    print(ingredients.runtimeType);
+    final fullfillCount = int.parse(json['fullfillCount'].toString());
+    print('pass');
+
+    return Recipe(
+      recipeId: recipeId,
+      recipeName: recipeName,
+      ingredients: ingredients,
+      fullfillCount: fullfillCount,
+    );
 
     // Check if all data is valid (runtime error prevention)
-    if (recipeId is int && recipeName is String && ingredients is List<String>) {
-      return Recipe(
-        recipeId: recipeId,
-        recipeName: recipeName,
-        ingredients: ingredients,
-        fullfillCount: fullfillCount,
-      );
-    } else {
-      throw FormatException('Invalid JSON: $json');
-    }
+    // if (recipeName is String) {
+    //   return Recipe(
+    //     recipeId: recipeId,
+    //     recipeName: recipeName,
+    //     ingredients: ingredients,
+    //     fullfillCount: fullfillCount,
+    //   );
+    // } else {
+    //   throw FormatException('Invalid JSON: $json');
+    // }
   }
 
   // Convert to JSON
