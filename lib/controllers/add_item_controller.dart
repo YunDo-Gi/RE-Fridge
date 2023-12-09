@@ -204,6 +204,16 @@ class AddItemController extends GetxController {
     return 'Others';
   }
 
+  getIdfromIngredientName(String ingredientName) {
+    for (var ingredient in ingredients) {
+      if (ingredient.ingredientName.toLowerCase() ==
+          ingredientName.toLowerCase()) {
+        return ingredient.ingredientId;
+      }
+    }
+    return 0;
+  }
+
   void initialize() {
     foundIngredients.assignAll(ingredients);
     addedIngredients.clear();

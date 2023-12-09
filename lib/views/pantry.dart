@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
 import 'package:re_fridge/widgets/pantry_item.dart';
+import 'package:re_fridge/widgets/blinking_circle.dart';
 import 'package:re_fridge/views/add_item.dart';
 import 'package:re_fridge/colors.dart';
 
@@ -34,11 +35,18 @@ class Pantry extends StatelessWidget {
               return notification.depth == 1;
             },
             scrolledUnderElevation: 0.0,
-            title: Text('Pantry',
-                style: TextStyle(
-                    color: Color.fromRGBO(54, 40, 34, 1),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 30)),
+            title: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Pantry',
+                    style: TextStyle(
+                        color: Color.fromRGBO(54, 40, 34, 1),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 30)),
+                SizedBox(width: 10),
+                BlinkingCircle(),
+              ],
+            ),
             actions: [
               IconButton(
                 icon: Icon(Icons.add_circle_outline_rounded),

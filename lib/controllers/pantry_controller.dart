@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import 'package:re_fridge/colors.dart';
 
 import 'package:re_fridge/controllers/cart_controller.dart';
 import '../models/ingredient.dart';
@@ -12,6 +13,7 @@ class PantryController extends GetxController {
   final cartController = Get.put(CartController());
   final ingredients = <Ingredient>[].obs;
   final foundIngredients = <Ingredient>[].obs;
+  Color color = PRIMARY_COLOR;
 
   int categoryIndex = 0;
 
@@ -71,6 +73,8 @@ class PantryController extends GetxController {
       ingredients.assignAll(ingredientsList);
       foundIngredients.assignAll(ingredients);
     } finally {
+      await getAverageExperationDate();
+
       getNumberByCategory();
     }
 
@@ -241,7 +245,7 @@ class PantryController extends GetxController {
     try {
       await http.post(url,
           headers: {'Content-Type': 'application/json'},
-          body: [ingredient.toJson()]);
+          body: jsonEncode([ingredient.toJson()]));
       print('Pantry: Added to server');
     } catch (e) {
       print('Pantry: Request failed - failed to add to server.');
@@ -284,6 +288,28 @@ class PantryController extends GetxController {
     // }
 
     // return 0;
+  }
+
+  getAverageExperationDate() {
+    var numberOfIngredients = ingredients.length;
+    var count = 0;
+
+    for (var ingredient in ingredients) {
+      var difference = daysBetween(DateTime.now(), ingredient.expiryDate);
+      if (difference < 5) {
+        count++;
+      } else {
+        continue;
+      }
+    }
+
+    if (count / numberOfIngredients < 0.25) {
+      color = RED_COLOR;
+    } else if (count / numberOfIngredients < 0.5) {
+      color = YELLOW_COLOR;
+    } else {
+      color = PRIMARY_COLOR;
+    }
   }
 
   // Experation Date Calculation

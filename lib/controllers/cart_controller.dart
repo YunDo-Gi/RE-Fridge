@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:get/get.dart';
 import '../models/cart_item.dart';
+import 'add_item_controller.dart';
 
 class CartController extends GetxController {
   final ingredients = <CartItem>[].obs;
@@ -59,24 +60,57 @@ class CartController extends GetxController {
   }
 
   Future deleteIngredient(int index) async {
-    // var serverPort = "8080";
-    // var serverPath = "/pantry/" + cartId.toString();
-    // var url = await Uri.http('localhost:' + serverPort, serverPath);
-
     var cartId = ingredients[index].cartId;
 
+    // Connect to server
+    var serverPort = "8080";
+    var serverPath = "/cart/" + cartId.toString();
+    var url = await Uri.http('localhost:' + serverPort, serverPath);
+
     try {
-      // http.delete(url);
       ingredients.removeAt(ingredients
           .indexWhere((ingredient) => ingredient.cartId == cartId));
       ingredients.refresh();
+      var response = await http.delete(url);
+
+      if (response.statusCode == 200) {
+        print('Cart: Request successful!');
+      } else {
+        print('Cart: Request failed with status: ${response.statusCode}.');
+      }
     } catch (e) {
-      print(e);
+      print('Cart: Request failed - failed to delete from cart.');
     }
   }
 
-  addIngredient(CartItem cartItem) {
+  Future addIngredient(CartItem cartItem) async {
+    // Add to cart (local)
     ingredients.add(cartItem);
+
+    // Add to cart (server)
+    final addItemController = Get.put(AddItemController());
+    var ingredientID = addItemController.getIdfromIngredientName(cartItem.ingredientName);
+
+    // Connect to server
+    var serverPort = "8080";
+    var serverPath = "/cart/";
+    var url = await Uri.http('localhost:' + serverPort, serverPath);
+
+    try {
+      var response = await http.post(url, headers: {
+        'Content-Type': 'application/json'
+      }, body: jsonEncode([{"ingredientId" : ingredientID}]));
+
+      if (response.statusCode == 201) {
+        print('Cart: Request successful!');
+      } else {
+        print('Cart: Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print('Cart: Request failed - failed to add to cart.');
+    } finally {
+      update();
+    }
   }
 
   reloadList() {
