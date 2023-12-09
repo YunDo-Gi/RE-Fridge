@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
 import 'package:re_fridge/controllers/pantry_controller.dart';
@@ -13,43 +15,7 @@ class AddItemController extends GetxController {
   List lengthByCategory = [].obs;
   int categoryIndex = 0;
 
-  List<Ingredient> ingredients = [
-    Ingredient(
-        ingredientId: 1,
-        ingredientName: 'Carrot',
-        category: 'Vegetable',
-        icon: 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-        quantity: 1,
-        expiryDate: DateTime.now()),
-    Ingredient(
-        ingredientId: 2,
-        ingredientName: 'Chicken',
-        category: 'Meat',
-        icon: 'https://cdn-icons-png.flaticon.com/128/1041/1041676.png',
-        quantity: 1,
-        expiryDate: DateTime.now()),
-    Ingredient(
-        ingredientId: 3,
-        ingredientName: 'Salmon',
-        category: 'Fish',
-        icon: 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png',
-        quantity: 1,
-        expiryDate: DateTime.now()),
-    Ingredient(
-        ingredientId: 4,
-        ingredientName: 'Milk',
-        category: 'Dairy',
-        icon: 'https://cdn-icons-png.flaticon.com/128/9708/9708499.png',
-        quantity: 1,
-        expiryDate: DateTime.now()),
-    Ingredient(
-        ingredientId: 5,
-        ingredientName: 'Egg',
-        category: 'Egg',
-        icon: 'https://cdn-icons-png.flaticon.com/128/837/837560.png',
-        quantity: 1,
-        expiryDate: DateTime.now()),
-  ];
+  List<Ingredient> ingredients = [];
 
   var foundIngredients = <Ingredient>[].obs;
   var addedIngredients = <Ingredient>[].obs;
@@ -59,12 +25,64 @@ class AddItemController extends GetxController {
 
   bool searchMode = false;
 
+  @override
   void onInit() {
     super.onInit();
-    foundIngredients.assignAll(ingredients);
-    cartFoundIngredients.assignAll(ingredients);
-    getlengthByCategory();
+    fetchData();
   }
+
+  Future fetchData() async {
+    // Data is already fetched
+    if (ingredients.length > 0) {
+      return 0;
+    }
+
+    // Data is not fetched yet
+    var serverPort = "8080";
+    var serverPath = "/ingredient";
+    var url = Uri.http('localhost:' + serverPort, serverPath);
+
+    try {
+      var response = await http.get(url);
+      print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        var jsonResponse = json.decode(response.body);
+        var data = jsonResponse['data'];
+
+        var ingredientsList = <Ingredient>[];
+
+        for (var item in data) {
+          var ingredient = Ingredient.fromJson(item);
+          ingredientsList.add(ingredient);
+        }
+
+        ingredients.assignAll(ingredientsList);
+        foundIngredients.assignAll(ingredients);
+        cartFoundIngredients.assignAll(ingredients);
+        print('Ingredient: Request successful!');
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print('Ingredient: Request failed - dummy data will be used.');
+      var dummyData = await fetchDummyData();
+      var ingredientsList = <Ingredient>[];
+
+      for (var item in dummyData) {
+        var ingredient = Ingredient.fromJson(item);
+        ingredientsList.add(ingredient);
+      }
+      ingredients.assignAll(ingredientsList);
+      foundIngredients.assignAll(ingredients);
+      cartFoundIngredients.assignAll(ingredients);
+    } finally {
+      getlengthByCategory();
+    }
+
+    return 0;
+  }
+
 
   void filterIngredient(String searchText) {
     var filteredIngredients = <Ingredient>[];
@@ -242,5 +260,46 @@ class AddItemController extends GetxController {
     int count = 0;
     Navigator.of(context).popUntil((_) => count++ >= 2);
     return 0;
+  }
+
+  Future fetchDummyData() async {
+    await Future.delayed(Duration(seconds: 1));
+    return [
+      Ingredient(
+          ingredientId: 1,
+          ingredientName: 'Carrot',
+          category: 'Vegetable',
+          icon: 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
+          quantity: 1,
+          expiryDate: DateTime.now()),
+      Ingredient(
+          ingredientId: 2,
+          ingredientName: 'Chicken',
+          category: 'Meat',
+          icon: 'https://cdn-icons-png.flaticon.com/128/1041/1041676.png',
+          quantity: 1,
+          expiryDate: DateTime.now()),
+      Ingredient(
+          ingredientId: 3,
+          ingredientName: 'Salmon',
+          category: 'Fish',
+          icon: 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png',
+          quantity: 1,
+          expiryDate: DateTime.now()),
+      Ingredient(
+          ingredientId: 4,
+          ingredientName: 'Milk',
+          category: 'Dairy',
+          icon: 'https://cdn-icons-png.flaticon.com/128/9708/9708499.png',
+          quantity: 1,
+          expiryDate: DateTime.now()),
+      Ingredient(
+          ingredientId: 5,
+          ingredientName: 'Egg',
+          category: 'Egg',
+          icon: 'https://cdn-icons-png.flaticon.com/128/837/837560.png',
+          quantity: 1,
+          expiryDate: DateTime.now()),
+    ];
   }
 }

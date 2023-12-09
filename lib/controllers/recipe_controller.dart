@@ -30,13 +30,10 @@ class RecipeController extends GetxController {
         var jsonResponse = json.decode(response.body);
         var data = jsonResponse['data'];
 
-        print(data);
-
         var recipeList = <Recipe>[];
 
         for (var item in data) {
           var recipe = Recipe.fromJson(item);
-          print(recipe.recipeName);
           recipeList.add(recipe);
         }
 

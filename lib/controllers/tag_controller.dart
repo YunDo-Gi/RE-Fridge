@@ -44,11 +44,12 @@ class TagController extends GetxController {
         }
         tagsToSelect.assignAll(tagList);
         tagsSelectable.assignAll(tagList);
+        print('Tag: Request successful!');
       } else {
-        print('Request failed with status: ${response.statusCode}.');
+        print('Tag: Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
-      print('Request failed - dummy data will be used.');
+      print('Tag: Request failed - dummy data will be used.');
       var dummyData = await fetchDummyData();
       var tagList = <Tag>[];
 
@@ -59,6 +60,7 @@ class TagController extends GetxController {
       tagsToSelect.assignAll(tagList);
       tagsSelectable.assignAll(tagList);
     } finally {
+      update();
     }
 
     return 0;

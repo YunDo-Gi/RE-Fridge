@@ -20,13 +20,11 @@ class Ingredient {
     final ingredientName = json['ingredientName'];
     final icon = json['icon'];
     final expiryDate = DateTime.parse(json['expiryDate']);
-    final quantity = int.parse(json['quantity']);
+    final quantity = int.parse(json['quantity'].toString());
     final category = json['category'];
 
     // Check if all data is valid (runtime error prevention)
-    if (ingredientName is String &&
-        icon is String &&
-        category is String) {
+    if (ingredientName is String && icon is String && category is String) {
       return Ingredient(
           ingredientId: ingredientId,
           ingredientName: ingredientName,
@@ -44,7 +42,7 @@ class Ingredient {
         'ingredientId': ingredientId,
         'ingredientName': ingredientName,
         'icon': icon,
-        'expiryDate': expiryDate,
+        'expiryDate': expiryDate.toString().substring(0, 10),
         'quantity': quantity,
         'category': category
       };

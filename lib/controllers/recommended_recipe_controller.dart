@@ -33,11 +33,12 @@ class RecommendedRecipeController extends GetxController {
           recipeList.add(recipe);
         }
         recipes.assignAll(recipeList);
+        print('Recommended Recipe: Request successful!');
       } else {
-        print('Request failed with status: ${response.statusCode}.');
+        print('Recommended Recipe: Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
-      print('Request failed - dummy data will be used.');
+      print('Recommended Recipe: Request failed - dummy data will be used.');
       var dummyData = await fetchDummyData();
       var recipeList = <Recipe>[];
 

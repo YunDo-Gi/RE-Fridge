@@ -21,14 +21,14 @@ class TagChip extends GetView<TagController> {
   }
 
   setColor(String category) {
-    switch (category) {
-      case 'Vegetable':
+    switch (category.toLowerCase()) {
+      case 'vegetable':
         return PRIMARY_COLOR;
-      case 'Meat':
+      case 'meat':
         return RED_COLOR;
-      case 'Seafood' || 'Fish':
+      case 'seafood' || 'fish':
         return BLUE_COLOR;
-      case 'Dairy' || 'Egg':
+      case 'dairy' || 'egg':
         return YELLOW_COLOR;
       default:
         return Colors.grey;

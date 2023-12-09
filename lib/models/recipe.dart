@@ -16,9 +16,7 @@ class Recipe {
     final recipeId = int.parse(json['recipeId'].toString());
     final recipeName = json['recipeName'];
     final ingredients = List<String>.from(json['ingredients']);
-    print(ingredients.runtimeType);
     final fullfillCount = int.parse(json['fullfillCount'].toString());
-    print('pass');
 
     return Recipe(
       recipeId: recipeId,
@@ -26,18 +24,6 @@ class Recipe {
       ingredients: ingredients,
       fullfillCount: fullfillCount,
     );
-
-    // Check if all data is valid (runtime error prevention)
-    // if (recipeName is String) {
-    //   return Recipe(
-    //     recipeId: recipeId,
-    //     recipeName: recipeName,
-    //     ingredients: ingredients,
-    //     fullfillCount: fullfillCount,
-    //   );
-    // } else {
-    //   throw FormatException('Invalid JSON: $json');
-    // }
   }
 
   // Convert to JSON

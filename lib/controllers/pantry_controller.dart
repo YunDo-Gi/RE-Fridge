@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
-// import 'package:re_fridge/controllers/tag_controller.dart';
+import 'package:re_fridge/controllers/cart_controller.dart';
 import '../models/ingredient.dart';
+import '../models/cart_item.dart';
 import 'package:re_fridge/models/category_data.dart';
 
 class PantryController extends GetxController {
+  final cartController = Get.put(CartController());
   final ingredients = <Ingredient>[].obs;
   final foundIngredients = <Ingredient>[].obs;
 
@@ -30,7 +32,7 @@ class PantryController extends GetxController {
     if (ingredients.length > 0) {
       return 0;
     }
-    
+
     // Data is not fetched yet
     var serverPort = "8080";
     var serverPath = "/pantry";
@@ -55,7 +57,7 @@ class PantryController extends GetxController {
         foundIngredients.assignAll(ingredients);
         print('Pantry: Request successful!');
       } else {
-        print('Request failed with status: ${response.statusCode}.');
+        print('Pantry: Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
       print('Pantry: Request failed - dummy data will be used.');
@@ -173,7 +175,6 @@ class PantryController extends GetxController {
         numberByCategory.add(number);
       }
     }
-    print(numberByCategory);
     this.numberByCategory = numberByCategory;
   }
 
@@ -194,10 +195,6 @@ class PantryController extends GetxController {
   }
 
   Future deleteIngredient(int index) async {
-    // var serverPort = "8080";
-    // var serverPath = "/pantry/" + ingredientId.toString();
-    // var url = await Uri.http('localhost:' + serverPort, serverPath);
-
     var ingredientId;
     if (searchMode) {
       ingredientId = foundIngredients[index].ingredientId;
@@ -209,36 +206,84 @@ class PantryController extends GetxController {
       }
     }
 
+    var serverPort = "8080";
+    var serverPath =
+        "/pantry/" + ingredientId.toString();
+    var url = await Uri.http('localhost:' + serverPort, serverPath);
+
     try {
-      // http.delete(url);
       ingredients.removeAt(ingredients
           .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
       foundIngredients.removeAt(foundIngredients
           .indexWhere((ingredient) => ingredient.ingredientId == ingredientId));
       getNumberByCategory();
       ingredients.refresh();
+
+      // Delete from server
+      await http.delete(url);
+      print('Pantry: Deleted from server');
     } catch (e) {
       print(e);
     }
   }
 
-  addIngredient(Ingredient ingredient) {
+  Future addIngredient(Ingredient ingredient) async {
     ingredients.add(ingredient);
     foundIngredients.add(ingredient);
     getNumberByCategory();
-  }
 
-  Future addToCart(index) async {
-    // var serverPort = "8080";
-    // var serverPath = "/cart";
-    // var url = await Uri.http('localhost:' + serverPort, serverPath);
-    var ingredientId = ingredients[index].ingredientId;
+    // Add to server
+    // Connect to server
+    var serverPort = "8080";
+    var serverPath = "/pantry";
+    var url = Uri.http('localhost:' + serverPort, serverPath);
 
     try {
-      // http.post(url, body: {'ingredientId': ingredientId.toString()});
+      await http.post(url,
+          headers: {'Content-Type': 'application/json'},
+          body: [ingredient.toJson()]);
+      print('Pantry: Added to server');
     } catch (e) {
-      print(e);
+      print('Pantry: Request failed - failed to add to server.');
+    } finally {
+      update();
     }
+  }
+
+  Future addToCart(ingredient) async {
+    // Add to cart (local)
+    // CartItem cartItem = CartItem(
+    //     cartId: cartController.ingredients.length + 1,
+    //     ingredientName: ingredient.ingredientName,
+    //     icon: ingredient.icon);
+
+    // cartController.addIngredient(cartItem);
+    // print('Pantry: Added to cart');
+
+    // // Add to cart (server)
+    // var ingredientId = ingredient.ingredientId;
+
+    // // Connect to server
+    // var serverPort = "8080";
+    // var serverPath = "/cart/" + ingredientId.toString();
+    // var url = await Uri.http('localhost:' + serverPort, serverPath);
+
+    // try {
+    //   var response = await http.post(url);
+    //   print(response.statusCode);
+
+    //   if (response.statusCode == 200) {
+    //     print('Pantry: Request successful!');
+    //   } else {
+    //     print('Pantry: Request failed with status: ${response.statusCode}.');
+    //   }
+    // } catch (e) {
+    //   print('Pantry: Request failed - failed to add to cart.');
+    // } finally {
+    //   update();
+    // }
+
+    // return 0;
   }
 
   // Experation Date Calculation

@@ -13,13 +13,13 @@ class Tag {
 
   // Convert from JSON
   factory Tag.fromJson(Map<String, dynamic> json) {
-    final ingredientId = json['ingredientId'];
+    final ingredientId = int.parse(json['ingredientId'].toString());
     final ingredientName = json['ingredientName'];
     final category = json['category'];
     final icon = json['icon'];
 
     // Check if all data is valingredientId (runtime error prevention)
-    if (ingredientId is int && ingredientName is String && category is String && icon is String) {
+    if (ingredientName is String && category is String && icon is String) {
       return Tag(
         ingredientId: ingredientId,
         ingredientName: ingredientName,
