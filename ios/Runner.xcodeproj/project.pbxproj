@@ -161,7 +161,6 @@
 				12A30B3321CFA2879E094CAF /* Pods-RunnerTests.release.xcconfig */,
 				DFBE3706EB9F4E40DE64EF9F /* Pods-RunnerTests.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -677,6 +676,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.flutterApplication2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

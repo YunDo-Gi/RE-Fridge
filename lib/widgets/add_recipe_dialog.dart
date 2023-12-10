@@ -20,13 +20,12 @@ class AddRecipeDialog extends StatelessWidget {
     fToast = FToast();
     fToast.init(context);
     String? recipeName;
-    
+
     Tag dummyTag = Tag(
         ingredientId: 0,
         ingredientName: 'Loading...',
         category: 'Loading...',
-        icon: 'Loading...'
-        );
+        icon: 'Loading...');
 
     return AlertDialog(
       insetPadding: EdgeInsets.symmetric(horizontal: 10),
@@ -85,6 +84,7 @@ class AddRecipeDialog extends StatelessWidget {
                     if (snapshot.hasData) {
                       return DropdownMenu<Tag>(
                         width: MediaQuery.of(context).size.width * 0.75,
+                        menuHeight: 200.0,
                         controller: tagController.searchController,
                         enableFilter: true,
                         requestFocusOnTap: true,
@@ -138,40 +138,41 @@ class AddRecipeDialog extends StatelessWidget {
                       );
                     } else {
                       return DropdownMenu<Tag>(
-                        width: MediaQuery.of(context).size.width * 0.75,
-                        controller: tagController.searchController,
-                        enableFilter: true,
-                        requestFocusOnTap: true,
-                        leadingIcon: const Icon(Icons.search),
-                        hintText: "Search..",
-                        inputDecorationTheme: InputDecorationTheme(
-                          contentPadding: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-                          prefixIconColor: PRIMARY_COLOR,
-                          suffixIconColor: PRIMARY_COLOR,
-                          hintStyle: TextStyle(
-                              color: Color.fromRGBO(54, 40, 34, 0.3),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700),
-                          filled: true,
-                          fillColor: Color.fromRGBO(54, 40, 34, 0.1),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0))),
-                        ),
-                        dropdownMenuEntries: [
-                          //  DropdownMenuEntry(
-                          //     label: dummyTag.ingredientName,
-                          //     value: dummyTag,
-                          //     style: ButtonStyle(
-                          //         textStyle: MaterialStateProperty.all(
-                          //             TextStyle(
-                          //                 fontFamily: 'Baloo2',
-                          //                 fontWeight: FontWeight.w500,
-                          //                 color: TEXT_COLOR,
-                          //                 fontSize: 16))),
-                          //   )
-                        ]);
+                          width: MediaQuery.of(context).size.width * 0.75,
+                          menuHeight: 200.0,
+                          controller: tagController.searchController,
+                          enableFilter: true,
+                          requestFocusOnTap: true,
+                          leadingIcon: const Icon(Icons.search),
+                          hintText: "Search..",
+                          inputDecorationTheme: InputDecorationTheme(
+                            contentPadding: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+                            prefixIconColor: PRIMARY_COLOR,
+                            suffixIconColor: PRIMARY_COLOR,
+                            hintStyle: TextStyle(
+                                color: Color.fromRGBO(54, 40, 34, 0.3),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
+                            filled: true,
+                            fillColor: Color.fromRGBO(54, 40, 34, 0.1),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8.0))),
+                          ),
+                          dropdownMenuEntries: [
+                            //  DropdownMenuEntry(
+                            //     label: dummyTag.ingredientName,
+                            //     value: dummyTag,
+                            //     style: ButtonStyle(
+                            //         textStyle: MaterialStateProperty.all(
+                            //             TextStyle(
+                            //                 fontFamily: 'Baloo2',
+                            //                 fontWeight: FontWeight.w500,
+                            //                 color: TEXT_COLOR,
+                            //                 fontSize: 16))),
+                            //   )
+                          ]);
                     }
                   },
                 ),

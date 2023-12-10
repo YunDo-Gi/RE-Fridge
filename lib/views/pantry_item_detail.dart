@@ -74,10 +74,10 @@ class PantryItemDetail extends GetView<PantryController> {
                     children: [
                       // Category
                       Padding(
-                        padding: EdgeInsets.only(right: 24.0),
+                        padding: EdgeInsets.only(right: 30.0),
                         child: Row(
                           children: [
-                            CustomDivider(paddingRight: 8.0),
+                            CustomDivider(paddingRight: 12.0),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

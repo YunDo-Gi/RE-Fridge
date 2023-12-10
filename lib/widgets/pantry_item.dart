@@ -106,17 +106,18 @@ class PantryItem extends GetView<PantryController> {
   deleteIngredient() {}
 
   toCart() {
+    controller.addToCart(controller.foundIngredients[index]);
     // to cart function
-    // if (initialCounter >= 2) {
-    //   if (!addable) {
-    //     controller.addToCart(controller.foundIngredients[index]);
-    //     addable = true;
-    //   } else {
-    //     addable = false;
-    //   }
-    // } else {
-    //   initialCounter++;
-    // }
+    if (initialCounter >= 2) {
+      if (!addable) {
+        controller.addToCart(controller.foundIngredients[index]);
+        addable = true;
+      } else {
+        addable = false;
+      }
+    } else {
+      initialCounter++;
+    }
   }
 
   Widget deleteToast = Container(

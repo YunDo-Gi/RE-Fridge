@@ -211,8 +211,7 @@ class PantryController extends GetxController {
     }
 
     var serverPort = "8080";
-    var serverPath =
-        "/pantry/" + ingredientId.toString();
+    var serverPath = "/pantry/" + ingredientId.toString();
     var url = await Uri.http('localhost:' + serverPort, serverPath);
 
     try {
@@ -364,73 +363,81 @@ Future fetchDummyData() async {
       "ingredientId": 1,
       "ingredientName": "Onion",
       "icon": "https://cdn-icons-png.flaticon.com/128/7230/7230868.png",
-      "expiryDate": "2023-12-10",
-      "quantity": 100,
+      "expiryDate": "2023-12-23",
+      "quantity": 12,
       "category": "Vegetable"
     },
     {
       "ingredientId": 2,
       "ingredientName": "Beef",
       "icon": "https://cdn-icons-png.flaticon.com/128/6978/6978160.png",
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
+      "expiryDate": "2023-12-14",
+      "quantity": 3,
       "category": "Meat"
     },
     {
       "ingredientId": 3,
-      "ingredientName": "salmon",
-      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
-      "category": "Fish"
+      "ingredientName": "Milk",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2049/2049100.png',
+      "expiryDate": "2023-12-27",
+      "quantity": 1,
+      "category": "Dairy"
     },
     {
       "ingredientId": 4,
-      "ingredientName": "carrot",
+      "ingredientName": "Carrot",
       "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
+      "expiryDate": "2023-11-10",
+      "quantity": 1,
       "category": "Vegetable"
     },
     {
       "ingredientId": 5,
-      "ingredientName": "Pork",
-      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
+      "ingredientName": "Lamb",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2403/2403227.png',
+      "expiryDate": "2023-12-22",
+      "quantity": 2,
       "category": "Meat"
     },
     {
       "ingredientId": 6,
       "ingredientName": "Egg",
-      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
+      "icon": 'https://cdn-icons-png.flaticon.com/128/837/837560.png',
+      "expiryDate": "2024-01-10",
+      "quantity": 24,
       "category": "Egg"
     },
     {
       "ingredientId": 7,
-      "ingredientName": "Pepper",
-      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
+      "ingredientName": "Broccoli",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2346/2346952.png',
+      "expiryDate": "2023-12-27",
+      "quantity": 7,
       "category": "Vegetable"
     },
     {
       "ingredientId": 8,
-      "ingredientName": "squid",
-      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
+      "ingredientName": "Shrimp",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/2970/2970030.png',
+      "expiryDate": "2023-12-01",
+      "quantity": 17,
       "category": "Seafood"
     },
     {
       "ingredientId": 9,
-      "ingredientName": "Milk",
-      "icon": 'https://cdn-icons-png.flaticon.com/128/2224/2224115.png',
-      "expiryDate": "2021-10-10",
-      "quantity": 100,
+      "ingredientName": "Cheese",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/517/517561.png',
+      "expiryDate": "2024-04-02",
+      "quantity": 3,
       "category": "Dairy"
+    },
+    {
+      "ingredientId": 10,
+      "ingredientName": "Salmon",
+      "icon": 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png',
+      "expiryDate": "2024-02-02",
+      "quantity": 2,
+      "category": "Fish"
     },
   ];
 }

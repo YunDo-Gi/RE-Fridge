@@ -102,15 +102,45 @@ Future fetchDummyData() async {
   return [
     {
       "recipeId": 1,
-      "recipeName": "Chickrot",
-      "ingredients": ["Carrot", "Chicken"],
+      "recipeName": "Lamb Steak",
+      "ingredients": ["Lamb", "Broccoli"],
       "fullfillCount": 2,
     },
     {
       "recipeId": 2,
       "recipeName": "Salmon Soup",
-      "ingredients": ["Salmon", "Milk"],
-      "fullfillCount": 1,
-    }
+      "ingredients": ["Salmon", "Milk", "Onion"],
+      "fullfillCount": 3,
+    },
+    {
+      "recipeId": 3,
+      "recipeName": "Chicken Salad",
+      "ingredients": ["Chicken", "Lettuce", "Tomato"],
+      "fullfillCount": 3,
+    },
+    {
+      "recipeId": 4,
+      "recipeName": "Pork Cutlet",
+      "ingredients": ["Pork", "Egg", "Bread Crumbs"],
+      "fullfillCount": 2,
+    },
+    {
+      "recipeId": 5,
+      "recipeName": "Beef Stew",
+      "ingredients": ["Beef", "Potato", "Carrot"],
+      "fullfillCount": 0,
+    },
+    {
+      "recipeId": 10,
+      "recipeName": "Chicken Soup",
+      "ingredients": ["Chicken", "Potato", "Carrot"],
+      "fullfillCount": 3,
+    },
+    {
+      "recipeId": 11,
+      "recipeName": "Chicken Salad",
+      "ingredients": ["Chicken", "Lettuce", "Tomato"],
+      "fullfillCount": 3,
+    },
   ];
 }

@@ -14,9 +14,9 @@ class RecipeDetail extends GetView<RecipeController> {
         backgroundColor: Color.fromRGBO(245, 236, 220, 1),
         appBar: AppBar(
           iconTheme: IconThemeData(
-              // back button color
-              color: TEXT_COLOR, 
-            ),
+            // back button color
+            color: TEXT_COLOR,
+          ),
           backgroundColor: Colors.white,
           centerTitle: false,
           notificationPredicate: (ScrollNotification notification) {
@@ -29,9 +29,20 @@ class RecipeDetail extends GetView<RecipeController> {
                   fontWeight: FontWeight.w700,
                   fontSize: 30)),
         ),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
-          child: Text('sth'),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 20, bottom: 10),
+                child: Text('🚧  Coming Soon  🚧',
+                    style: TextStyle(
+                        color: Color.fromRGBO(54, 40, 34, 1),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20)),
+              ),
+              ],
+          ),
         ));
   }
 }

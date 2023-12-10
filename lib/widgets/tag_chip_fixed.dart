@@ -14,7 +14,6 @@ class TagChipFixed extends GetView<TagController> {
   @override
   Widget build(BuildContext context) {
     String category = addItemController.getCategoryfromIngredientName(ingredientName);
-    print(category);
 
     return Chip(
           label: Text(ingredientName, style: TextStyle(fontFamily: 'Baloo2', fontWeight: FontWeight.w700, color: Colors.white)),

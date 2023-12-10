@@ -57,15 +57,27 @@ Future fetchDummyData() async {
   return [
     {
       "recipeId": 1,
-      "recipeName": "Chickrot",
-      "ingredients": ["Carrot", "Chicken"],
+      "recipeName": "Lamb Steak",
+      "ingredients": ["Lamb", "Broccoli"],
       "fullfillCount": 2,
     },
     {
       "recipeId": 2,
       "recipeName": "Salmon Soup",
-      "ingredients": ["Salmon", "Milk", "Salmon", "Milk", "Salmon", "Milk"],
-      "fullfillCount": 5,
-    }
+      "ingredients": ["Salmon", "Milk", "Onion"],
+      "fullfillCount": 3,
+    },
+    {
+      "recipeId": 3,
+      "recipeName": "Chicken Salad",
+      "ingredients": ["Chicken", "Lettuce", "Tomato"],
+      "fullfillCount": 3,
+    },
+    {
+      "recipeId": 4,
+      "recipeName": "Pork Cutlet",
+      "ingredients": ["Pork", "Egg", "Bread Crumbs"],
+      "fullfillCount": 2,
+    },
   ];
 }
