@@ -28,34 +28,23 @@ flutter run
 
 # 📷 Screenshots
 ### 1. Splash Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098421-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
+<img src="assets/images/readme/splash.png" width="100">
 
-### 2. Home Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098424-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
+### 2. Pantry Screen
+<img src="assets/images/readme/pantry.png" width="100">
+<img src="assets/images/readme/pantry_detail.png" width="100">
+<img src="assets/images/readme/add_item.png" width="100">
+<img src="assets/images/readme/set_item.png" width="100">
 
-### 3. Pantry Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098426-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
+### 3. Recipe Screen
+<img src="assets/images/readme/recipe.png" width="100">
+<img src="assets/images/readme/recommended_recipe.png" width="100">
+<img src="assets/images/readme/add_recipe.png" width="100">
 
 ### 4. Cart Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098427-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
+<img src="assets/images/readme/cart.png" width="100">
 
-### 5. My Recipe Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098428-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
 
-### 6. Recommended Recipe Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098429-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
-
-### 7. Recipe Detail Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098430-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
-
-### 8. Add Item Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098431-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
-
-### 9. Add Cart Item Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098432-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
-
-### 10. Set Item Screen
-<img src="https://user-images.githubusercontent.com/50114556/132098433-9b8b9b9a-9b9a-4b9e-9b9a-9b9a9b9a9b9a.png" width="300">
 
 # 📖 Contribution Guide 
 Thank you for contributing to the RE:Fridge! Please follow this contribution guide to help advance the project together.
