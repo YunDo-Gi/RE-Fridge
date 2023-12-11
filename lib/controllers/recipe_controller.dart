@@ -9,6 +9,7 @@ import '../models/recipe.dart';
 class RecipeController extends GetxController {
   var recipes = <Recipe>[].obs;
   var foundRecipes = <Recipe>[].obs;
+  var availableRecipes = <Recipe>[].obs;
 
   bool searchMode = false;
 
@@ -93,6 +94,7 @@ class RecipeController extends GetxController {
         }
       }
     }
+    availableRecipes.assignAll(recipeList);
     return recipeList;
   }
 }
@@ -128,18 +130,6 @@ Future fetchDummyData() async {
       "recipeId": 5,
       "recipeName": "Beef Stew",
       "ingredients": ["Beef", "Potato", "Carrot"],
-      "fullfillCount": 0,
-    },
-    {
-      "recipeId": 10,
-      "recipeName": "Chicken Soup",
-      "ingredients": ["Chicken", "Potato", "Carrot"],
-      "fullfillCount": 3,
-    },
-    {
-      "recipeId": 11,
-      "recipeName": "Chicken Salad",
-      "ingredients": ["Chicken", "Lettuce", "Tomato"],
       "fullfillCount": 3,
     },
   ];

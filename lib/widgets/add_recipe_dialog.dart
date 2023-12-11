@@ -214,7 +214,7 @@ class AddRecipeDialog extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () async {
               if (recipeName == null || recipeName == '') {
-                showToast(recipeNameWarningToast, 200);
+                showToast(recipeNameWarningToast, 160);
               } else {
                 if (tagController.tagsSelected.length > 0) {
                   await tagController.addToRecipeList(
@@ -227,7 +227,7 @@ class AddRecipeDialog extends StatelessWidget {
                     tagController.reloadTags();
                   });
                 } else {
-                  showToast(ingredientWarningToast, 200);
+                  showToast(ingredientWarningToast, 160);
                 }
               }
             },

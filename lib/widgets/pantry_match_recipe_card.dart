@@ -49,7 +49,7 @@ class PantryMatchRecipeCard extends GetView<RecipeController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(controller.recipes[index].recipeName,
+                Text(controller.availableRecipes[index].recipeName,
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -63,9 +63,9 @@ class PantryMatchRecipeCard extends GetView<RecipeController> {
                     color: Color.fromRGBO(143, 180, 78, 0.2),
                   ),
                   child: Text(
-                    controller.recipes[index].fullfillCount.toString() +
+                    controller.availableRecipes[index].fullfillCount.toString() +
                         ' / ' +
-                        controller.recipes[index].ingredients.length.toString(),
+                        controller.availableRecipes[index].ingredients.length.toString(),
                     style: TextStyle(
                       fontFamily: 'Baloo2',
                       fontSize: 16,
@@ -81,7 +81,7 @@ class PantryMatchRecipeCard extends GetView<RecipeController> {
               spacing: 8.0,
               runSpacing: -4.0,
               children: [
-                for (var ingredient in controller.recipes[index].ingredients)
+                for (var ingredient in controller.availableRecipes[index].ingredients)
                   TagChipFixed(ingredientName: ingredient)
               ],
             ),

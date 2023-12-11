@@ -15,7 +15,7 @@ const categoryAvatar = [
   },
   {
     'category': 'Seafood',
-    'icon': 'https://cdn-icons-png.flaticon.com/128/1915/1915297.png'
+    'icon': 'https://cdn-icons-png.flaticon.com/128/10507/10507711.png'
   },
   {
     'category': 'Dairy',
