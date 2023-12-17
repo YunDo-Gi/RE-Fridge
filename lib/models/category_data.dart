@@ -28,7 +28,6 @@ const categoryAvatar = [
   {
     'category': 'Others',
     'icon': 'https://cdn-icons-png.flaticon.com/128/2770/2770013.png'
-  
   }
 ];
 

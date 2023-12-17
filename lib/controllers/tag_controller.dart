@@ -7,7 +7,6 @@ import 'package:re_fridge/models/recipe.dart';
 import 'package:re_fridge/models/tag.dart';
 import 'recipe_controller.dart';
 
-
 class TagController extends GetxController {
   final TextEditingController searchController = TextEditingController();
   final recipeController = Get.put(RecipeController());
@@ -22,7 +21,7 @@ class TagController extends GetxController {
   }
 
   fetchData() async {
-    if(tagsToSelect.length > 0) {
+    if (tagsToSelect.length > 0) {
       return 0;
     }
     var serverPort = "8080";
@@ -73,7 +72,9 @@ class TagController extends GetxController {
     }
 
     tagsSelectable.assignAll(tagsSelected.where((tag) {
-      return tag.ingredientName.toLowerCase().contains(searchText.toLowerCase());
+      return tag.ingredientName
+          .toLowerCase()
+          .contains(searchText.toLowerCase());
     }));
   }
 
@@ -246,6 +247,4 @@ class TagController extends GetxController {
     },
   ];
   }
-
-  
 }

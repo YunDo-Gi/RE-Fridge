@@ -1,0 +1,394 @@
+@startuml
+set namespaceSeparator ::
+
+class "re_fridge::controllers::add_item_controller.dart::AddItemController" {
+  +PantryController pantryController
+  +CartController cartController
+  +List<dynamic> lengthByCategory
+  +int categoryIndex
+  +List<Ingredient> ingredients
+  +RxList<Ingredient> foundIngredients
+  +RxList<Ingredient> addedIngredients
+  +RxList<Ingredient> cartFoundIngredients
+  +RxList<Ingredient> cartAddedIngredients
+  +bool searchMode
+  +void onInit()
+  +dynamic fetchData()
+  +void filterIngredient()
+  +void filterCartIngredient()
+  +void categorizeIngredient()
+  +void getlengthByCategory()
+  +dynamic getCategoryfromIngredientName()
+  +dynamic getIdfromIngredientName()
+  +void initialize()
+  +void addIngredient()
+  +void removeIngredient()
+  +void addQuantity()
+  +void minusQuantity()
+  +void updateQuantity()
+  +void updateExpiryDate()
+  +void addToPantry()
+  +void addToCart()
+  +dynamic popBack()
+  +dynamic fetchDummyData()
+}
+
+"re_fridge::controllers::add_item_controller.dart::AddItemController" o-- "re_fridge::controllers::pantry_controller.dart::PantryController" 
+"re_fridge::controllers::add_item_controller.dart::AddItemController" o-- "re_fridge::controllers::cart_controller.dart::CartController"     
+"re_fridge::controllers::add_item_controller.dart::AddItemController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxList<Ingredient>"    
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "re_fridge::controllers::add_item_controller.dart::AddItemController"
+
+class "re_fridge::controllers::cart_controller.dart::CartController" {
+  +RxList<CartItem> ingredients
+  +bool searchMode
+  +void onInit()
+  +dynamic fetchData()
+  +dynamic deleteIngredient()
+  +dynamic addIngredient()
+  +dynamic reloadList()
+}
+
+"re_fridge::controllers::cart_controller.dart::CartController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxList<CartItem>"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "re_fridge::controllers::cart_controller.dart::CartController"
+
+class "re_fridge::controllers::navigation_bar_controller.dart::NavigationBarController" {
+  -int _currentIndex
+  +int currentIndex
+  +void changeIndex()
+}
+
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "re_fridge::controllers::navigation_bar_controller.dart::NavigationBarController"
+
+class "re_fridge::controllers::pantry_controller.dart::PantryController" {
+  +CartController cartController
+  +RxList<Ingredient> ingredients
+  +RxList<Ingredient> foundIngredients
+  +Color color
+  +int categoryIndex
+  +List<dynamic> numberByCategory
+  +bool searchMode
+  +void onInit()
+  +dynamic fetchData()
+  +void categorizeIngredient()
+  +void filterIngredient()
+  +void getNumberByCategory()
+  +dynamic getCategoryImage()
+  +dynamic getCategoryColor()
+  +dynamic deleteIngredient()
+  +dynamic addIngredient()
+  +dynamic addToCart()
+  +dynamic getAverageExperationDate()
+  +int daysBetween()
+  +Text toDDay()
+  +Color getExperationDateColor()
+}
+
+"re_fridge::controllers::pantry_controller.dart::PantryController" o-- "re_fridge::controllers::cart_controller.dart::CartController"        
+"re_fridge::controllers::pantry_controller.dart::PantryController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxList<Ingredient>"       
+"re_fridge::controllers::pantry_controller.dart::PantryController" o-- "dart::ui::Color"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "re_fridge::controllers::pantry_controller.dart::PantryController"
+
+class "re_fridge::controllers::recipe_controller.dart::RecipeController" {
+  +RxList<Recipe> recipes
+  +RxList<Recipe> foundRecipes
+  +bool searchMode
+  +void onInit()
+  +dynamic fetchData()
+  +void filterRecipe()
+  +void addRecipe()
+  +List<Recipe> getAvailableRecipeByIngredient()
+}
+
+"re_fridge::controllers::recipe_controller.dart::RecipeController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxList<Recipe>"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "re_fridge::controllers::recipe_controller.dart::RecipeController"
+
+class "re_fridge::controllers::recommended_recipe_controller.dart::RecommendedRecipeController" {
+  +RxList<Recipe> recipes
+  +void onInit()
+  +dynamic fetchData()
+}
+
+"re_fridge::controllers::recommended_recipe_controller.dart::RecommendedRecipeController" o-- "get::get_rx::src::rx_types::rx_types.dart::RxList<Recipe>"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "re_fridge::controllers::recommended_recipe_controller.dart::RecommendedRecipeController"
+
+class "re_fridge::controllers::tag_controller.dart::TagController" {
+  +TextEditingController searchController
+  +RecipeController recipeController
+  +List<Tag> tagsToSelect
+  +List<Tag> tagsSelectable
+  +List<Tag> tagsSelected
+  +void onInit()
+  +dynamic fetchData()
+  +void filterTag()
+  +dynamic addTag()
+  +dynamic deleteTag()
+  +dynamic reloadTags()
+  +dynamic addToRecipeList()
+  +dynamic fetchDummyData()
+}
+
+"re_fridge::controllers::tag_controller.dart::TagController" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"re_fridge::controllers::tag_controller.dart::TagController" o-- "re_fridge::controllers::recipe_controller.dart::RecipeController"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "re_fridge::controllers::tag_controller.dart::TagController"
+
+class "re_fridge::main.dart::MainApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::main.dart::MainApp"
+
+class "re_fridge::models::cart_item.dart::CartItem" {
+  +int cartId
+  +String ingredientName
+  +String icon
+  +Map<String, dynamic> toJson()
+}
+
+class "re_fridge::models::ingredient.dart::Ingredient" {
+  +int ingredientId
+  +String ingredientName
+  +DateTime expiryDate
+  +String icon
+  +int quantity
+  +String category
+  +Map<String, dynamic> toJson()
+}
+
+class "re_fridge::models::recipe.dart::Recipe" {
+  +int recipeId
+  +String recipeName
+  +List<String> ingredients
+  +int? fullfillCount
+  +Map<String, dynamic> toJson()
+}
+
+class "re_fridge::models::tag.dart::Tag" {
+  +int ingredientId
+  +String ingredientName
+  +String category
+  +String icon
+  +Map<String, dynamic> toJson()
+}
+
+class "re_fridge::views::add_cart_item.dart::AddCartItem" {
+  +AddItemController addItemController
+  +FToast fToast
+  +Widget build()
+  +void showToast()
+}
+
+"re_fridge::views::add_cart_item.dart::AddCartItem" o-- "re_fridge::controllers::add_item_controller.dart::AddItemController"
+"re_fridge::views::add_cart_item.dart::AddCartItem" o-- "fluttertoast::fluttertoast.dart::FToast"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::views::add_cart_item.dart::AddCartItem"
+
+class "re_fridge::views::add_Item.dart::AddItem" {
+  +AddItemController addItemController
+  +FToast fToast
+  +Widget build()
+  +void showToast()
+}
+
+"re_fridge::views::add_Item.dart::AddItem" o-- "re_fridge::controllers::add_item_controller.dart::AddItemController"
+"re_fridge::views::add_Item.dart::AddItem" o-- "fluttertoast::fluttertoast.dart::FToast"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::views::add_Item.dart::AddItem"
+
+class "re_fridge::views::app.dart::App" {
+  +_MainState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "re_fridge::views::app.dart::App"
+
+class "re_fridge::views::app.dart::_MainState" {
+  -int _selectedIndex
+  -List<Widget> _widgetOptions
+  -void _onItemTapped()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "re_fridge::views::app.dart::_MainState"
+
+class "re_fridge::views::cart.dart::Cart" {
+  +String title
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::views::cart.dart::Cart"
+
+class "re_fridge::views::my_recipe.dart::Recipe" {
+  +RecipeController recipeController
+  +Widget build()
+}
+
+"re_fridge::views::my_recipe.dart::Recipe" o-- "re_fridge::controllers::recipe_controller.dart::RecipeController"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::views::my_recipe.dart::Recipe"
+
+class "re_fridge::views::pantry.dart::Pantry" {
+  +PantryController pantryController
+  +DateTime nowDate
+  +Widget build()
+}
+
+"re_fridge::views::pantry.dart::Pantry" o-- "re_fridge::controllers::pantry_controller.dart::PantryController"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::views::pantry.dart::Pantry"
+
+class "re_fridge::views::pantry_item_detail.dart::PantryItemDetail" {
+  +int index
+  +Widget build()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::views::pantry_item_detail.dart::PantryItemDetail"
+
+class "re_fridge::views::recipe_detail.dart::RecipeDetail" {
+  +int index
+  +Widget build()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::views::recipe_detail.dart::RecipeDetail"
+
+class "re_fridge::views::recommended_recipe.dart::RecommendedRecipe" {
+  +RecommendedRecipeController recommendedRecipeController
+  +Widget build()
+}
+
+"re_fridge::views::recommended_recipe.dart::RecommendedRecipe" o-- "re_fridge::controllers::recommended_recipe_controller.dart::RecommendedRecipeController"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::views::recommended_recipe.dart::RecommendedRecipe"
+
+class "re_fridge::views::set_item.dart::SetItem" {
+  +AddItemController addItemController
+  +FToast fToast
+  +Widget build()
+  +void showToast()
+}
+
+"re_fridge::views::set_item.dart::SetItem" o-- "re_fridge::controllers::add_item_controller.dart::AddItemController"
+"re_fridge::views::set_item.dart::SetItem" o-- "fluttertoast::fluttertoast.dart::FToast"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::views::set_item.dart::SetItem"
+
+class "re_fridge::widgets::added_ingredient_card.dart::AddedIngredientCard" {
+  +int index
+  +Widget build()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::added_ingredient_card.dart::AddedIngredientCard"     
+
+class "re_fridge::widgets::add_recipe_dialog.dart::AddRecipeDialog" {
+  +TagController tagController
+  +RecipeController recipeController
+  +FToast fToast
+  +Widget build()
+  +void showToast()
+}
+
+"re_fridge::widgets::add_recipe_dialog.dart::AddRecipeDialog" o-- "re_fridge::controllers::tag_controller.dart::TagController"
+"re_fridge::widgets::add_recipe_dialog.dart::AddRecipeDialog" o-- "re_fridge::controllers::recipe_controller.dart::RecipeController"
+"re_fridge::widgets::add_recipe_dialog.dart::AddRecipeDialog" o-- "fluttertoast::fluttertoast.dart::FToast"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::widgets::add_recipe_dialog.dart::AddRecipeDialog"
+
+class "re_fridge::widgets::blinking_circle.dart::BlinkingCircle" {
+  +_BlinkingCircleState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "re_fridge::widgets::blinking_circle.dart::BlinkingCircle"
+
+class "re_fridge::widgets::blinking_circle.dart::_BlinkingCircleState" {
+  -AnimationController _animationController
+  -Animation<Color?> _colorAnimation
+  +PantryController pantryController
+  +void initState()
+  +void dispose()
+  +Widget build()
+}
+
+"re_fridge::widgets::blinking_circle.dart::_BlinkingCircleState" o-- "flutter::src::animation::animation_controller.dart::AnimationController"
+"re_fridge::widgets::blinking_circle.dart::_BlinkingCircleState" o-- "flutter::src::animation::animation.dart::Animation<Color>"
+"re_fridge::widgets::blinking_circle.dart::_BlinkingCircleState" o-- "re_fridge::controllers::pantry_controller.dart::PantryController"      
+"flutter::src::widgets::framework.dart::State" <|-- "re_fridge::widgets::blinking_circle.dart::_BlinkingCircleState"
+"flutter::src::widgets::ticker_provider.dart::SingleTickerProviderStateMixin" <|-- "re_fridge::widgets::blinking_circle.dart::_BlinkingCircleState"
+
+class "re_fridge::widgets::cart_card.dart::CartCard" {
+  +int index
+  +FToast fToast
+  +Widget build()
+  +dynamic deleteIngredient()
+  +dynamic toCart()
+  +void showToast()
+}
+
+"re_fridge::widgets::cart_card.dart::CartCard" o-- "fluttertoast::fluttertoast.dart::FToast"
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::cart_card.dart::CartCard"
+
+class "re_fridge::widgets::ingredient_card.dart::IngredientCard" {
+  +int index
+  +Widget build()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::ingredient_card.dart::IngredientCard"
+
+class "re_fridge::widgets::navigation_bar_bottom.dart::NavigationBarBottom" {
+  +NavigationBarController navigationBarController
+  +Widget build()
+}
+
+"re_fridge::widgets::navigation_bar_bottom.dart::NavigationBarBottom" o-- "re_fridge::controllers::navigation_bar_controller.dart::NavigationBarController"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "re_fridge::widgets::navigation_bar_bottom.dart::NavigationBarBottom"
+
+class "re_fridge::widgets::pantry_item.dart::PantryItem" {
+  +int index
+  +FToast fToast
+  +Widget deleteToast
+  +Widget toCartToast
+  +Widget build()
+  +dynamic deleteIngredient()
+  +dynamic toCart()
+  +void showToast()
+}
+
+"re_fridge::widgets::pantry_item.dart::PantryItem" o-- "fluttertoast::fluttertoast.dart::FToast"
+"re_fridge::widgets::pantry_item.dart::PantryItem" o-- "flutter::src::widgets::framework.dart::Widget"
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::pantry_item.dart::PantryItem"
+
+class "re_fridge::widgets::pantry_match_recipe_card.dart::PantryMatchRecipeCard" {
+  +int index
+  +Widget build()
+  +dynamic toCart()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::pantry_match_recipe_card.dart::PantryMatchRecipeCard"
+
+class "re_fridge::widgets::recipe_card.dart::RecipeCard" {
+  +int index
+  +Widget build()
+  +dynamic toCart()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::recipe_card.dart::RecipeCard"
+
+class "re_fridge::widgets::recommended_recipe_card.dart::RecommendedRecipeCard" {
+  +int index
+  +Widget build()
+  +dynamic toCart()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::recommended_recipe_card.dart::RecommendedRecipeCard" 
+
+class "re_fridge::widgets::tag_chip.dart::TagChip" {
+  +int index
+  +Widget build()
+  +dynamic setColor()
+}
+
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::tag_chip.dart::TagChip"
+
+class "re_fridge::widgets::tag_chip_fixed.dart::TagChipFixed" {
+  +String ingredientName
+  +AddItemController addItemController
+  +Widget build()
+  +dynamic setColor()
+  +dynamic getAvatar()
+}
+
+"re_fridge::widgets::tag_chip_fixed.dart::TagChipFixed" o-- "re_fridge::controllers::add_item_controller.dart::AddItemController"
+"get::get_state_manager::src::simple::get_view.dart::GetView" <|-- "re_fridge::widgets::tag_chip_fixed.dart::TagChipFixed"
+
+
+@enduml

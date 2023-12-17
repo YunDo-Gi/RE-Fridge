@@ -1,10 +1,10 @@
 name: re_fridge
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.2 <4.0.0'
+  sdk: ">=3.1.2 <4.0.0"
 
 dependencies:
   animated_bottom_navigation_bar: ^1.3.0
@@ -25,31 +25,31 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-  - family: Tisa
-    fonts:
-      - asset: assets/fonts/Tisa-Sans-Pro-ExtraLight.ttf
-        weight: 200
-      - asset: assets/fonts/Tisa-Sans-Pro-Light.ttf
-        weight: 300
-      - asset: assets/fonts/Tisa-Sans-Pro-Regular.ttf
-        weight: 400
-      - asset: assets/fonts/Tisa-Sans-Pro-Medium.ttf
-        weight: 500
-      - asset: assets/fonts/Tisa-Sans-Pro-Bold.ttf
-        weight: 700
-      - asset: assets/fonts/Tisa-Sans-Pro-ExtraBold.ttf
-        weight: 800
-      - asset: assets/fonts/Tisa-Sans-Pro-Black.ttf
-        weight: 900
-  - family: Baloo2
-    fonts:
-      - asset: assets/fonts/Baloo2-ExtraBold.ttf
-        weight: 800
-      - asset: assets/fonts/Baloo2-Bold.ttf
-        weight: 700
-      - asset: assets/fonts/Baloo2-Medium.ttf
-        weight: 500
-      - asset: assets/fonts/Baloo2-SemiBold.ttf
-        weight: 600
-      - asset: assets/fonts/Baloo2-Regular.ttf
-        weight: 400
+    - family: Tisa
+      fonts:
+        - asset: assets/fonts/Tisa-Sans-Pro-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Tisa-Sans-Pro-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Tisa-Sans-Pro-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Tisa-Sans-Pro-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Tisa-Sans-Pro-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Tisa-Sans-Pro-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Tisa-Sans-Pro-Black.ttf
+          weight: 900
+    - family: Baloo2
+      fonts:
+        - asset: assets/fonts/Baloo2-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Baloo2-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Baloo2-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Baloo2-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Baloo2-Regular.ttf
+          weight: 400

@@ -11,12 +11,12 @@ class CartItem {
 
   // Convert from JSON
   factory CartItem.fromJson(Map<String, dynamic> json) {
-    final cartId =  int.parse(json['cartId'].toString());
+    final cartId = int.parse(json['cartId'].toString());
     final ingredientName = json['ingredientName'];
     final icon = json['icon'];
 
     // Check if all data is valid (runtime error prevention)
-    if(ingredientName is String && icon is String) {
+    if (ingredientName is String && icon is String) {
       return CartItem(
         cartId: cartId,
         ingredientName: ingredientName,
@@ -29,8 +29,8 @@ class CartItem {
 
   // Convert to JSON
   Map<String, dynamic> toJson() => {
-    'cartId': cartId,
-    'ingredientName': ingredientName,
-    'icon': icon,
-  };
+        'cartId': cartId,
+        'ingredientName': ingredientName,
+        'icon': icon,
+      };
 }

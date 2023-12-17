@@ -104,6 +104,10 @@ git push origin <branch-name>
 ### 7. Wait for the pull request to be reviewed and merged
 
 ## Reporting Issues
+Bugs, improvement ideas, and new feature suggestions are all welcome.
+
+Click the `New Issue` button in the issue tracker to create a new issue.
+Provide detailed information about the issue and the environment in which it occurs.
 
 # 🔧 Project Structure
 
@@ -159,6 +163,7 @@ RE-Fridge
 │  └─ 📂 widgets
 │     ├─📄 added_ingredient_card.dart
 │     ├─📄 add_recipe_dialog.dart
+│     ├─📄 blinking_circle.dart
 │     ├─📄 cart_card.dart
 │     ├─📄 custom_divider.dart
 │     ├─📄 ingredient_card.dart

@@ -13,7 +13,7 @@ class RecommendedRecipeController extends GetxController {
     super.onInit();
     fetchData();
   }
-  
+
   Future fetchData() async {
     var serverPort = "8080";
     var serverPath = "/recipe/fullfill";
@@ -35,7 +35,8 @@ class RecommendedRecipeController extends GetxController {
         recipes.assignAll(recipeList);
         print('Recommended Recipe: Request successful!');
       } else {
-        print('Recommended Recipe: Request failed with status: ${response.statusCode}.');
+        print(
+            'Recommended Recipe: Request failed with status: ${response.statusCode}.');
       }
     } catch (e) {
       print('Recommended Recipe: Request failed - dummy data will be used.');
@@ -47,8 +48,7 @@ class RecommendedRecipeController extends GetxController {
         recipeList.add(ingredient);
       }
       recipes.assignAll(recipeList);
-    } finally {
-    }
+    } finally {}
   }
 }
 

@@ -13,16 +13,20 @@ class TagChipFixed extends GetView<TagController> {
 
   @override
   Widget build(BuildContext context) {
-    String category = addItemController.getCategoryfromIngredientName(ingredientName);
+    String category =
+        addItemController.getCategoryfromIngredientName(ingredientName);
+    print(category);
 
     return Chip(
-          label: Text(ingredientName, style: TextStyle(fontFamily: 'Baloo2', fontWeight: FontWeight.w700, color: Colors.white)),
-          backgroundColor: setColor(category),
-          avatar: CircleAvatar(
+        label: Text(ingredientName,
+            style: TextStyle(
+                fontFamily: 'Baloo2',
+                fontWeight: FontWeight.w700,
+                color: Colors.white)),
+        backgroundColor: setColor(category),
+        avatar: CircleAvatar(
             backgroundColor: Colors.white,
-            child: Image.network(getAvatar(category), width: 18, height: 18))
-          
-        );
+            child: Image.network(getAvatar(category), width: 18, height: 18)));
   }
 
   setColor(String category) {

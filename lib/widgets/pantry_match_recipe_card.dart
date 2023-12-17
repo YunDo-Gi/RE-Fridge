@@ -43,40 +43,42 @@ class PantryMatchRecipeCard extends GetView<RecipeController> {
             ],
           ),
           child: ListTile(
-            title: 
-            Padding(padding: EdgeInsets.only(bottom: 8), 
-            child:Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(controller.availableRecipes[index].recipeName,
-                    style: TextStyle(
-                        fontSize: 20,
+            title: Padding(
+              padding: EdgeInsets.only(bottom: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(controller.recipes[index].recipeName,
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromRGBO(54, 40, 34, 1))),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 26,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 1.5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: Color.fromRGBO(143, 180, 78, 0.2),
+                    ),
+                    child: Text(
+                      controller.recipes[index].fullfillCount.toString() +
+                          ' / ' +
+                          controller.recipes[index].ingredients.length
+                              .toString(),
+                      style: TextStyle(
+                        fontFamily: 'Baloo2',
+                        fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: Color.fromRGBO(54, 40, 34, 1))),
-                Container(
-                  alignment: Alignment.center,
-                  height: 26,
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 1.5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: Color.fromRGBO(143, 180, 78, 0.2),
-                  ),
-                  child: Text(
-                    controller.availableRecipes[index].fullfillCount.toString() +
-                        ' / ' +
-                        controller.availableRecipes[index].ingredients.length.toString(),
-                    style: TextStyle(
-                      fontFamily: 'Baloo2',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: PRIMARY_COLOR,
+                        color: PRIMARY_COLOR,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),),
-            
+                ],
+              ),
+            ),
             subtitle: Wrap(
               spacing: 8.0,
               runSpacing: -4.0,

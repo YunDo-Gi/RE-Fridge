@@ -13,33 +13,36 @@ class AddedIngredientCard extends GetView<AddItemController> {
     return Stack(
       alignment: Alignment.center,
       children: [
-          Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: Card(
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Center(
-                    child: Image(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            controller.addedIngredients[index].icon),
-                        width: 30,
-                        height: 30),
-                  )),),
+        Container(
+          margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+          child: Card(
+            child: SizedBox(
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: Image(
+                      fit: BoxFit.cover,
+                      image:
+                          NetworkImage(controller.addedIngredients[index].icon),
+                      width: 30,
+                      height: 30),
+                )),
           ),
-            Positioned(top: -13,
-                  right: -9,
-                  child: IconButton(
-                    iconSize: 20.0,
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent, 
-                    color: RED_COLOR,
-                    icon: Icon(Icons.cancel),
-                    onPressed: () {
-                      controller.removeIngredient(index);
-                    },
-                  ),)
+        ),
+        Positioned(
+          top: -13,
+          right: -9,
+          child: IconButton(
+            iconSize: 20.0,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            color: RED_COLOR,
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              controller.removeIngredient(index);
+            },
+          ),
+        )
       ],
     );
   }

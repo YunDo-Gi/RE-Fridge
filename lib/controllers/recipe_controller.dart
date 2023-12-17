@@ -80,8 +80,6 @@ class RecipeController extends GetxController {
     recipes.add(recipe);
     foundRecipes.add(recipe);
     print(foundRecipes.last.recipeName);
-
-    
   }
 
   List<Recipe> getAvailableRecipeByIngredient(String ingredientName) {

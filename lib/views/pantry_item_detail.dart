@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import 'package:re_fridge/colors.dart';
 import 'package:re_fridge/controllers/pantry_controller.dart';

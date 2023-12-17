@@ -7,7 +7,8 @@ class BlinkingCircle extends StatefulWidget {
   _BlinkingCircleState createState() => _BlinkingCircleState();
 }
 
-class _BlinkingCircleState extends State<BlinkingCircle> with SingleTickerProviderStateMixin {
+class _BlinkingCircleState extends State<BlinkingCircle>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Color?> _colorAnimation;
   final pantryController = PantryController();
@@ -19,7 +20,10 @@ class _BlinkingCircleState extends State<BlinkingCircle> with SingleTickerProvid
       vsync: this,
       duration: Duration(milliseconds: 1000),
     )..repeat(reverse: true);
-    _colorAnimation = ColorTween(begin: pantryController.color, end: pantryController.color.withOpacity(0)).animate(_animationController);
+    _colorAnimation = ColorTween(
+            begin: pantryController.color,
+            end: pantryController.color.withOpacity(0))
+        .animate(_animationController);
   }
 
   @override
@@ -45,4 +49,3 @@ class _BlinkingCircleState extends State<BlinkingCircle> with SingleTickerProvid
     );
   }
 }
-

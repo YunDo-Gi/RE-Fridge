@@ -10,5 +10,3 @@ Widget CustomDivider({required double paddingRight}) {
   ),
 );
 }
-
-

@@ -7,7 +7,6 @@ import 'package:re_fridge/controllers/recipe_controller.dart';
 import 'package:re_fridge/colors.dart';
 import 'package:re_fridge/models/tag.dart';
 import 'package:re_fridge/widgets/tag_chip.dart';
-import 'package:re_fridge/widgets/tag_chip_fixed.dart';
 
 class AddRecipeDialog extends StatelessWidget {
   AddRecipeDialog({Key? key}) : super(key: key);

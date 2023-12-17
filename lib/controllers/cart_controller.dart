@@ -17,7 +17,7 @@ class CartController extends GetxController {
   }
 
   Future fetchData() async {
-    if(ingredients.length > 0) {
+    if (ingredients.length > 0) {
       return 0;
     }
     var serverPort = "8080";
@@ -68,8 +68,8 @@ class CartController extends GetxController {
     var url = await Uri.http('localhost:' + serverPort, serverPath);
 
     try {
-      ingredients.removeAt(ingredients
-          .indexWhere((ingredient) => ingredient.cartId == cartId));
+      ingredients.removeAt(
+          ingredients.indexWhere((ingredient) => ingredient.cartId == cartId));
       ingredients.refresh();
       var response = await http.delete(url);
 
@@ -89,7 +89,8 @@ class CartController extends GetxController {
 
     // Add to cart (server)
     final addItemController = Get.put(AddItemController());
-    var ingredientID = addItemController.getIdfromIngredientName(cartItem.ingredientName);
+    var ingredientID =
+        addItemController.getIdfromIngredientName(cartItem.ingredientName);
 
     // Connect to server
     var serverPort = "8080";
@@ -97,9 +98,11 @@ class CartController extends GetxController {
     var url = await Uri.http('localhost:' + serverPort, serverPath);
 
     try {
-      var response = await http.post(url, headers: {
-        'Content-Type': 'application/json'
-      }, body: jsonEncode([{"ingredientId" : ingredientID}]));
+      var response = await http.post(url,
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode([
+            {"ingredientId": ingredientID}
+          ]));
 
       if (response.statusCode == 201) {
         print('Cart: Request successful!');
@@ -125,12 +128,12 @@ Future fetchDummyData() async {
     {
       "cartId": 1,
       "ingredientName": "Onion",
-      "icon" : "https://cdn-icons-png.flaticon.com/128/7230/7230868.png",
+      "icon": "https://cdn-icons-png.flaticon.com/128/7230/7230868.png",
     },
     {
       "cartId": 2,
       "ingredientName": "Beef",
-      "icon" : "https://cdn-icons-png.flaticon.com/128/6978/6978160.png",
+      "icon": "https://cdn-icons-png.flaticon.com/128/6978/6978160.png",
     },
     {
       "cartId": 3,

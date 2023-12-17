@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:re_fridge/colors.dart';
 
 import 'package:re_fridge/controllers/add_item_controller.dart';
-import 'package:re_fridge/controllers/cart_controller.dart';
 import 'package:re_fridge/widgets/ingredient_card.dart';
 import 'package:re_fridge/widgets/added_ingredient_card.dart';
 
